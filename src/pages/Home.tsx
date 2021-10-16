@@ -3,7 +3,7 @@ import { useHistory } from 'react-router';
 import styled from 'styled-components';
 
 const StyledButton = styled(Button)`
-  width: 100%;
+  width: 10vw;
 `;
 
 const Home = () => {
