@@ -1,21 +1,9 @@
-import Button from '@mui/material/Button';
-import { useHistory } from 'react-router';
-import styled from 'styled-components';
-
-const StyledButton = styled(Button)`
-  width: 10vw;
-`;
+// import { useHistory } from 'react-router';
 
 const Home = () => {
-  const history = useHistory();
-  return (
-    <div>
-      <StyledButton variant="contained" onClick={() => history.push('Login')}>
-        Login
-      </StyledButton>
-      Home
-    </div>
-  );
+	// const history = useHistory();
+
+	return <div>Home</div>;
 };
 
 export default Home;
