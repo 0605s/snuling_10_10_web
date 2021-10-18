@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route } from 'react-router';
+import { Route, Switch, Redirect } from 'react-router';
 import './App.css';
 import Home from 'pages/Home';
 import Login from 'pages/Login';
@@ -9,16 +9,15 @@ import { Container } from '@mui/material';
 
 const App = () => {
 	return (
-		<>
-			<div>
-				<Container component="main" maxWidth="lg">
-					<Header />
-					<Route path="/" component={Home} exact />
-					<Route path="/experiment" component={ExperimentMain} />
-					<Route path="/login" component={Login} />
-				</Container>
-			</div>
-		</>
+		<Container component="main" maxWidth="lg">
+			<Header />
+			<Switch>
+				<Route exact path="/" component={Home} />
+				<Route path="/experiment" component={ExperimentMain} />
+				<Route path="/login" component={Login} />
+				<Redirect to="/" />
+			</Switch>
+		</Container>
 	);
 };
 
