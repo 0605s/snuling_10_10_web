@@ -2,7 +2,7 @@
   "name": "10-10web",
   "version": "0.1.0",
   "private": true,
-  "homePage": "https://0605s.github.io/10-10web/",
+  "homePage": "https://0605s.github.io/10-10web",
 
   "dependencies": {
     "@emotion/react": "^11.4.1",
@@ -36,7 +36,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "deploy": "npm run build && gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "predeploy": "npm run build"
   },
   "eslintConfig": {
     "extends": [
