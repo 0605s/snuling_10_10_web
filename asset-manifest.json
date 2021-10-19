@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/static/css/main.ea1455b2.chunk.css",
-    "main.js": "/static/js/main.db46c9be.chunk.js",
-    "main.js.map": "/static/js/main.db46c9be.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.f4914ad4.js",
-    "runtime-main.js.map": "/static/js/runtime-main.f4914ad4.js.map",
-    "static/js/2.e5d28856.chunk.js": "/static/js/2.e5d28856.chunk.js",
-    "static/js/2.e5d28856.chunk.js.map": "/static/js/2.e5d28856.chunk.js.map",
-    "static/js/3.0e8f9803.chunk.js": "/static/js/3.0e8f9803.chunk.js",
-    "static/js/3.0e8f9803.chunk.js.map": "/static/js/3.0e8f9803.chunk.js.map",
-    "index.html": "/index.html",
-    "static/css/main.ea1455b2.chunk.css.map": "/static/css/main.ea1455b2.chunk.css.map",
-    "static/js/2.e5d28856.chunk.js.LICENSE.txt": "/static/js/2.e5d28856.chunk.js.LICENSE.txt"
+    "main.css": "/10-10web/static/css/main.ea1455b2.chunk.css",
+    "main.js": "/10-10web/static/js/main.db46c9be.chunk.js",
+    "main.js.map": "/10-10web/static/js/main.db46c9be.chunk.js.map",
+    "runtime-main.js": "/10-10web/static/js/runtime-main.40f1cd91.js",
+    "runtime-main.js.map": "/10-10web/static/js/runtime-main.40f1cd91.js.map",
+    "static/js/2.aa9e52c4.chunk.js": "/10-10web/static/js/2.aa9e52c4.chunk.js",
+    "static/js/2.aa9e52c4.chunk.js.map": "/10-10web/static/js/2.aa9e52c4.chunk.js.map",
+    "static/js/3.0e8f9803.chunk.js": "/10-10web/static/js/3.0e8f9803.chunk.js",
+    "static/js/3.0e8f9803.chunk.js.map": "/10-10web/static/js/3.0e8f9803.chunk.js.map",
+    "index.html": "/10-10web/index.html",
+    "static/css/main.ea1455b2.chunk.css.map": "/10-10web/static/css/main.ea1455b2.chunk.css.map",
+    "static/js/2.aa9e52c4.chunk.js.LICENSE.txt": "/10-10web/static/js/2.aa9e52c4.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.f4914ad4.js",
-    "static/js/2.e5d28856.chunk.js",
+    "static/js/runtime-main.40f1cd91.js",
+    "static/js/2.aa9e52c4.chunk.js",
     "static/css/main.ea1455b2.chunk.css",
     "static/js/main.db46c9be.chunk.js"
   ]
