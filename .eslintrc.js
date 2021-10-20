@@ -25,6 +25,7 @@ module.exports = {
 		'@typescript-eslint/explicit-module-boundary-types': 0,
 		'@typescript-eslint/no-explicit-any': 0,
 		'no-console': 0,
+		'react/require-default-props': 0,
 	},
 	settings: {
 		'import/resolver': {

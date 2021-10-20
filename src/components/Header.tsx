@@ -1,10 +1,11 @@
 import styled from 'styled-components';
-import { Tab, Tabs, Box } from '@mui/material';
+import { Tab, Tabs, Box, Container } from '@mui/material';
 import { useHistory, useLocation } from 'react-router';
 import SchoolIcon from '@mui/icons-material/School';
 import Button from '@mui/material/Button';
 
-const HeaderContainer = styled(Box)`
+const HeaderContainer = styled(Container)`
+	width: 100vw;
 	display: flex;
 	flex-direction: row;
 	height: 10vh;
@@ -41,7 +42,7 @@ const Header = () => {
 	};
 
 	return (
-		<HeaderContainer>
+		<HeaderContainer maxWidth="xl" disableGutters>
 			<Box onClick={() => history.push('/')}>
 				<SchoolIcon />
 			</Box>
