@@ -15,6 +15,8 @@ const BannerContainer = styled(Container)`
 	align-items: flex-end;
 	border-bottom: 3px solid black;
 	margin-bottom: 100vh;
+	font-family: 'YoonGothic';
+	font-weight: 500;
 `;
 
 const BannerTemplate = ({ title, subTitle }: Props) => {
@@ -24,7 +26,7 @@ const BannerTemplate = ({ title, subTitle }: Props) => {
 				<Typography variant="h1">{title}</Typography>
 				{subTitle && <Typography variant="h5">{subTitle}</Typography>}
 			</Stack>
-			<Divider orientation="horizontal" />
+			{/* <Divider orientation="horizontal" /> */}
 		</BannerContainer>
 	);
 };
