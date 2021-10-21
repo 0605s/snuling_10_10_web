@@ -4,7 +4,7 @@ import { useHistory, useLocation } from 'react-router';
 import SchoolIcon from '@mui/icons-material/School';
 import Button from '@mui/material/Button';
 
-const HeaderContainer = styled(Container)`
+const HeaderContainer = styled.div`
 	width: 100vw;
 	display: flex;
 	flex-direction: row;
@@ -42,10 +42,10 @@ const Header = () => {
 	};
 
 	return (
-		<HeaderContainer maxWidth="xl" disableGutters>
-			<Box onClick={() => history.push('/')}>
+		<HeaderContainer>
+			<div onClick={() => history.push('/')}>
 				<SchoolIcon />
-			</Box>
+			</div>
 			<Tabs value={getLocation()}>
 				{tabs.map((item) => {
 					return (
