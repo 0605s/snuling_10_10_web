@@ -1,5 +1,6 @@
+import { Divider } from '@mui/material';
+import { Content, RowContainer, Title } from 'lib/constant/Components';
 import styled from 'styled-components';
-import { Container, Divider, Typography, Stack } from '@mui/material';
 
 interface Props {
 	title: string;
@@ -7,27 +8,24 @@ interface Props {
 	// backgroundImg?: string;
 }
 
-const BannerContainer = styled(Container)`
-	height: 200px;
-	display: flex;
+const BannerContainer = styled.div`
+	width: min(100vw, 1100px);
 	padding-bottom: 20px;
-	flex-direction: row;
-	align-items: flex-end;
 	border-bottom: 3px solid black;
-	margin-bottom: 100vh;
+	align-items: flex-end;
 	font-family: 'YoonGothic';
 	font-weight: 500;
 `;
 
 const BannerTemplate = ({ title, subTitle }: Props) => {
 	return (
-		<BannerContainer maxWidth="xl">
-			<Stack direction="row" spacing={5} alignItems="flex-end" justifyContent="flex-start">
-				<Typography variant="h1">{title}</Typography>
-				{subTitle && <Typography variant="h5">{subTitle}</Typography>}
-			</Stack>
-			{/* <Divider orientation="horizontal" /> */}
-		</BannerContainer>
+		<RowContainer>
+			<BannerContainer>
+				<Title>{title}</Title>
+				{/* <Divider orientation="horizontal" /> */}
+				{subTitle && <Content>{subTitle}</Content>}
+			</BannerContainer>
+		</RowContainer>
 	);
 };
 

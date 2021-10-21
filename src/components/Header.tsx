@@ -1,11 +1,11 @@
 import styled from 'styled-components';
-import { Tab, Tabs, Box, Container } from '@mui/material';
+import { Tab, Tabs } from '@mui/material';
 import { useHistory, useLocation } from 'react-router';
 import SchoolIcon from '@mui/icons-material/School';
 import Button from '@mui/material/Button';
 
 const HeaderContainer = styled.div`
-	width: 100vw;
+	width: min(100vw, 1100px);
 	display: flex;
 	flex-direction: row;
 	height: 10vh;
