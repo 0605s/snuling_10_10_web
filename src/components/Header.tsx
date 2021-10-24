@@ -1,64 +1,39 @@
 import styled from 'styled-components';
-import { Tab, Tabs } from '@mui/material';
-import { useHistory, useLocation } from 'react-router';
-import SchoolIcon from '@mui/icons-material/School';
 import Button from '@mui/material/Button';
+import { useHistory } from 'react-router-dom';
 
 const HeaderContainer = styled.div`
-	width: min(100vw, 1100px);
+	width: 100vw;
+	height: 100px;
+	margin: 0px;
+	box-sizing: border-box;
+	padding: 0px 10vw;
 	display: flex;
 	flex-direction: row;
-	height: 10vh;
-	margin: auto;
 	align-items: center;
-	justify-content: space-around;
+	justify-content: space-between;
 `;
 
-const MenuItem = styled(Tab)`
-	font-size: 20px;
+const SnulingLogo = styled.img`
+	width: 200px;
+	height: auto;
+	opacity: 1;
 `;
 
 const LoginButton = styled(Button)`
 	width: 50px;
 `;
 
-const tabs: { title: string; url: string }[] = [
-	{ title: 'People', url: '/people' },
-	{ title: 'Events & News', url: '/event' },
-	{ title: 'Research & Projects', url: '/research' },
-	{ title: '실험 참여', url: '/experiment' },
-	{ title: 'Contact Us', url: '/contact' },
-];
-
 const Header = () => {
-	const location = useLocation();
 	const history = useHistory();
-
-	const getLocation = () => {
-		const firstPath = location.pathname.split('/')[1];
-		if (['people', 'event', 'research', 'experiment', 'contact'].includes(firstPath))
-			return `/${firstPath}`;
-		return false;
-	};
-
 	return (
 		<HeaderContainer>
-			<div onClick={() => history.push('/')}>
-				<SchoolIcon />
-			</div>
-			<Tabs value={getLocation()}>
-				{tabs.map((item) => {
-					return (
-						<MenuItem
-							label={item.title}
-							value={item.url}
-							key={item.title}
-							onClick={() => history.push(`${item.url}`)}
-						/>
-					);
-				})}
-			</Tabs>
-			<LoginButton variant="contained" onClick={() => history.push('Login')}>
+			<SnulingLogo
+				src={`${process.env.PUBLIC_URL}/img/snuling_logo.png`}
+				alt=""
+				onClick={() => history.push('/')}
+			/>
+			<LoginButton variant="text" onClick={() => history.push('/login')}>
 				Login
 			</LoginButton>
 		</HeaderContainer>

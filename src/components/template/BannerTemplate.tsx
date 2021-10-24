@@ -7,13 +7,9 @@ interface Props {
 	// backgroundImg?: string;
 }
 
-const BannerContainer = styled.div`
-	width: min(100vw, 1100px);
-	padding-bottom: 20px;
-	border-bottom: 3px solid black;
-	align-items: flex-end;
-	font-family: 'YoonGothic';
-	font-weight: 500;
+const BannerContainer = styled(RowContainer)`
+	text-align: center;
+	padding: 20px 0px;
 `;
 
 const BannerTemplate = ({ title, subTitle }: Props) => {
@@ -22,7 +18,7 @@ const BannerTemplate = ({ title, subTitle }: Props) => {
 			<BannerContainer>
 				<Title>{title}</Title>
 				{/* <Divider orientation="horizontal" /> */}
-				{subTitle && <Content>{subTitle}</Content>}
+				{/* {subTitle && <Content>{subTitle}</Content>} */}
 			</BannerContainer>
 		</RowContainer>
 	);

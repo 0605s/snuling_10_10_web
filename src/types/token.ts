@@ -1,4 +1,5 @@
 export type TokenType = {
-  access: string;
-  refresh: string;
+	Token: string;
+	// access: string;
+	// refresh: string;
 };

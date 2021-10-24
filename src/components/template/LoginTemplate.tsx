@@ -16,16 +16,18 @@ const SubmitButton = styled(Button)`
 
 interface Props {
 	type: 'Login' | 'Sign In';
-	// onSubmit: (email: string, pw: string) => void;
+	onSubmit: (email: string, pw: string) => void;
 }
 
-const LoginTemplate = ({ type }: Props) => {
+const LoginTemplate = ({ type, onSubmit }: Props) => {
 	const history = useHistory();
 	const [id, setId] = useState<string>('');
 	const [pw, setPw] = useState<string>('');
 
-	const onSubmit = useCallback(() => {
-		history.push('/');
+	const onPressSubmit = useCallback(() => {
+		onSubmit(id, pw);
+		setId('');
+		setPw('');
 	}, []);
 
 	return (
@@ -43,7 +45,7 @@ const LoginTemplate = ({ type }: Props) => {
 			<Typography component="h1" variant="h5">
 				{type}
 			</Typography>
-			<FormBox component="form" onSubmit={onSubmit}>
+			<FormBox component="form" onSubmit={onPressSubmit}>
 				<TextField
 					margin="normal"
 					required

@@ -1,60 +1,90 @@
-import { PostRequest } from 'lib/api/requests';
+import { GetRequest, PostRequest } from 'lib/api/requests';
 import { observable } from 'mobx';
 import { TokenType } from 'types/token';
 import { UserType } from 'types/user';
 
 const UserStore = observable({
+	userEmail: '' as string | null,
 	user: null as UserType | null,
+	setUserEmail(email: string | null) {
+		this.userEmail = email;
+	},
 	setUser(user: UserType | null) {
 		this.user = user;
 	},
 
-	async signUpUserBasic(email: string, pw: string) {
+	async signUp(email: string, pw: string) {
 		let success = false;
 		let code = 200;
-		let token: TokenType = { access: '', refresh: '' };
+		let token = '';
 
 		try {
-			const response = await PostRequest<{ user: UserType; token: TokenType }>('signup/', {
+			const response = await PostRequest<TokenType>('signup/', {
 				email,
 				pw,
 			});
-			this.setUser(response.data.user);
-			token = { ...response.data.token };
+			token = response.data.Token;
 			code = response.status;
-
+			this.setUserEmail(email);
 			success = true;
 		} catch (e: any) {
-			console.error('========= signUpUserBasic Error =========');
+			console.error('========= SignUp Error =========');
 			code = e.response.status;
 			console.error(e);
 		}
-
 		return { success, code, token };
 	},
 
-	async signInUserBasic(email: string, password: string) {
+	async login(email: string, pw: string) {
 		let success = false;
 		let code = 200;
-		let token: TokenType = { access: '', refresh: '' };
+		let token = '';
 
 		try {
-			const response = await PostRequest<{ user: UserType; token: TokenType }>(
-				'/v1/auth/basic/signin/',
-				{ email, password },
-			);
-			this.setUser(response.data.user);
-			token = { ...response.data.token };
+			const response = await PostRequest<TokenType>('login/', {
+				email,
+				pw,
+			});
+			this.setUserEmail(email);
+			token = response.data.Token;
 			code = response.status;
-
 			success = true;
 		} catch (e: any) {
-			console.error('========= signInUserBasic Error =========');
+			console.error('========= login Error =========');
 			code = e.response.status;
 			console.error(e);
 		}
-
 		return { success, code, token };
+	},
+
+	async getUserInfo() {
+		let success = false;
+		try {
+			const response = await GetRequest<UserType>('mypage/');
+			this.setUser(response.data);
+			success = true;
+		} catch (e: any) {
+			console.error('========= getUserInfo Error =========');
+			console.error(e);
+		}
+		return success;
+	},
+
+	async postUserInfo(userInfo: UserType) {
+		let success = false;
+		try {
+			const response = await PostRequest<UserType>('mypage/', {
+				favor: userInfo.favor,
+				subscribe: userInfo.subscribe,
+				lingual: userInfo.lingual,
+			});
+			this.setUser(response.data);
+			success = true;
+		} catch (e: any) {
+			console.error('========= postUserInfo Error =========');
+			console.error(e);
+		}
+		return success;
 	},
 });
 

@@ -15,6 +15,7 @@ import Contact from 'pages/Contact';
 import Footer from 'components/Footer';
 import useStore from 'store/Index';
 import ExperimentDetail from 'pages/Experiment/ExperimentDetail';
+import TabNavigation from 'components/TabNavigation';
 
 const theme = createTheme({
 	typography: {
@@ -28,6 +29,7 @@ const App = observer(() => {
 	return useObserver(() => (
 		<ThemeProvider theme={theme}>
 			<Header />
+			<TabNavigation />
 			<Box sx={{ flex: 1, minHeight: '100vh' }}>
 				<Switch>
 					<Route exact path="/" component={Home} />

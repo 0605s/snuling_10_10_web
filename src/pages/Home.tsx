@@ -2,7 +2,7 @@ import { useHistory } from 'react-router';
 import { RowContainer } from 'lib/constant/Components';
 
 const Home = () => {
-	const history = useHistory();
+	// const history = useHistory();
 
 	return (
 		<RowContainer>
