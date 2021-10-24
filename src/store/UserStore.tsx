@@ -9,16 +9,16 @@ const UserStore = observable({
 		this.user = user;
 	},
 
-	async signUpUserBasic(email: string, password: string) {
+	async signUpUserBasic(email: string, pw: string) {
 		let success = false;
 		let code = 200;
 		let token: TokenType = { access: '', refresh: '' };
 
 		try {
-			const response = await PostRequest<{ user: UserType; token: TokenType }>(
-				'/v1/auth/basic/signup/',
-				{ email, password },
-			);
+			const response = await PostRequest<{ user: UserType; token: TokenType }>('signup/', {
+				email,
+				pw,
+			});
 			this.setUser(response.data.user);
 			token = { ...response.data.token };
 			code = response.status;

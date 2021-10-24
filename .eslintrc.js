@@ -28,6 +28,8 @@ module.exports = {
 		'@typescript-eslint/no-explicit-any': 0,
 		'no-console': 0,
 		'react/require-default-props': 0,
+		'@typescript-eslint/ban-types': 0,
+		camelcase: 0,
 	},
 	settings: {
 		'import/resolver': {

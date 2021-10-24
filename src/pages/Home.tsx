@@ -1,9 +1,14 @@
-// import { useHistory } from 'react-router';
+import { useHistory } from 'react-router';
+import { RowContainer } from 'lib/constant/Components';
 
 const Home = () => {
-	// const history = useHistory();
+	const history = useHistory();
 
-	return <div>Home</div>;
+	return (
+		<RowContainer>
+			<div>Home</div>;
+		</RowContainer>
+	);
 };
 
 export default Home;

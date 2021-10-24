@@ -1,4 +1,3 @@
-import { Divider } from '@mui/material';
 import { Content, RowContainer, Title } from 'lib/constant/Components';
 import styled from 'styled-components';
 

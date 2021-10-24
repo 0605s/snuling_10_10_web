@@ -1,14 +1,14 @@
-import { UserType } from './user';
-
 export type ExperimentType = {
-	status: 'Unpublished' | 'In Progress' | 'Closed';
-	type: ParticipationType;
-	link?: string;
-	content?: string;
-	rewardType: 'Cash' | 'Else';
-	rewardPrice?: number;
+	id: number;
+	title: string;
+	exp_type: 'ON' | 'OFF';
+	status: 'U' | 'I' | 'C';
+	link: string;
+	lingual: string;
+	is_full: boolean;
+	reward_type: 'CASH' | 'ELSE';
+	reward_price: number;
+	reward: string;
 	location: string;
-	participantList: UserType[];
+	content?: string;
 };
-
-export type ParticipationType = 'Online' | 'Offline';
