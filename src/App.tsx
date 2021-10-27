@@ -16,7 +16,7 @@ import Footer from 'components/Footer';
 import useStore from 'store/Index';
 import ExperimentDetail from 'pages/Experiment/ExperimentDetail';
 import TabNavigation from 'components/TabNavigation';
-import { HashRouter } from 'react-router-dom';
+import { BrowserRouter, HashRouter } from 'react-router-dom';
 
 const theme = createTheme({
 	typography: {
@@ -28,13 +28,13 @@ const App = observer(() => {
 	const { ToastStore } = useStore();
 
 	return useObserver(() => (
-		<HashRouter basename={process.env.PUBLIC_URL}>
+		<BrowserRouter basename={process.env.PUBLIC_URL}>
 			<ThemeProvider theme={theme}>
 				<Header />
 				<TabNavigation />
 				<Box sx={{ flex: 1, minHeight: '100vh' }}>
 					<Switch>
-						<Route exact path="/" component={Home} />
+						<Route path="/" exact component={Home} />
 						<Route path="/experiment" exact component={ExperimentMain} />
 						<Route path="/experiment/:id" exact component={ExperimentDetail} />
 						<Route path="/people" exact component={People} />
@@ -56,7 +56,7 @@ const App = observer(() => {
 				TransitionComponent="SlideTransition"
 			/> */}
 			</ThemeProvider>
-		</HashRouter>
+		</BrowserRouter>
 	));
 });
 
