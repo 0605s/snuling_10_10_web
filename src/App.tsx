@@ -15,7 +15,8 @@ import Footer from 'components/Footer';
 import useStore from 'store/Index';
 import ExperimentDetail from 'pages/Experiment/ExperimentDetail';
 import TabNavigation from 'components/TabNavigation';
-import { BrowserRouter, HashRouter } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
+import ExperimentMy from 'pages/Experiment/ExperimentMy';
 
 const theme = createTheme({
 	typography: {
@@ -35,6 +36,7 @@ const App = observer(() => {
 					<Switch>
 						<Route path="/" exact component={Home} />
 						<Route path="/experiment" exact component={ExperimentMain} />
+						<Route path="/experiment/my" exact component={ExperimentMy} />
 						<Route path="/experiment/:id" exact component={ExperimentDetail} />
 						<Route path="/people" exact component={People} />
 						<Route path="/event" exact component={EventsNews} />

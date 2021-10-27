@@ -14,12 +14,8 @@ export const ExperimentMenus = [
 	},
 ];
 
-const ExperimentMain = () => {
-	return (
-		<PageTemplate title="Experiments" menu={ExperimentMenus}>
-			<ExperimentBody />
-		</PageTemplate>
-	);
+const ExperimentMy = () => {
+	return <PageTemplate title="Experiments" menu={ExperimentMenus} />;
 };
 
-export default ExperimentMain;
+export default ExperimentMy;

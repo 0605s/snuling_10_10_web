@@ -1,11 +1,17 @@
+import { Tab, Tabs } from '@mui/material';
+import { useTranslation } from 'react-i18next';
+import { useHistory, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 
-const LeftMenuContainer = styled.div`
+const LeftMenuContainer = styled(Tabs)`
 	display: flex;
 	flex-direction: column;
-	width: 100px;
-	height: 300px;
-	border: 1px solid black;
+`;
+
+const MenuItem = styled(Tab)`
+	width: 200px;
+	font-size: 20px;
+	height: 50px;
 `;
 
 interface Props {
@@ -13,7 +19,30 @@ interface Props {
 }
 
 const LeftMenuTemplate = ({ menu }: Props) => {
-	return <LeftMenuContainer />;
+	const location = useLocation();
+	const history = useHistory();
+	const { t } = useTranslation();
+
+	const getMenu = () => {
+		const secondPath = location.pathname;
+		if (menu.map((e) => e.domain).includes(secondPath)) return `${secondPath}`;
+		return false;
+	};
+
+	return (
+		<LeftMenuContainer value={getMenu()} orientation="vertical">
+			{menu.map((item) => {
+				return (
+					<MenuItem
+						label={t(item.title)}
+						value={item.domain}
+						key={item.title}
+						onClick={() => history.push(`${item.domain}`)}
+					/>
+				);
+			})}
+		</LeftMenuContainer>
+	);
 };
 
 export default LeftMenuTemplate;

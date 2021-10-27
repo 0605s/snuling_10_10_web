@@ -1,7 +1,15 @@
 {
     "login":"login",
+    "Sign Up":"Sign Up",
+
     "Experiments":"Experiments",
+    "seeOnlyAvailable":"Show available experiments only",
+    
     "People":"People",
+
     "Events & News":"Events & News",
-    "Research & Projects":"Research & Projects"
+
+    "Research & Projects":"Research & Projects",
+
+    "address":"Department of Linguistics, Seoul National University, Gwanak_1 Gwanak-ro, Seoul 151-745, Korea \n Tel:+82-2-880-6164, Fax:+82-2-882-2451."
 }

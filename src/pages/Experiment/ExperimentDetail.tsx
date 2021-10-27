@@ -1,4 +1,5 @@
 import Button from '@mui/material/Button';
+import PageTemplate from 'components/template/PageTemplate';
 import { RowContainer } from 'lib/constant/Components';
 import { observer } from 'mobx-react';
 import { useEffect } from 'react';
@@ -18,7 +19,7 @@ const ExperimentDetail = observer(() => {
 	if (!ExperimentStore.experimentDetail) return null;
 
 	return (
-		<RowContainer>
+		<PageTemplate title="Experiments">
 			<div>{ExperimentStore.experimentDetail.title}</div>
 			<Button
 				disabled={ExperimentStore.experimentDetail.is_full}
@@ -27,7 +28,7 @@ const ExperimentDetail = observer(() => {
 				실험 참여하기
 			</Button>
 			<Button onClick={() => history.goBack()}>뒤로가기</Button>
-		</RowContainer>
+		</PageTemplate>
 	);
 });
 

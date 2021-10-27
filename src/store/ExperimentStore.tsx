@@ -12,14 +12,15 @@ const ExperimentStore = observable({
 		this.experimentDetail = experiment;
 	},
 
-	async getExperimentList(lingual?: string, status?: StatusType, is_full?: boolean) {
+	async getExperimentList(lingual?: string, status?: StatusType, available?: boolean) {
+		console.log(available);
 		let success = false;
 		try {
 			this.setExperimentList([]);
 			const response = await GetRequest('experiments/', {
 				lingual: lingual && lingual.length > 0 ? lingual : undefined,
 				status,
-				is_full,
+				is_full: available ? false : undefined,
 			});
 			this.setExperimentList(response.data);
 			// console.error('========= getExperimentList Success =========');

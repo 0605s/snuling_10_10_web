@@ -2,13 +2,13 @@ import styled from 'styled-components';
 import Button from '@mui/material/Button';
 import { useHistory } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { ButtonGroup, Stack } from '@mui/material';
 
 const HeaderContainer = styled.div`
 	width: 100vw;
 	height: 100px;
-	margin: 0px;
 	box-sizing: border-box;
-	padding: 0px 10vw;
+	padding: 10px max(calc((100vw - 1000px) / 2), 5vw);
 	display: flex;
 	flex-direction: row;
 	align-items: center;
@@ -21,13 +21,11 @@ const SnulingLogo = styled.img`
 	opacity: 1;
 `;
 
-const LoginButton = styled(Button)`
-	width: 50px;
-`;
+const LoginButton = styled(Button)``;
 
 const Header = () => {
 	const history = useHistory();
-	const { i18n } = useTranslation();
+	const { i18n, t } = useTranslation();
 
 	const onClickChangeLanguage = () => {
 		if (i18n.language === 'ko') i18n.changeLanguage('en');
@@ -41,12 +39,17 @@ const Header = () => {
 				alt=""
 				onClick={() => history.push('/')}
 			/>
-			<Button variant="text" onClick={onClickChangeLanguage}>
-				{i18n.language === 'ko' ? 'English' : '한국어'}
-			</Button>
-			<LoginButton variant="text" onClick={() => history.push('/login')}>
-				Login
-			</LoginButton>
+			<Stack spacing={2} direction="row">
+				<Button variant="text" onClick={onClickChangeLanguage}>
+					{i18n.language === 'ko' ? 'English' : '한국어'}
+				</Button>
+				<LoginButton variant="contained" onClick={() => history.push('/login')}>
+					{t('login')}
+				</LoginButton>
+				<LoginButton variant="text" onClick={() => history.push('/login')}>
+					{t('Sign Up')}
+				</LoginButton>
+			</Stack>
 		</HeaderContainer>
 	);
 };

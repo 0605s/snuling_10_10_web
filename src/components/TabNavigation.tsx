@@ -7,7 +7,7 @@ import { useTranslation } from 'react-i18next';
 const TabContainer = styled(Tabs)`
 	width: 100vw;
 	box-sizing: border-box;
-	padding: 0px 10vw;
+	padding: 10px max(calc((100vw - 1000px) / 2), 5vw);
 	display: flex;
 	align-items: center;
 	justify-content: space-between;

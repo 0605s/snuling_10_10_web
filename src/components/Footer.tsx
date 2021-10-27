@@ -1,5 +1,6 @@
 import { SNUGRAY } from 'lib/constant';
 import { RowContainer, SubContent } from 'lib/constant/Components';
+import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 
 const FooterContainer = styled(RowContainer)`
@@ -40,6 +41,7 @@ const siteList: { name: string; url: string }[] = [
 	{ name: '서울대학교 인문대학', url: 'http://humanities.snu.ac.kr' },
 ];
 const Footer = () => {
+	const { t } = useTranslation();
 	return (
 		<FooterContainer>
 			<ColumnContainer type="left">
@@ -47,16 +49,7 @@ const Footer = () => {
 					src={`${process.env.PUBLIC_URL}/img/snuling_logo.png`}
 					alt="snuling_logo"
 				/>
-				{/* <FooterLabel>
-						서울대학교 언어학과, 서울특별시 관악구 관악로 1, 2동 108호 (151-745)
-					</FooterLabel>
-					<FooterLabel>
-						Contact: linguist@snu.ac.kr 전화:(02)880-6164, 팩스:(02)882-2451.
-					</FooterLabel> */}
-				<FooterLabel>
-					Department of Linguistics, Seoul National University, Gwanak_1 Gwanak-ro, Seoul
-					151-745, Korea {`\n`} Tel:+82-2-880-6164, Fax:+82-2-882-2451.
-				</FooterLabel>
+				<FooterLabel>{t('address')}</FooterLabel>
 			</ColumnContainer>
 			<ColumnContainer type="right">
 				<FooterLabel>관련 사이트</FooterLabel>
