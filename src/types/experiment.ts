@@ -2,7 +2,7 @@ export type ExperimentType = {
 	id: number;
 	title: string;
 	exp_type: 'ON' | 'OFF';
-	status: 'U' | 'I' | 'C';
+	status: StatusType;
 	link: string;
 	lingual: string;
 	is_full: boolean;
@@ -11,4 +11,11 @@ export type ExperimentType = {
 	reward: string;
 	location: string;
 	content?: string;
+};
+
+export type StatusType = 'U' | 'I' | 'C';
+
+export type FilterType = {
+	name: string;
+	value: any;
 };

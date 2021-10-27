@@ -1,6 +1,6 @@
 import { GetRequest, PutRequest } from 'lib/api/requests';
 import { observable } from 'mobx';
-import { ExperimentType } from 'types/experiment';
+import { ExperimentType, StatusType } from 'types/experiment';
 
 const ExperimentStore = observable({
 	experimentList: [] as ExperimentType[],
@@ -12,11 +12,15 @@ const ExperimentStore = observable({
 		this.experimentDetail = experiment;
 	},
 
-	async getExperimentList() {
+	async getExperimentList(lingual?: string, status?: StatusType, is_full?: boolean) {
 		let success = false;
 		try {
 			this.setExperimentList([]);
-			const response = await GetRequest('experiments/');
+			const response = await GetRequest('experiments/', {
+				lingual: lingual && lingual.length > 0 ? lingual : undefined,
+				status,
+				is_full,
+			});
 			this.setExperimentList(response.data);
 			// console.error('========= getExperimentList Success =========');
 			success = true;

@@ -1,5 +1,6 @@
-import { Content, RowContainer, Title } from 'lib/constant/Components';
 import styled from 'styled-components';
+import { Divider } from '@mui/material';
+import { Content, RowContainer, Title } from 'lib/constant/Components';
 
 interface Props {
 	title: string;
@@ -7,19 +8,12 @@ interface Props {
 	// backgroundImg?: string;
 }
 
-const BannerContainer = styled(RowContainer)`
-	text-align: center;
-	padding: 20px 0px;
-`;
-
 const BannerTemplate = ({ title, subTitle }: Props) => {
 	return (
 		<RowContainer>
-			<BannerContainer>
-				<Title>{title}</Title>
-				{/* <Divider orientation="horizontal" /> */}
-				{/* {subTitle && <Content>{subTitle}</Content>} */}
-			</BannerContainer>
+			<Title>{title}</Title>
+			<Divider orientation="horizontal" variant="middle" flexItem />
+			{/* {subTitle && <Content>{subTitle}</Content>} */}
 		</RowContainer>
 	);
 };

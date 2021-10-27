@@ -23,6 +23,9 @@ const SnulingLogo = styled.img`
 	height: auto;
 	opacity: 1;
 	margin-bottom: 20px;
+	:hover {
+		cursor: pointer;
+	}
 `;
 
 const FooterLabel = styled(SubContent)`
@@ -40,7 +43,10 @@ const Footer = () => {
 	return (
 		<FooterContainer>
 			<ColumnContainer type="left">
-				<SnulingLogo src={`${process.env.PUBLIC_URL}/img/snuling_logo.png`} alt="" />
+				<SnulingLogo
+					src={`${process.env.PUBLIC_URL}/img/snuling_logo.png`}
+					alt="snuling_logo"
+				/>
 				{/* <FooterLabel>
 						서울대학교 언어학과, 서울특별시 관악구 관악로 1, 2동 108호 (151-745)
 					</FooterLabel>

@@ -30,6 +30,7 @@ module.exports = {
 		'react/require-default-props': 0,
 		'@typescript-eslint/ban-types': 0,
 		camelcase: 0,
+		'prefer-const': 0,
 	},
 	settings: {
 		'import/resolver': {

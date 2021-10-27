@@ -22,7 +22,7 @@ const tabs: { title: string; url: string }[] = [
 	{ title: 'Events & News', url: '/event' },
 	{ title: 'Research & Projects', url: '/research' },
 	{ title: '실험 참여', url: '/experiment' },
-	{ title: 'Contact Us', url: '/contact' },
+	// { title: 'Contact Us', url: '/contact' },
 ];
 
 const TabNavigation = () => {
@@ -31,7 +31,7 @@ const TabNavigation = () => {
 
 	const getLocation = () => {
 		const firstPath = location.pathname.split('/')[1];
-		if (['people', 'event', 'research', 'experiment', 'contact'].includes(firstPath))
+		if (['people', 'event', 'research', 'experiment'].includes(firstPath))
 			return `/${firstPath}`;
 		return false;
 	};
