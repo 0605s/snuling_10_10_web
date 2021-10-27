@@ -1,7 +1,8 @@
 import BannerTemplate from 'components/template/BannerTemplate';
+import PageTemplate from 'components/template/PageTemplate';
 
 const EventsNews = () => {
-	return <BannerTemplate title="Events & News" />;
+	return <PageTemplate title="Events & News" />;
 };
 
 export default EventsNews;

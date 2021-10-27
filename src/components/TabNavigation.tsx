@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { Tab, Tabs } from '@mui/material';
 import { useHistory, useLocation } from 'react-router';
 import { SNUBLUE, SNUGRAY } from 'lib/constant';
+import { useTranslation } from 'react-i18next';
 
 const TabContainer = styled(Tabs)`
 	width: 100vw;
@@ -21,13 +22,14 @@ const tabs: { title: string; url: string }[] = [
 	{ title: 'People', url: '/people' },
 	{ title: 'Events & News', url: '/event' },
 	{ title: 'Research & Projects', url: '/research' },
-	{ title: '실험 참여', url: '/experiment' },
+	{ title: 'Experiments', url: '/experiment' },
 	// { title: 'Contact Us', url: '/contact' },
 ];
 
 const TabNavigation = () => {
 	const location = useLocation();
 	const history = useHistory();
+	const { t } = useTranslation();
 
 	const getLocation = () => {
 		const firstPath = location.pathname.split('/')[1];
@@ -41,7 +43,7 @@ const TabNavigation = () => {
 			{tabs.map((item) => {
 				return (
 					<MenuItem
-						label={item.title}
+						label={t(item.title)}
 						value={item.url}
 						key={item.title}
 						onClick={() => history.push(`${item.url}`)}

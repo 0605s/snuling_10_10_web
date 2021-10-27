@@ -5,7 +5,7 @@ import { useHistory } from 'react-router';
 import { useCallback } from 'react';
 
 const BoxContainer = styled.div`
-	width: 370px;
+	width: 300px;
 	height: 350px;
 	border-radius: 20px;
 	border: 2px solid black;

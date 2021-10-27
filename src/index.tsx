@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import './lang/i18n'; // 다국어 지원 파일
 
 ReactDOM.render(
 	<React.StrictMode>

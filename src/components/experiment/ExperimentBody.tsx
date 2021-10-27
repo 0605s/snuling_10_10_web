@@ -21,13 +21,9 @@ const ExperimentBody = observer(() => {
 
 	return (
 		<>
-			<RowContainer>
-				<ExperimentFilter />
-				<Divider orientation="horizontal" variant="middle" flexItem />
-			</RowContainer>
-			<RowContainer>
-				{LoadingStore.loading ? <CircularProgress /> : <ExperimentList />}
-			</RowContainer>
+			<ExperimentFilter />
+			<Divider orientation="horizontal" variant="middle" flexItem />
+			{LoadingStore.loading ? <CircularProgress /> : <ExperimentList />}
 		</>
 	);
 });

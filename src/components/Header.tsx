@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import Button from '@mui/material/Button';
 import { useHistory } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const HeaderContainer = styled.div`
 	width: 100vw;
@@ -26,6 +27,13 @@ const LoginButton = styled(Button)`
 
 const Header = () => {
 	const history = useHistory();
+	const { i18n } = useTranslation();
+
+	const onClickChangeLanguage = () => {
+		if (i18n.language === 'ko') i18n.changeLanguage('en');
+		else if (i18n.language === 'en') i18n.changeLanguage('ko');
+	};
+
 	return (
 		<HeaderContainer>
 			<SnulingLogo
@@ -33,6 +41,9 @@ const Header = () => {
 				alt=""
 				onClick={() => history.push('/')}
 			/>
+			<Button variant="text" onClick={onClickChangeLanguage}>
+				{i18n.language === 'ko' ? 'English' : '한국어'}
+			</Button>
 			<LoginButton variant="text" onClick={() => history.push('/login')}>
 				Login
 			</LoginButton>

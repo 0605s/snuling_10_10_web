@@ -1,7 +1,7 @@
-import BannerTemplate from 'components/template/BannerTemplate';
+import PageTemplate from 'components/template/PageTemplate';
 
 const People = () => {
-	return <BannerTemplate title="People" />;
+	return <PageTemplate title="People" />;
 };
 
 export default People;

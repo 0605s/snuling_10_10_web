@@ -11,7 +11,6 @@ import { createTheme } from '@mui/material/styles';
 import People from 'pages/People';
 import EventsNews from 'pages/EventsNews';
 import ResearchProjects from 'pages/ResearchProjects';
-import Contact from 'pages/Contact';
 import Footer from 'components/Footer';
 import useStore from 'store/Index';
 import ExperimentDetail from 'pages/Experiment/ExperimentDetail';
@@ -40,7 +39,6 @@ const App = observer(() => {
 						<Route path="/people" exact component={People} />
 						<Route path="/event" exact component={EventsNews} />
 						<Route path="/research" exact component={ResearchProjects} />
-						<Route path="/contact" exact component={Contact} />
 						<Route path="/login" exact component={Login} />
 						<Redirect to="/" />
 					</Switch>
