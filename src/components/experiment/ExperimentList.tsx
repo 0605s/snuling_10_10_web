@@ -7,7 +7,7 @@ const ExperimentList = observer(() => {
 	const { ExperimentStore } = useStore();
 
 	return (
-		<Grid container rowSpacing={1} columnSpacing={1} alignItems="center">
+		<Grid container rowSpacing={2} columnSpacing={3} alignItems="center">
 			{ExperimentStore.experimentList.map((item) => {
 				return (
 					<Grid item key={item.title} xs={12} md={6}>

@@ -1,6 +1,8 @@
 {
     "login":"login",
     "Sign Up":"Sign Up",
+    "Email Address":"Email Address",
+    "Password":"Password",
 
     "Experiments":"Experiments",
     "seeOnlyAvailable":"Show available experiments only",

@@ -2,13 +2,17 @@ import { observable } from 'mobx';
 
 const ToastStore = observable({
 	isOpen: false as boolean,
-	text: '' as string,
+	message: { type: 'error', text: '' } as {
+		type: 'error' | 'warning' | 'info' | 'success';
+		text: string;
+	},
 
 	setIsOpen(isOpen: boolean) {
 		this.isOpen = isOpen;
 	},
-	setText(text: string) {
-		this.text = text;
+	setMessage(type: 'error' | 'warning' | 'info' | 'success', text: string) {
+		this.message.text = text;
+		this.message.type = type;
 	},
 });
 

@@ -1,6 +1,8 @@
 {
     "login":"로그인",
     "Sign Up":"회원가입",
+    "Email Address":"이메일",
+    "Password":"패스워드",
 
     "Experiments":"실험 참여",
     "seeOnlyAvailable":"참여 가능한 실험만 보기",

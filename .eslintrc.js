@@ -11,6 +11,12 @@ module.exports = {
 		'plugin:prettier/recommended',
 	],
 	rules: {
+		'prettier/prettier': [
+			'error',
+			{
+				endOfLine: 'auto',
+			},
+		],
 		'linebreak-style': 0,
 		'import/prefer-default-export': 0,
 		'import/extensions': 0,

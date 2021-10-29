@@ -11,7 +11,7 @@ const TabContainer = styled(Tabs)`
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	/* background-color: ${SNUBLUE}; */
+	background-color: #cdcdcd;
 `;
 
 const MenuItem = styled(Tab)`

@@ -6,7 +6,7 @@ import Login from 'pages/Login';
 import ExperimentMain from 'pages/Experiment/ExperimentMain';
 import Header from 'components/Header';
 import { observer, useObserver } from 'mobx-react';
-import { Box, Snackbar, ThemeProvider } from '@mui/material';
+import { Alert, Box, Snackbar, ThemeProvider } from '@mui/material';
 import { createTheme } from '@mui/material/styles';
 import People from 'pages/People';
 import EventsNews from 'pages/EventsNews';
@@ -17,6 +17,7 @@ import ExperimentDetail from 'pages/Experiment/ExperimentDetail';
 import TabNavigation from 'components/TabNavigation';
 import { BrowserRouter } from 'react-router-dom';
 import ExperimentMy from 'pages/Experiment/ExperimentMy';
+import SignUp from 'pages/SignUp';
 
 const theme = createTheme({
 	typography: {
@@ -42,19 +43,18 @@ const App = observer(() => {
 						<Route path="/event" exact component={EventsNews} />
 						<Route path="/research" exact component={ResearchProjects} />
 						<Route path="/login" exact component={Login} />
+						<Route path="/signup" exact component={SignUp} />
 						<Redirect to="/" />
 					</Switch>
 				</Box>
 				<Footer />
-				{/* <Snackbar
-				anchorOrigin={{ vertical, horizontal }}
-				autoHideDuration={6000}
-				open={ToastStore.isOpen}
-				onClose={handleClose}
-				message={ToastStore.text}
-				key={ToastStore.text}
-				TransitionComponent="SlideTransition"
-			/> */}
+				<Snackbar
+					autoHideDuration={4000}
+					open={ToastStore.isOpen}
+					onClose={() => ToastStore.setIsOpen(false)}
+				>
+					<Alert severity={ToastStore.message.type}>{ToastStore.message.text}</Alert>
+				</Snackbar>
 			</ThemeProvider>
 		</BrowserRouter>
 	));

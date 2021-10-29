@@ -46,7 +46,7 @@ const Header = () => {
 				<LoginButton variant="contained" onClick={() => history.push('/login')}>
 					{t('login')}
 				</LoginButton>
-				<LoginButton variant="text" onClick={() => history.push('/login')}>
+				<LoginButton variant="text" onClick={() => history.push('/signup')}>
 					{t('Sign Up')}
 				</LoginButton>
 			</Stack>

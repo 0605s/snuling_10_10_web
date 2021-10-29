@@ -5,14 +5,14 @@ import { useHistory } from 'react-router';
 import { useCallback } from 'react';
 
 const BoxContainer = styled.div`
-	width: 300px;
+	width: 100%;
 	height: 350px;
-	border-radius: 20px;
-	border: 2px solid black;
-	margin: auto;
+	border-radius: 10px;
+	box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	justify-content: center;
 	:hover {
 		background-color: whitesmoke;
 		cursor: pointer;

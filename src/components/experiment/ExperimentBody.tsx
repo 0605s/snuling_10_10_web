@@ -1,7 +1,6 @@
 import { CircularProgress, Divider } from '@mui/material';
-import { RowContainer } from 'lib/constant/Components';
 import { observer } from 'mobx-react';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import useStore from 'store/Index';
 import ExperimentFilter from './ExperimentFilter';
 import ExperimentList from './ExperimentList';
@@ -22,7 +21,7 @@ const ExperimentBody = observer(() => {
 	return (
 		<>
 			<ExperimentFilter />
-			<Divider orientation="horizontal" variant="middle" flexItem />
+			{/* <Divider orientation="horizontal" variant="middle" flexItem /> */}
 			{LoadingStore.loading ? <CircularProgress /> : <ExperimentList />}
 		</>
 	);
