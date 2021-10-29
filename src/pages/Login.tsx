@@ -4,6 +4,7 @@ import { useHistory } from 'react-router';
 import useStore from 'store/Index';
 import { useTranslation } from 'react-i18next';
 import { Typography, Avatar, TextField, Button, FormGroup } from '@mui/material';
+// import { LockOutlinedIcon } from '@mui/material/LockOutlinedIcon';
 import styled from 'styled-components';
 import { RowContainer } from 'lib/constant/Components';
 
@@ -27,24 +28,27 @@ const Login = observer(() => {
 	const [email, setEmail] = useState<string>('');
 	const [pw, setPw] = useState<string>('');
 
-	const onSubmit = () => {
+	const onSubmit = async () => {
 		if (email.trim().length === 0) {
 			ToastStore.setMessage('warning', '이메일을 입력해주세요');
-			ToastStore.setIsOpen(true);
 		} else if (pw.trim().length === 0) {
 			ToastStore.setMessage('warning', '비밀번호를 입력하세요');
-			ToastStore.setIsOpen(true);
 		} else {
-			UserStore.login(email, pw);
-			history.push('/');
+			const result = await UserStore.login(email, pw);
+			if (result && result.code === 404) {
+				ToastStore.setMessage('error', '존재하지 않는 계정입니다');
+			} else if (result && result.code >= 500) {
+				ToastStore.setMessage('error', '서버 오류');
+			} else {
+				ToastStore.setMessage('success', ` ${email}로 로그인 되었습니다.`);
+				history.push('/');
+			}
 		}
 	};
 
 	return (
 		<LoginContainer>
-			{/* <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-				<LockOutlinedIcon />
-			</Avatar> */}
+			<Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>{/* <LockOutlinedIcon /> */}</Avatar>
 			<Typography component="h1" variant="h5">
 				{t('login')}
 			</Typography>

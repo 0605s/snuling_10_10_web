@@ -13,6 +13,7 @@ const ToastStore = observable({
 	setMessage(type: 'error' | 'warning' | 'info' | 'success', text: string) {
 		this.message.text = text;
 		this.message.type = type;
+		this.setIsOpen(true);
 	},
 });
 

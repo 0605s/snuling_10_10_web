@@ -13,6 +13,12 @@ const UserStore = observable({
 		this.user = user;
 	},
 
+	isLoggedIn() {
+		console.log(this.userEmail);
+		if (this.userEmail === null) return false;
+		return true;
+	},
+
 	async signUp(email: string, pw: string) {
 		let success = false;
 		let code = 200;
@@ -82,6 +88,19 @@ const UserStore = observable({
 			success = true;
 		} catch (e: any) {
 			console.error('========= postUserInfo Error =========');
+			console.error(e);
+		}
+		return success;
+	},
+
+	async logout() {
+		let success = false;
+		try {
+			this.setUser(null);
+			this.setUserEmail(null);
+			success = true;
+		} catch (e) {
+			console.error('========= signOutUser Error =========');
 			console.error(e);
 		}
 		return success;

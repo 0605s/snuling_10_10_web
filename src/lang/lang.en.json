@@ -3,10 +3,13 @@
     "Sign Up":"Sign Up",
     "Email Address":"Email Address",
     "Password":"Password",
+    "logout": "logout",
 
     "Experiments":"Experiments",
     "seeOnlyAvailable":"Show available experiments only",
-    
+    "status":"Status",
+    "language":"Language",
+
     "People":"People",
 
     "Events & News":"Events & News",

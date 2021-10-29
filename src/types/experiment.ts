@@ -13,7 +13,7 @@ export type ExperimentType = {
 	content?: string;
 };
 
-export type StatusType = 'U' | 'I' | 'C';
+export type StatusType = 'U' | 'P' | 'C';
 
 export type FilterType = {
 	name: string;

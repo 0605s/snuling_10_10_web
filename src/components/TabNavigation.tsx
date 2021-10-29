@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import { Tab, Tabs } from '@mui/material';
 import { useHistory, useLocation } from 'react-router';
-import { SNUBLUE, SNUGRAY } from 'lib/constant';
 import { useTranslation } from 'react-i18next';
 
 const TabContainer = styled(Tabs)`
@@ -20,7 +19,7 @@ const MenuItem = styled(Tab)`
 
 const tabs: { title: string; url: string }[] = [
 	{ title: 'People', url: '/people' },
-	{ title: 'Events & News', url: '/event' },
+	{ title: 'Events & News', url: '/event/schedule' },
 	{ title: 'Research & Projects', url: '/research' },
 	{ title: 'Experiments', url: '/experiment' },
 	// { title: 'Contact Us', url: '/contact' },

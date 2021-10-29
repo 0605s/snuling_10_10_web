@@ -1,4 +1,4 @@
-import { CircularProgress, Divider } from '@mui/material';
+import { CircularProgress } from '@mui/material';
 import { observer } from 'mobx-react';
 import { useEffect } from 'react';
 import useStore from 'store/Index';

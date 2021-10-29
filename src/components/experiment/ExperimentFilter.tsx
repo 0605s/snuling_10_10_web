@@ -1,11 +1,12 @@
 import styled from 'styled-components';
 import { FormControlLabel, Stack, Checkbox } from '@mui/material';
-import { lingualFilterList, isFullFilterList, statusFilterList } from 'lib/constant';
-import { useCallback, useState } from 'react';
+import { lingualFilterList, statusFilterList } from 'lib/constant';
+import { useState } from 'react';
 import useStore from 'store/Index';
 import { observer } from 'mobx-react';
 import { StatusType } from 'types/experiment';
 import { useTranslation } from 'react-i18next';
+import { SubContent } from 'lib/constant/Components';
 import ExperimentFilterButton from './ExperimentFilterButton';
 
 const FilterContainer = styled.div`
@@ -63,8 +64,8 @@ const ExperimentFilter = observer(() => {
 
 	return (
 		<FilterContainer>
-			<ButtonList spacing={2} direction="row">
-				<div>status Filter</div>
+			<ButtonList spacing={2} direction="row" alignItems="center">
+				<SubContent>{t('status')}</SubContent>
 				{statusFilterList.map((item) => {
 					return (
 						<ExperimentFilterButton
@@ -76,8 +77,8 @@ const ExperimentFilter = observer(() => {
 					);
 				})}
 			</ButtonList>
-			<ButtonList spacing={2} direction="row">
-				<div>lingual Filter</div>
+			<ButtonList spacing={2} direction="row" alignItems="center">
+				<SubContent>{t('language')}</SubContent>
 				{lingualFilterList.map((item) => {
 					return (
 						<ExperimentFilterButton

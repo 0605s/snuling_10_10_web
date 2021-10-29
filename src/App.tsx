@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Route, Switch, Redirect } from 'react-router';
 import './App.css';
 import Home from 'pages/Home';
@@ -9,7 +9,6 @@ import { observer, useObserver } from 'mobx-react';
 import { Alert, Box, Snackbar, ThemeProvider } from '@mui/material';
 import { createTheme } from '@mui/material/styles';
 import People from 'pages/People';
-import EventsNews from 'pages/EventsNews';
 import ResearchProjects from 'pages/ResearchProjects';
 import Footer from 'components/Footer';
 import useStore from 'store/Index';
@@ -18,6 +17,10 @@ import TabNavigation from 'components/TabNavigation';
 import { BrowserRouter } from 'react-router-dom';
 import ExperimentMy from 'pages/Experiment/ExperimentMy';
 import SignUp from 'pages/SignUp';
+import EventsSchedule from 'pages/EventsNews/EventsSchedule';
+import EventsColloquium from 'pages/EventsNews/EventsColloquium';
+import EventsNews from 'pages/EventsNews/EventsNews';
+import EventsSeminar from 'pages/EventsNews/EventsSeminar';
 
 const theme = createTheme({
 	typography: {
@@ -26,7 +29,11 @@ const theme = createTheme({
 });
 
 const App = observer(() => {
-	const { ToastStore } = useStore();
+	const { ToastStore, TokenStore } = useStore();
+
+	useEffect(() => {
+		TokenStore.getAccessToken();
+	}, []);
 
 	return useObserver(() => (
 		<BrowserRouter basename={process.env.PUBLIC_URL}>
@@ -40,7 +47,10 @@ const App = observer(() => {
 						<Route path="/experiment/my" exact component={ExperimentMy} />
 						<Route path="/experiment/:id" exact component={ExperimentDetail} />
 						<Route path="/people" exact component={People} />
-						<Route path="/event" exact component={EventsNews} />
+						<Route path="/event/schedule" exact component={EventsSchedule} />
+						<Route path="/event/colloquium" exact component={EventsColloquium} />
+						<Route path="/event/news" exact component={EventsNews} />
+						<Route path="/event/seminar" exact component={EventsSeminar} />
 						<Route path="/research" exact component={ResearchProjects} />
 						<Route path="/login" exact component={Login} />
 						<Route path="/signup" exact component={SignUp} />

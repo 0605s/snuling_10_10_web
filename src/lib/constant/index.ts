@@ -1,4 +1,4 @@
-import { FilterType } from 'types/experiment';
+import { FilterType, StatusType } from 'types/experiment';
 
 export const API_BASE_URL = 'https://jinh0park.pythonanywhere.com/api/';
 
@@ -15,10 +15,10 @@ export const languageList: string[] = [
 	'spanish',
 ];
 
-export const statusFilterList: { name: string; value: 'I' | 'U' | 'C' }[] = [
+export const statusFilterList: { name: string; value: StatusType }[] = [
 	{
 		name: 'In Progress',
-		value: 'I',
+		value: 'P',
 	},
 	{
 		name: 'Unpublished',
@@ -27,17 +27,6 @@ export const statusFilterList: { name: string; value: 'I' | 'U' | 'C' }[] = [
 	{
 		name: 'Closed',
 		value: 'C',
-	},
-];
-
-export const isFullFilterList: { name: string; value: boolean }[] = [
-	{
-		name: 'Recruiting',
-		value: false,
-	},
-	{
-		name: 'Recruitment Complete',
-		value: true,
 	},
 ];
 

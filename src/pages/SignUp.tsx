@@ -21,15 +21,24 @@ const FormContainer = styled.div`
 `;
 
 const SignUp = observer(() => {
-	const { UserStore } = useStore();
+	const { UserStore, ToastStore } = useStore();
 	const history = useHistory();
 	const { t } = useTranslation();
 	const [email, setEmail] = useState<string>('');
 	const [pw, setPw] = useState<string>('');
+	const [pwCheck, setPwCheck] = useState<string>('');
 
 	const onSubmit = () => {
-		UserStore.signUp(email, pw);
-		history.push('/');
+		if (email.trim().length === 0) {
+			ToastStore.setMessage('warning', '이메일을 입력해주세요');
+		} else if (pw.trim().length === 0) {
+			ToastStore.setMessage('warning', '비밀번호를 입력하세요');
+		} else if (pwCheck !== pw) {
+			ToastStore.setMessage('warning', '비밀번호가 일치하지 않습니다');
+		} else {
+			UserStore.signUp(email, pw);
+			history.push('/');
+		}
 	};
 
 	return (
@@ -77,7 +86,7 @@ const SignUp = observer(() => {
 					fullWidth
 					autoComplete="current-password"
 					onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
-						setPw(event.target.value)
+						setPwCheck(event.target.value)
 					}
 				/>
 			</FormContainer>

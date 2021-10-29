@@ -20,7 +20,7 @@ const ExperimentStore = observable({
 			const response = await GetRequest('experiments/', {
 				lingual: lingual && lingual.length > 0 ? lingual : undefined,
 				status,
-				is_full: available ? false : undefined,
+				is_full: available ? 'no' : undefined,
 			});
 			this.setExperimentList(response.data);
 			// console.error('========= getExperimentList Success =========');

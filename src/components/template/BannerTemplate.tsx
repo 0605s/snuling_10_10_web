@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Divider } from '@mui/material';
-import { Content, RowContainer, Title } from 'lib/constant/Components';
+import { Title } from 'lib/constant/Components';
 import { useTranslation } from 'react-i18next';
 
 const BannerContainer = styled.div`
