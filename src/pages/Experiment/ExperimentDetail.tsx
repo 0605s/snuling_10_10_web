@@ -33,7 +33,9 @@ const ExperimentDetail = observer(() => {
 		<PageTemplate title="Experiments" menu={ExperimentMenus}>
 			{/* <Button onClick={() => history.goBack()}>목록으로 가기</Button> */}
 			<SubTitle>{ExperimentStore.experimentDetail.title}</SubTitle>
-			<Content>{ExperimentStore.experimentDetail.content}</Content>
+			<Content
+				dangerouslySetInnerHTML={{ __html: `${ExperimentStore.experimentDetail.content}` }}
+			/>
 			<Button
 				disabled={ExperimentStore.experimentDetail.is_full}
 				onClick={onClickAssign}

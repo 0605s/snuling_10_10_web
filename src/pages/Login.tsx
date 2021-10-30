@@ -3,8 +3,8 @@ import { observer } from 'mobx-react';
 import { useHistory } from 'react-router';
 import useStore from 'store/Index';
 import { useTranslation } from 'react-i18next';
-import { Typography, Avatar, TextField, Button, FormGroup } from '@mui/material';
-// import { LockOutlinedIcon } from '@mui/material/LockOutlinedIcon';
+import { Typography, Avatar, TextField, Button, FormGroup, useFormControl } from '@mui/material';
+import PersonIcon from '@mui/icons-material/Person';
 import styled from 'styled-components';
 import { RowContainer } from 'lib/constant/Components';
 
@@ -26,13 +26,17 @@ const Login = observer(() => {
 	const history = useHistory();
 	const { t } = useTranslation();
 	const [email, setEmail] = useState<string>('');
+	const [emailError, setEmailError] = useState<boolean>(false);
 	const [pw, setPw] = useState<string>('');
+	const [pwError, setPwError] = useState<boolean>(false);
 
 	const onSubmit = async () => {
 		if (email.trim().length === 0) {
 			ToastStore.setMessage('warning', '이메일을 입력해주세요');
+			setEmailError(true);
 		} else if (pw.trim().length === 0) {
 			ToastStore.setMessage('warning', '비밀번호를 입력하세요');
+			setPwError(true);
 		} else {
 			const result = await UserStore.login(email, pw);
 			if (result && result.code === 404) {
@@ -48,7 +52,9 @@ const Login = observer(() => {
 
 	return (
 		<LoginContainer>
-			<Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>{/* <LockOutlinedIcon /> */}</Avatar>
+			<Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+				<PersonIcon />
+			</Avatar>
 			<Typography component="h1" variant="h5">
 				{t('login')}
 			</Typography>
@@ -65,6 +71,7 @@ const Login = observer(() => {
 					onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
 						setEmail(event.target.value)
 					}
+					error={emailError}
 				/>
 				<TextField
 					margin="normal"
@@ -78,6 +85,7 @@ const Login = observer(() => {
 					onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
 						setPw(event.target.value)
 					}
+					error={pwError}
 				/>
 			</FormContainer>
 			{/* <FormControlLabel

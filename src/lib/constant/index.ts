@@ -36,3 +36,14 @@ export const lingualFilterList: { name: string; value: string }[] = languageList
 		value: lang,
 	};
 });
+
+export const expTypeFilterList: { name: string; value: 'ON' | 'OFF' }[] = [
+	{
+		name: 'Online',
+		value: 'ON',
+	},
+	{
+		name: 'Offline',
+		value: 'OFF',
+	},
+];

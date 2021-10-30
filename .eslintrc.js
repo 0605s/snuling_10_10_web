@@ -37,6 +37,7 @@ module.exports = {
 		'@typescript-eslint/ban-types': 0,
 		camelcase: 0,
 		'prefer-const': 0,
+		'no-nested-ternary': 0,
 	},
 	settings: {
 		'import/resolver': {

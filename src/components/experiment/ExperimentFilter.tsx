@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { FormControlLabel, Stack, Checkbox } from '@mui/material';
-import { lingualFilterList, statusFilterList } from 'lib/constant';
+import { expTypeFilterList, lingualFilterList, statusFilterList } from 'lib/constant';
 import { useState } from 'react';
 import useStore from 'store/Index';
 import { observer } from 'mobx-react';
@@ -21,6 +21,7 @@ const ExperimentFilter = observer(() => {
 	const { t } = useTranslation();
 	const [statusFilter, setStatusFilter] = useState<StatusType | undefined>(undefined);
 	const [availableFilter, setavailableFilter] = useState<boolean>(false);
+	const [expTypeFilter, setExpTypeFilter] = useState<'ON' | 'OFF' | undefined>(undefined);
 	const [lingualFilter, setLingualFilter] = useState<string[]>([]);
 
 	const onClickStatusButton = async (value: StatusType) => {
@@ -30,6 +31,7 @@ const ExperimentFilter = observer(() => {
 			lingualFilter.join(','),
 			statusFilter === value ? undefined : value,
 			availableFilter,
+			expTypeFilter,
 		);
 		if (res) LoadingStore.setLoading(false);
 	};
@@ -41,6 +43,19 @@ const ExperimentFilter = observer(() => {
 			lingualFilter.join(','),
 			statusFilter,
 			value,
+			expTypeFilter,
+		);
+		if (res) LoadingStore.setLoading(false);
+	};
+
+	const onClickExpTypeButton = async (value: 'ON' | 'OFF') => {
+		LoadingStore.setLoading(true);
+		setExpTypeFilter(expTypeFilter === value ? undefined : value);
+		let res = await ExperimentStore.getExperimentList(
+			lingualFilter.join(','),
+			statusFilter,
+			availableFilter,
+			expTypeFilter === value ? undefined : value,
 		);
 		if (res) LoadingStore.setLoading(false);
 	};
@@ -58,6 +73,7 @@ const ExperimentFilter = observer(() => {
 				: lingualFilter.concat(value).join(','),
 			statusFilter,
 			availableFilter,
+			expTypeFilter,
 		);
 		if (res) LoadingStore.setLoading(false);
 	};
@@ -85,6 +101,19 @@ const ExperimentFilter = observer(() => {
 							name={item.name}
 							isSelected={lingualFilter.includes(item.value)}
 							onClick={() => onClickLingualButton(item.value)}
+							key={item.name}
+						/>
+					);
+				})}
+			</ButtonList>
+			<ButtonList spacing={2} direction="row" alignItems="center">
+				<SubContent>{t('experiment type')}</SubContent>
+				{expTypeFilterList.map((item) => {
+					return (
+						<ExperimentFilterButton
+							name={item.name}
+							isSelected={expTypeFilter === item.value}
+							onClick={() => onClickExpTypeButton(item.value)}
 							key={item.name}
 						/>
 					);

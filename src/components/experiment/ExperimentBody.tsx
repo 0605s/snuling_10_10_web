@@ -1,4 +1,5 @@
 import { CircularProgress } from '@mui/material';
+import { Content } from 'lib/constant/Components';
 import { observer } from 'mobx-react';
 import { useEffect } from 'react';
 import useStore from 'store/Index';
@@ -22,7 +23,13 @@ const ExperimentBody = observer(() => {
 		<>
 			<ExperimentFilter />
 			{/* <Divider orientation="horizontal" variant="middle" flexItem /> */}
-			{LoadingStore.loading ? <CircularProgress /> : <ExperimentList />}
+			{LoadingStore.loading ? (
+				<CircularProgress />
+			) : ExperimentStore.experimentList.length ? (
+				<ExperimentList />
+			) : (
+				<Content>no exp</Content>
+			)}
 		</>
 	);
 });

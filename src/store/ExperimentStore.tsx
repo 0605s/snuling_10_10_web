@@ -12,8 +12,12 @@ const ExperimentStore = observable({
 		this.experimentDetail = experiment;
 	},
 
-	async getExperimentList(lingual?: string, status?: StatusType, available?: boolean) {
-		console.log(available);
+	async getExperimentList(
+		lingual?: string,
+		status?: StatusType,
+		available?: boolean,
+		expType?: 'ON' | 'OFF',
+	) {
 		let success = false;
 		try {
 			this.setExperimentList([]);
@@ -21,6 +25,7 @@ const ExperimentStore = observable({
 				lingual: lingual && lingual.length > 0 ? lingual : undefined,
 				status,
 				is_full: available ? 'no' : undefined,
+				exp_type: expType,
 			});
 			this.setExperimentList(response.data);
 			// console.error('========= getExperimentList Success =========');

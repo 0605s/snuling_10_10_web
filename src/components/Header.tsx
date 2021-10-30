@@ -22,6 +22,10 @@ const SnulingLogo = styled.img`
 	width: 200px;
 	height: auto;
 	opacity: 1;
+	:hover {
+		opacity: 0.8;
+		cursor: pointer;
+	}
 `;
 
 const LoginButton = styled(Button)``;
