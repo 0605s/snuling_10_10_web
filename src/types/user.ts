@@ -1,7 +1,11 @@
 export type UserType = {
-	// name: string;
-	// email: string;
-	favor: 'OFFLINE' | 'ONLINE' | 'ALL';
-	lingual: string;
-	subscribe: boolean;
+	username: string;
+	profile: {
+		id: number;
+		nickname: string;
+		favor: 'OFF' | 'ON' | 'ALL';
+		subscribe: boolean;
+		lingual: string;
+		user: number;
+	};
 };

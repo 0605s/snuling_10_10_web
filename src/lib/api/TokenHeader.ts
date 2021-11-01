@@ -2,13 +2,20 @@ class TokenHeader {
 	static accessToken = '';
 
 	static setAccessToken(accessToken: string) {
-		this.accessToken = accessToken;
+		let res = false;
+		try {
+			this.accessToken = accessToken;
+			res = true;
+		} catch (e) {
+			console.error(e);
+		}
+		return res;
 	}
 
 	static getHeader(params?: object) {
 		return {
 			headers: {
-				Authorization: this.accessToken === '' ? undefined : `Bearer ${this.accessToken}`,
+				Authorization: this.accessToken === '' ? undefined : `Token ${this.accessToken}`,
 			},
 			params,
 		};

@@ -55,11 +55,10 @@ const ExperimentStore = observable({
 	async putExperimentDetail(id: number) {
 		let success = false;
 		try {
-			const response = await PutRequest(`experiments/${id}`);
-			// console.error('========= getExperimentDetail Success =========');
+			const response = await PutRequest(`experiments/${id}/`);
 			if (response.data === 200) success = true;
 		} catch (e) {
-			console.error('========= getExperimentDetail Error =========');
+			console.error('========= putExperimentDetail Error =========');
 			console.error(e);
 		}
 		return success;

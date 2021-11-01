@@ -59,9 +59,9 @@ const Header = observer(() => {
 				<Button variant="text" onClick={onClickChangeLanguage}>
 					{i18n.language === 'ko' ? 'English' : '한국어'}
 				</Button>
-				{UserStore.userEmail ? (
+				{UserStore.user !== null ? (
 					<>
-						<Content>{UserStore.userEmail}</Content>
+						<Content>{UserStore.user?.username}</Content>
 						<LoginButton variant="contained" onClick={onClickLogout}>
 							{t('logout')}
 						</LoginButton>

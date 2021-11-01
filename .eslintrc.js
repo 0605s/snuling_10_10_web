@@ -38,6 +38,7 @@ module.exports = {
 		camelcase: 0,
 		'prefer-const': 0,
 		'no-nested-ternary': 0,
+		'no-useless-escape': 0,
 	},
 	settings: {
 		'import/resolver': {

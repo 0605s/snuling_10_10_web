@@ -15,7 +15,7 @@ const getExpiredFromJwt = (token: string) => {
 		if (!expireTime) return now();
 		return expireTime;
 	} catch (e) {
-		console.log(e);
+		console.error(e);
 		return now();
 	}
 };

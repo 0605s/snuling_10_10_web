@@ -1,13 +1,13 @@
-import isValidToken from 'lib/token';
 import { observable } from 'mobx';
 
 const TokenStore = observable({
-	accessToken: '' as string | null,
-
-	setAccessToken(accessToken: string) {
+	accessToken: '' as string,
+	setAccessToken(token: string) {
+		this.accessToken = token;
+	},
+	saveAccessToken(accessToken: string) {
 		try {
 			window.localStorage.setItem('ACCESS_TOKEN', accessToken);
-			this.accessToken = accessToken;
 		} catch (e) {
 			console.error('========= setAccessToken Error =========');
 			console.error(e);
@@ -18,8 +18,7 @@ const TokenStore = observable({
 		let success = false;
 		try {
 			const data = await window.localStorage.getItem('ACCESS_TOKEN');
-			// if (!data || !isValidToken(data)) return success;
-			if (!data) this.accessToken = data;
+			if (data && data !== null) this.setAccessToken(data);
 			success = true;
 		} catch (e) {
 			console.error('========= getAccessToken Error =========');
@@ -29,13 +28,16 @@ const TokenStore = observable({
 	},
 
 	async clear() {
+		let success = false;
 		try {
 			await window.localStorage.clear();
-			this.accessToken = null;
+			this.setAccessToken('');
+			success = true;
 		} catch (e) {
 			console.error('========= clear Error =========');
 			console.error(e);
 		}
+		return success;
 	},
 });
 

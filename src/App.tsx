@@ -21,6 +21,7 @@ import EventsSchedule from 'pages/EventsNews/EventsSchedule';
 import EventsColloquium from 'pages/EventsNews/EventsColloquium';
 import EventsNews from 'pages/EventsNews/EventsNews';
 import EventsSeminar from 'pages/EventsNews/EventsSeminar';
+import TokenHeader from 'lib/api/TokenHeader';
 
 const theme = createTheme({
 	typography: {
@@ -29,10 +30,18 @@ const theme = createTheme({
 });
 
 const App = observer(() => {
-	const { ToastStore, TokenStore } = useStore();
+	const { ToastStore, TokenStore, UserStore } = useStore();
+
+	const checkUser = async () => {
+		const res = await TokenStore.getAccessToken();
+		if (res) {
+			TokenHeader.setAccessToken(TokenStore.accessToken);
+			UserStore.getUserInfo();
+		}
+	};
 
 	useEffect(() => {
-		TokenStore.getAccessToken();
+		checkUser();
 	}, []);
 
 	return useObserver(() => (

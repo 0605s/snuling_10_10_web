@@ -7,6 +7,9 @@ import { Typography, Avatar, TextField, Button, FormGroup, useFormControl } from
 import PersonIcon from '@mui/icons-material/Person';
 import styled from 'styled-components';
 import { RowContainer } from 'lib/constant/Components';
+import { checkEmail } from 'lib/reg';
+import TokenHeader from 'lib/api/TokenHeader';
+import TokenStore from 'store/TokenStore';
 
 const LoginContainer = styled(RowContainer)`
 	display: flex;
@@ -22,7 +25,7 @@ const FormContainer = styled.div`
 `;
 
 const Login = observer(() => {
-	const { UserStore, ToastStore } = useStore();
+	const { UserStore, ToastStore, TokenStore } = useStore();
 	const history = useHistory();
 	const { t } = useTranslation();
 	const [email, setEmail] = useState<string>('');
@@ -34,17 +37,22 @@ const Login = observer(() => {
 		if (email.trim().length === 0) {
 			ToastStore.setMessage('warning', '이메일을 입력해주세요');
 			setEmailError(true);
+		} else if (!checkEmail(email.trim())) {
+			ToastStore.setMessage('warning', '올바른 이메일을 입력해주세요');
+			setEmailError(true);
 		} else if (pw.trim().length === 0) {
 			ToastStore.setMessage('warning', '비밀번호를 입력하세요');
 			setPwError(true);
 		} else {
 			const result = await UserStore.login(email, pw);
-			if (result && result.code === 404) {
-				ToastStore.setMessage('error', '존재하지 않는 계정입니다');
-			} else if (result && result.code >= 500) {
+			if (!result || result.code >= 500) {
 				ToastStore.setMessage('error', '서버 오류');
+			} else if (result && result.code >= 401 && result) {
+				ToastStore.setMessage('error', '존재하지 않는 계정이거나 비밀번호가 틀립니다');
+				setEmailError(true);
+				setPwError(true);
 			} else {
-				ToastStore.setMessage('success', ` ${email}로 로그인 되었습니다.`);
+				ToastStore.setMessage('success', `${email}로 로그인 되었습니다.`);
 				history.push('/');
 			}
 		}

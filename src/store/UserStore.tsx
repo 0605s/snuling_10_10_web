@@ -1,29 +1,20 @@
 import { GetRequest, PostRequest } from 'lib/api/requests';
+import TokenHeader from 'lib/api/TokenHeader';
 import { observable } from 'mobx';
 import { TokenType } from 'types/token';
 import { UserType } from 'types/user';
+import TokenStore from './TokenStore';
 
 const UserStore = observable({
-	userEmail: '' as string | null,
 	user: null as UserType | null,
-	setUserEmail(email: string | null) {
-		this.userEmail = email;
-	},
 	setUser(user: UserType | null) {
 		this.user = user;
-	},
-
-	isLoggedIn() {
-		console.log(this.userEmail);
-		if (this.userEmail === null) return false;
-		return true;
 	},
 
 	async signUp(email: string, pw: string) {
 		let success = false;
 		let code = 200;
 		let token = '';
-
 		try {
 			const response = await PostRequest<TokenType>('signup/', {
 				email,
@@ -31,7 +22,7 @@ const UserStore = observable({
 			});
 			token = response.data.Token;
 			code = response.status;
-			this.setUserEmail(email);
+			// this.setUserEmail(email);
 			success = true;
 		} catch (e: any) {
 			console.error('========= SignUp Error =========');
@@ -45,16 +36,20 @@ const UserStore = observable({
 		let success = false;
 		let code = 200;
 		let token = '';
-
 		try {
 			const response = await PostRequest<TokenType>('login/', {
 				email,
 				pw,
 			});
-			this.setUserEmail(email);
-			token = response.data.Token;
-			code = response.status;
-			success = true;
+			if (response.status === 200) {
+				token = response.data.Token;
+				code = response.status;
+				success = true;
+				await TokenStore.setAccessToken(response.data.Token);
+				await TokenStore.saveAccessToken(response.data.Token);
+				const res = await TokenHeader.setAccessToken(response.data.Token);
+				if (res) this.getUserInfo();
+			}
 		} catch (e: any) {
 			console.error('========= login Error =========');
 			code = e.response.status;
@@ -76,13 +71,13 @@ const UserStore = observable({
 		return success;
 	},
 
-	async postUserInfo(userInfo: UserType) {
+	async postUserInfo(favor: 'ONLINE' | 'OFFLINE' | null, subscribe: boolean, lingual: string) {
 		let success = false;
 		try {
 			const response = await PostRequest<UserType>('mypage/', {
-				favor: userInfo.favor,
-				subscribe: userInfo.subscribe,
-				lingual: userInfo.lingual,
+				favor,
+				subscribe,
+				lingual,
 			});
 			this.setUser(response.data);
 			success = true;
@@ -97,7 +92,7 @@ const UserStore = observable({
 		let success = false;
 		try {
 			this.setUser(null);
-			this.setUserEmail(null);
+			TokenStore.clear();
 			success = true;
 		} catch (e) {
 			console.error('========= signOutUser Error =========');
