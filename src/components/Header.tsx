@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { Stack } from '@mui/material';
 import useStore from 'store/Index';
 import { observer } from 'mobx-react';
-import { Content } from 'lib/constant/Components';
+import { SubContent } from 'lib/constant/Components';
 
 const HeaderContainer = styled.div`
 	width: 100vw;
@@ -33,19 +33,11 @@ const LoginButton = styled(Button)``;
 const Header = observer(() => {
 	const history = useHistory();
 	const { i18n, t } = useTranslation();
-	const { UserStore, ToastStore } = useStore();
+	const { UserStore } = useStore();
 
 	const onClickChangeLanguage = () => {
 		if (i18n.language === 'ko') i18n.changeLanguage('en');
 		else if (i18n.language === 'en') i18n.changeLanguage('ko');
-	};
-
-	const onClickLogout = async () => {
-		const result = await UserStore.logout();
-		if (result) {
-			history.push('/');
-			ToastStore.setMessage('success', '로그아웃 되었습니다');
-		}
 	};
 
 	return (
@@ -61,9 +53,10 @@ const Header = observer(() => {
 				</Button>
 				{UserStore.user !== null ? (
 					<>
-						<Content>{UserStore.user?.username}</Content>
-						<LoginButton variant="contained" onClick={onClickLogout}>
-							{t('logout')}
+						<SubContent>{UserStore.user?.username}</SubContent>
+
+						<LoginButton variant="text" onClick={() => history.push('/mypage')}>
+							{t('My Page')}
 						</LoginButton>
 					</>
 				) : (

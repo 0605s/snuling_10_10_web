@@ -22,6 +22,7 @@ import EventsColloquium from 'pages/EventsNews/EventsColloquium';
 import EventsNews from 'pages/EventsNews/EventsNews';
 import EventsSeminar from 'pages/EventsNews/EventsSeminar';
 import TokenHeader from 'lib/api/TokenHeader';
+import MyPage from 'pages/MyPage';
 
 const theme = createTheme({
 	typography: {
@@ -63,6 +64,7 @@ const App = observer(() => {
 						<Route path="/research" exact component={ResearchProjects} />
 						<Route path="/login" exact component={Login} />
 						<Route path="/signup" exact component={SignUp} />
+						<Route path="/mypage" exact component={MyPage} />
 						<Redirect to="/" />
 					</Switch>
 				</Box>
