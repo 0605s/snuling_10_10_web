@@ -56,9 +56,9 @@ interface Props {
 
 const ExperimentBox = ({ item }: Props) => {
 	const history = useHistory();
-
 	const onClickBox = useCallback(() => {
 		history.push(`/experiment/${item.id}`);
+		window.scrollTo({ top: 0, behavior: 'smooth' });
 	}, []);
 
 	return (

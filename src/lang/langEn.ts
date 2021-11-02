@@ -4,6 +4,7 @@ export const langEn = {
 	'Email Address': 'Email Address',
 	Password: 'Password',
 	logout: 'logout',
+	quit: 'withdrawal',
 
 	Experiments: 'Experiments',
 	seeOnlyAvailable: 'Show available experiments only',

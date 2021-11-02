@@ -8,8 +8,6 @@ import PersonIcon from '@mui/icons-material/Person';
 import styled from 'styled-components';
 import { RowContainer } from 'lib/constant/Components';
 import { checkEmail } from 'lib/reg';
-import TokenHeader from 'lib/api/TokenHeader';
-import TokenStore from 'store/TokenStore';
 
 const LoginContainer = styled(RowContainer)`
 	display: flex;
@@ -38,7 +36,7 @@ const Login = observer(() => {
 			ToastStore.setMessage('warning', '이메일을 입력해주세요');
 			setEmailError(true);
 		} else if (!checkEmail(email.trim())) {
-			ToastStore.setMessage('warning', '올바른 이메일을 입력해주세요');
+			ToastStore.setMessage('warning', '올바른 형식의 이메일을 입력해주세요');
 			setEmailError(true);
 		} else if (pw.trim().length === 0) {
 			ToastStore.setMessage('warning', '비밀번호를 입력하세요');
@@ -94,6 +92,9 @@ const Login = observer(() => {
 						setPw(event.target.value)
 					}
 					error={pwError}
+					onKeyPress={(e) => {
+						if (e.key === 'Enter') onSubmit();
+					}}
 				/>
 			</FormContainer>
 			{/* <FormControlLabel

@@ -1,4 +1,4 @@
-import { GetRequest, PostRequest } from 'lib/api/requests';
+import { DeleteRequest, GetRequest, PostRequest } from 'lib/api/requests';
 import TokenHeader from 'lib/api/TokenHeader';
 import { observable } from 'mobx';
 import { TokenType } from 'types/token';
@@ -83,6 +83,22 @@ const UserStore = observable({
 			success = true;
 		} catch (e: any) {
 			console.error('========= postUserInfo Error =========');
+			console.error(e);
+		}
+		return success;
+	},
+
+	async deleteUser() {
+		let success = false;
+		try {
+			const response = await DeleteRequest('mypage/');
+			if (response.status === 200) {
+				this.setUser(null);
+				TokenStore.clear();
+				success = true;
+			}
+		} catch (e: any) {
+			console.error('========= deleteUser Error =========');
 			console.error(e);
 		}
 		return success;

@@ -4,6 +4,7 @@ export const langKo = {
 	'Email Address': '이메일',
 	Password: '패스워드',
 	logout: '로그아웃',
+	quit: '회원 탈퇴',
 
 	Experiments: '실험 참여',
 	seeOnlyAvailable: '참여 가능한 실험만 보기',

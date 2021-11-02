@@ -1,4 +1,4 @@
-import { SNUBLUE } from 'lib/constant';
+import { SNUGRAY } from 'lib/constant';
 import { SubTitle } from 'lib/constant/Components';
 import { ReactNode } from 'react';
 import styled from 'styled-components';
@@ -12,7 +12,7 @@ const BoxContainer = styled.div`
 
 const TitleContainer = styled(SubTitle)`
 	padding: 10px;
-	background-color: ${SNUBLUE};
+	background-color: ${SNUGRAY};
 	color: white;
 `;
 

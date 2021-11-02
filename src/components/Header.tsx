@@ -54,7 +54,6 @@ const Header = observer(() => {
 				{UserStore.user !== null ? (
 					<>
 						<SubContent>{UserStore.user?.username}</SubContent>
-
 						<LoginButton variant="text" onClick={() => history.push('/mypage')}>
 							{t('My Page')}
 						</LoginButton>
