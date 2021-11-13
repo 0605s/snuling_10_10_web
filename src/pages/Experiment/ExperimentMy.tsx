@@ -4,9 +4,11 @@ import { ExperimentMenus } from 'lib/menus';
 import useStore from 'store/Index';
 import { useEffect } from 'react';
 import { SubTitle } from 'lib/constant/Components';
+import { Grid } from '@mui/material';
+import ExperimentBox from 'components/experiment/ExperimentBox';
 
 const ExperimentMy = () => {
-	const { UserStore, ToastStore } = useStore();
+	const { UserStore, ToastStore, ExperimentStore } = useStore();
 	const history = useHistory();
 
 	useEffect(() => {
@@ -19,6 +21,19 @@ const ExperimentMy = () => {
 	return (
 		<PageTemplate title="Experiments" menu={ExperimentMenus}>
 			<SubTitle>내가 참여한 실험들</SubTitle>
+			{ExperimentStore.myExperimentList.length > 0 ? (
+				<Grid container rowSpacing={2} columnSpacing={3} alignItems="center">
+					{ExperimentStore.myExperimentList.map((item) => {
+						return (
+							<Grid item key={item.title} xs={12} md={6}>
+								<ExperimentBox item={item} key={item.title} />
+							</Grid>
+						);
+					})}
+				</Grid>
+			) : (
+				<div>아직 참여한 실험이 없군요 ! 지금 참여해보세요</div>
+			)}
 		</PageTemplate>
 	);
 };

@@ -6,11 +6,11 @@ import { useTranslation } from 'react-i18next';
 const TabContainer = styled(Tabs)`
 	width: 100vw;
 	box-sizing: border-box;
-	padding: 10px max(calc((100vw - 1000px) / 2), 5vw);
+	padding: 0px max(calc((100vw - 1000px) / 2), 5vw);
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	background-color: #cdcdcd;
+	box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
 `;
 
 const MenuItem = styled(Tab)`

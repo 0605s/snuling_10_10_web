@@ -8,7 +8,8 @@ const PageTemplateContainer = styled.div`
 	flex: 1;
 	width: 100vw;
 	box-sizing: border-box;
-	padding: 10px max(calc((100vw - 1000px) / 2), 5vw);
+	padding: 20px max(calc((100vw - 1000px) / 2), 5vw);
+	padding-bottom: 100px;
 `;
 
 const InnerContainer = styled.div`

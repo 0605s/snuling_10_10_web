@@ -4,9 +4,13 @@ import { ExperimentType, StatusType } from 'types/experiment';
 
 const ExperimentStore = observable({
 	experimentList: [] as ExperimentType[],
+	myExperimentList: [] as ExperimentType[],
 	experimentDetail: {} as ExperimentType | undefined,
 	setExperimentList(experimentList: ExperimentType[]) {
 		this.experimentList = experimentList;
+	},
+	setMyExperimentList(experimentList: ExperimentType[]) {
+		this.myExperimentList = experimentList;
 	},
 	setExperimentDetail(experiment: ExperimentType | undefined) {
 		this.experimentDetail = experiment;
@@ -48,6 +52,19 @@ const ExperimentStore = observable({
 		} catch (e) {
 			console.error('========= getExperimentDetail Error =========');
 			console.error(e);
+		}
+		return success;
+	},
+
+	async getMyExperimentList() {
+		let success = false;
+		try {
+			const response = await GetRequest(`experiments/my/`);
+			this.setMyExperimentList(response.data);
+			success = true;
+		} catch (e) {
+			console.log('========= getMyExperimentDetail Error =========');
+			console.log(e);
 		}
 		return success;
 	},
