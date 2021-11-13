@@ -32,7 +32,7 @@ const ExperimentDetail = observer(() => {
 	}, []);
 
 	return (
-		<PageTemplate title="Experiments" menu={ExperimentMenus}>
+		<PageTemplate menu={ExperimentMenus}>
 			<BackButton onClick={() => history.goBack()} startIcon={<ArrowBackIosIcon />}>
 				목록으로 가기
 			</BackButton>

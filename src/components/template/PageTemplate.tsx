@@ -1,21 +1,16 @@
-import { RowContainer } from 'lib/constant/Components';
+import { SubTitle } from 'lib/constant/Components';
 import { ReactNode } from 'react';
+import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
-import BannerTemplate from './BannerTemplate';
 import LeftMenuTemplate from './LeftMenuTemplate';
 
 const PageTemplateContainer = styled.div`
 	flex: 1;
 	width: 100vw;
-	box-sizing: border-box;
-	padding: 20px max(calc((100vw - 1000px) / 2), 5vw);
-	padding-bottom: 100px;
-`;
-
-const InnerContainer = styled.div`
-	width: 100%;
 	display: flex;
 	flex-direction: row;
+	box-sizing: border-box;
+	padding: 50px max(calc((100vw - 1000px) / 2), 5vw);
 `;
 
 const ChildrenContainer = styled.div`
@@ -25,6 +20,10 @@ const ChildrenContainer = styled.div`
 	align-items: center;
 `;
 
+const TitleLabel = styled(SubTitle)`
+	height: 100px;
+`;
+
 interface Props {
 	title?: string;
 	menu?: { title: string; domain: string }[];
@@ -32,13 +31,14 @@ interface Props {
 }
 
 const PageTemplate = ({ title, menu, children }: Props) => {
+	const { t } = useTranslation();
 	return (
 		<PageTemplateContainer>
-			{title && <BannerTemplate title={title} />}
-			<InnerContainer>
-				{menu && <LeftMenuTemplate menu={menu} />}
-				<ChildrenContainer>{children && children}</ChildrenContainer>
-			</InnerContainer>
+			{menu && <LeftMenuTemplate menu={menu} />}
+			<ChildrenContainer>
+				{title && <TitleLabel>{t(title)}</TitleLabel>}
+				{children && children}
+			</ChildrenContainer>
 		</PageTemplateContainer>
 	);
 };

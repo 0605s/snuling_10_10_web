@@ -1,44 +1,44 @@
 export const ExperimentMenus = [
 	{
-		title: 'Lists',
+		title: 'lists',
 		domain: '/experiment',
 	},
 	{
-		title: 'My Experiments',
+		title: 'my experiments',
 		domain: '/experiment/my',
 	},
 ];
 
 export const EventsMenus = [
 	{
-		title: 'Schedule',
+		title: 'schedule',
 		domain: '/event/schedule',
 	},
 	{
-		title: 'Colloquium',
+		title: 'colloquium',
 		domain: '/event/colloquium',
 	},
 	{
-		title: 'Seminar',
+		title: 'seminar',
 		domain: '/event/seminar',
 	},
 	{
-		title: 'News',
+		title: 'news',
 		domain: '/event/news',
 	},
 ];
 
 export const ResearchMenus = [
 	{
-		title: 'Themes',
+		title: 'themes',
 		domain: '/research/themes',
 	},
 	{
-		title: 'Labs',
+		title: 'labs',
 		domain: '/research/labs',
 	},
 	{
-		title: 'Affiliated Projects',
-		domain: '/event/affiliatedProjects',
+		title: 'affiliated projects',
+		domain: '/research/affiliated',
 	},
 ];

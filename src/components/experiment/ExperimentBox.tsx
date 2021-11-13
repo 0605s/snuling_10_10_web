@@ -69,10 +69,7 @@ const ExperimentBox = ({ item }: Props) => {
 			) : (
 				<OnOffChip icon={<CloudOffIcon />} label="OFFLINE" />
 			)}
-			{/* <Content>{item.exp_type === 'ON' ? 'Online' : 'Offline'}</Content> */}
-			{/* <Content>{item.status}</Content> */}
-			<SubContent>대상 모국어</SubContent>
-			<Stack direction="row" spacing={2}>
+			<Stack direction="row" spacing={2} style={{ marginTop: 20 }}>
 				{item.lingual &&
 					item.lingual.split(',').map((lang) => {
 						return (
@@ -85,10 +82,12 @@ const ExperimentBox = ({ item }: Props) => {
 						);
 					})}
 			</Stack>
-			<SubContent>
-				{item.count_participants}명 / {item.max_participants}명
-			</SubContent>
-			<BottomBar isFull={item.is_full}>{item.is_full ? '모집 완료 >' : '모집중 >'}</BottomBar>
+			<BottomBar isFull={item.is_full}>
+				{item.is_full
+					? '모집 완료'
+					: `모집중 ${item.count_participants}명 / ${item.max_participants}명
+`}
+			</BottomBar>
 			{/* <Content>{item.reward_price}</Content> */}
 		</BoxContainer>
 	);

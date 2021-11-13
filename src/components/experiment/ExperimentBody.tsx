@@ -22,7 +22,6 @@ const ExperimentBody = observer(() => {
 	return (
 		<>
 			<ExperimentFilter />
-			{/* <Divider orientation="horizontal" variant="middle" flexItem /> */}
 			{LoadingStore.loading ? (
 				<CircularProgress />
 			) : ExperimentStore.experimentList.length ? (

@@ -1,8 +1,10 @@
-import BannerTemplate from 'components/template/BannerTemplate';
 import PageTemplate from 'components/template/PageTemplate';
+import { useParams } from 'react-router';
+import { ResearchMenus } from 'lib/menus';
 
 const ResearchProjects = () => {
-	return <PageTemplate title="Research & Projects" />;
+	const { type } = useParams<{ type: string }>();
+	return <PageTemplate title={type} menu={ResearchMenus} />;
 };
 
 export default ResearchProjects;

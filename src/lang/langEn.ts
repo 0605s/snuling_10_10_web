@@ -10,11 +10,30 @@ export const langEn = {
 	seeOnlyAvailable: 'Show available experiments only',
 	status: 'Status',
 	language: 'Language',
+	lists: 'Lists',
+	'my experiments': 'My Experiments',
 	'experiment type': 'Experiment Type',
+	'In Progress': 'In Progress',
+	Unpublished: 'Unpublished',
+	Closed: 'Closed',
+
+	korean: 'Korean',
+	english: 'English',
+	japanese: 'Japanese',
+	chinese: 'Chinese',
+	french: 'French',
+	spanish: 'Spanish',
+
+	Online: 'Online',
+	Offline: 'Offline',
 
 	People: 'People',
 
 	'Events & News': 'Events & News',
+	schedule: 'Schedule',
+	colloquium: 'Colloquium',
+	seminar: 'Seminar',
+	news: 'News',
 
 	'Research & Projects': 'Research & Projects',
 

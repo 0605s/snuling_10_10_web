@@ -17,10 +17,7 @@ import TabNavigation from 'components/TabNavigation';
 import { BrowserRouter } from 'react-router-dom';
 import ExperimentMy from 'pages/Experiment/ExperimentMy';
 import SignUp from 'pages/SignUp';
-import EventsSchedule from 'pages/EventsNews/EventsSchedule';
-import EventsColloquium from 'pages/EventsNews/EventsColloquium';
-import EventsNews from 'pages/EventsNews/EventsNews';
-import EventsSeminar from 'pages/EventsNews/EventsSeminar';
+import EventsNews from 'pages/EventsNews';
 import TokenHeader from 'lib/api/TokenHeader';
 import MyPage from 'pages/MyPage';
 
@@ -57,11 +54,15 @@ const App = observer(() => {
 						<Route path="/experiment/my" exact component={ExperimentMy} />
 						<Route path="/experiment/:id" exact component={ExperimentDetail} />
 						<Route path="/people" exact component={People} />
-						<Route path="/event/schedule" exact component={EventsSchedule} />
-						<Route path="/event/colloquium" exact component={EventsColloquium} />
-						<Route path="/event/news" exact component={EventsNews} />
-						<Route path="/event/seminar" exact component={EventsSeminar} />
-						<Route path="/research" exact component={ResearchProjects} />
+						<Route path="/event" exact>
+							<Redirect to="/event/schedule" />
+						</Route>
+						<Route path="/event/:type" exact component={EventsNews} />
+						<Route path="/research" exact>
+							<Redirect to="/research/themes" />
+						</Route>
+						<Route path="/research/:type" exact component={ResearchProjects} />
+
 						<Route path="/login" exact component={Login} />
 						<Route path="/signup" exact component={SignUp} />
 						<Route path="/mypage" exact component={MyPage} />

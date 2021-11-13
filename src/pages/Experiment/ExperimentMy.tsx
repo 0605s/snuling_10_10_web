@@ -19,8 +19,7 @@ const ExperimentMy = () => {
 	}, []);
 
 	return (
-		<PageTemplate title="Experiments" menu={ExperimentMenus}>
-			<SubTitle>내가 참여한 실험들</SubTitle>
+		<PageTemplate title="my experiments" menu={ExperimentMenus}>
 			{ExperimentStore.myExperimentList.length > 0 ? (
 				<Grid container rowSpacing={2} columnSpacing={3} alignItems="center">
 					{ExperimentStore.myExperimentList.map((item) => {

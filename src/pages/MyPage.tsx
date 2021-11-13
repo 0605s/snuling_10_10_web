@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import PageTemplate from 'components/template/PageTemplate';
-import { Title } from 'lib/constant/Components';
 import { observer } from 'mobx-react';
 import { useHistory } from 'react-router';
 import { useTranslation } from 'react-i18next';
@@ -38,8 +37,7 @@ const MyPage = observer(() => {
 	};
 
 	return (
-		<PageTemplate>
-			<Title>{t('My Info')}</Title>
+		<PageTemplate title="My Info">
 			<Button variant="contained" onClick={onClickLogout}>
 				{t('logout')}
 			</Button>

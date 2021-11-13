@@ -19,7 +19,7 @@ const MenuItem = styled(Tab)`
 
 const tabs: { title: string; url: string }[] = [
 	{ title: 'People', url: '/people' },
-	{ title: 'Events & News', url: '/event/schedule' },
+	{ title: 'Events & News', url: '/event' },
 	{ title: 'Research & Projects', url: '/research' },
 	{ title: 'Experiments', url: '/experiment' },
 	// { title: 'Contact Us', url: '/contact' },

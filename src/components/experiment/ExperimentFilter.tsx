@@ -12,6 +12,11 @@ import ExperimentFilterButton from './ExperimentFilterButton';
 const FilterContainer = styled.div`
 	padding: 20px 0px;
 `;
+
+const FilterLabel = styled(SubContent)`
+	width: 100px;
+	text-align: center;
+`;
 const ButtonList = styled(Stack)`
 	margin: 20px 0px;
 `;
@@ -81,7 +86,7 @@ const ExperimentFilter = observer(() => {
 	return (
 		<FilterContainer>
 			<ButtonList spacing={2} direction="row" alignItems="center">
-				<SubContent>{t('status')}</SubContent>
+				<FilterLabel>{t('status')}</FilterLabel>
 				{statusFilterList.map((item) => {
 					return (
 						<ExperimentFilterButton
@@ -94,7 +99,7 @@ const ExperimentFilter = observer(() => {
 				})}
 			</ButtonList>
 			<ButtonList spacing={2} direction="row" alignItems="center">
-				<SubContent>{t('language')}</SubContent>
+				<FilterLabel>{t('language')}</FilterLabel>
 				{lingualFilterList.map((item) => {
 					return (
 						<ExperimentFilterButton
@@ -107,7 +112,7 @@ const ExperimentFilter = observer(() => {
 				})}
 			</ButtonList>
 			<ButtonList spacing={2} direction="row" alignItems="center">
-				<SubContent>{t('experiment type')}</SubContent>
+				<FilterLabel>{t('experiment type')}</FilterLabel>
 				{expTypeFilterList.map((item) => {
 					return (
 						<ExperimentFilterButton
