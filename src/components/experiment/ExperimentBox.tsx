@@ -85,6 +85,9 @@ const ExperimentBox = ({ item }: Props) => {
 						);
 					})}
 			</Stack>
+			<SubContent>
+				{item.count_participants}명 / {item.max_participants}명
+			</SubContent>
 			<BottomBar isFull={item.is_full}>{item.is_full ? '모집 완료 >' : '모집중 >'}</BottomBar>
 			{/* <Content>{item.reward_price}</Content> */}
 		</BoxContainer>
