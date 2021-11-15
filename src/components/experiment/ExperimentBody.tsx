@@ -27,7 +27,7 @@ const ExperimentBody = observer(() => {
 			) : ExperimentStore.experimentList.length ? (
 				<ExperimentList />
 			) : (
-				<Content>no exp</Content>
+				<Content>조건에 맞는 실험이 없습니다.</Content>
 			)}
 		</>
 	);

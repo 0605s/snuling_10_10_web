@@ -6,6 +6,7 @@ import { Stack } from '@mui/material';
 import useStore from 'store/Index';
 import { observer } from 'mobx-react';
 import { SubContent } from 'lib/constant/Components';
+import { SNULIGHTBLUE } from 'lib/constant';
 
 const HeaderContainer = styled.div`
 	width: 100vw;
@@ -16,6 +17,7 @@ const HeaderContainer = styled.div`
 	flex-direction: row;
 	align-items: center;
 	justify-content: space-between;
+	background-color: white;
 `;
 
 const SnulingLogo = styled.img`
@@ -60,7 +62,7 @@ const Header = observer(() => {
 					</>
 				) : (
 					<>
-						<LoginButton variant="contained" onClick={() => history.push('/login')}>
+						<LoginButton variant="outlined" onClick={() => history.push('/login')}>
 							{t('login')}
 						</LoginButton>
 						<LoginButton variant="text" onClick={() => history.push('/signup')}>

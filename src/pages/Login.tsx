@@ -51,7 +51,7 @@ const Login = observer(() => {
 				setPwError(true);
 			} else {
 				ToastStore.setMessage('success', `${email}로 로그인 되었습니다.`);
-				history.push('/');
+				history.goBack();
 			}
 		}
 	};

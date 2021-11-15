@@ -1,10 +1,10 @@
-import { SNUGRAY } from 'lib/constant';
+import { SNUBLUE } from 'lib/constant';
 import { RowContainer, SubContent } from 'lib/constant/Components';
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 
 const FooterContainer = styled(RowContainer)`
-	background-color: ${SNUGRAY};
+	background-color: ${SNUBLUE};
 	height: 200px;
 	padding: 0px 10vw;
 	display: flex;

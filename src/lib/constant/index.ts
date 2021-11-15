@@ -3,6 +3,9 @@ import { FilterType, StatusType } from 'types/experiment';
 export const API_BASE_URL = 'https://jinh0park.pythonanywhere.com/api/';
 
 export const SNUBLUE = '#0f0f70';
+export const SNULIGHTBLUE = '#8787b7';
+export const SNUYELLOW = '#dcdab2';
+export const SNULIGHTYELLOW = '#f8f7ef';
 export const SNUGRAY = '#666666';
 export const SNUSILVER = '#D2D2D2';
 

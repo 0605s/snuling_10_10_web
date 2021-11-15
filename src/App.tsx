@@ -6,7 +6,7 @@ import Login from 'pages/Login';
 import ExperimentMain from 'pages/Experiment/ExperimentMain';
 import Header from 'components/Header';
 import { observer, useObserver } from 'mobx-react';
-import { Alert, Box, Snackbar, ThemeProvider } from '@mui/material';
+import { Alert, Box, CssBaseline, Snackbar, ThemeProvider } from '@mui/material';
 import { createTheme } from '@mui/material/styles';
 import People from 'pages/People';
 import ResearchProjects from 'pages/ResearchProjects';
@@ -20,8 +20,22 @@ import SignUp from 'pages/SignUp';
 import EventsNews from 'pages/EventsNews';
 import TokenHeader from 'lib/api/TokenHeader';
 import MyPage from 'pages/MyPage';
+import { SNUBLUE, SNULIGHTBLUE, SNULIGHTYELLOW, SNUYELLOW } from 'lib/constant';
 
 const theme = createTheme({
+	palette: {
+		primary: {
+			light: SNULIGHTBLUE,
+			main: SNUBLUE,
+		},
+		secondary: {
+			light: SNULIGHTYELLOW,
+			main: SNUYELLOW,
+		},
+		background: {
+			// default: white,
+		},
+	},
 	typography: {
 		fontFamily: 'YoonGothic',
 	},
@@ -45,6 +59,7 @@ const App = observer(() => {
 	return useObserver(() => (
 		<BrowserRouter basename={process.env.PUBLIC_URL}>
 			<ThemeProvider theme={theme}>
+				<CssBaseline />
 				<Header />
 				<TabNavigation />
 				<Box sx={{ flex: 1, minHeight: '100vh' }}>

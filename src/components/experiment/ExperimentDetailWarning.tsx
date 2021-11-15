@@ -1,15 +1,15 @@
 import { ExperimentType } from 'types/experiment';
 import styled from 'styled-components';
 import WarningIcon from '@mui/icons-material/Warning';
-import { Stack } from '@mui/material';
 import { SubContent } from 'lib/constant/Components';
 import { useTranslation } from 'react-i18next';
+import { SNULIGHTYELLOW } from 'lib/constant';
 
 const WarningContainer = styled.div`
 	width: 70%;
 	padding: 10px;
 	border-radius: 10px;
-	background-color: #fcf7ae;
+	background-color: ${SNULIGHTYELLOW};
 	margin: 10px 0px;
 	display: flex;
 	flex-direction: column;

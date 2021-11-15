@@ -1,3 +1,4 @@
+import { SNUBLUE } from 'lib/constant';
 import { SubTitle } from 'lib/constant/Components';
 import { ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -13,6 +14,8 @@ const PageTemplateContainer = styled.div`
 	padding: 50px max(calc((100vw - 1000px) / 2), 5vw);
 `;
 
+const InnerContainer = styled.div``;
+
 const ChildrenContainer = styled.div`
 	flex: 1;
 	display: flex;
@@ -21,7 +24,11 @@ const ChildrenContainer = styled.div`
 `;
 
 const TitleLabel = styled(SubTitle)`
-	height: 100px;
+	height: 70px;
+	margin-bottom: 30px;
+	border-bottom: 5px solid ${SNUBLUE};
+	border-radius: 2px;
+	text-align: center;
 `;
 
 interface Props {
