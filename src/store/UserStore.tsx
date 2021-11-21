@@ -22,7 +22,6 @@ const UserStore = observable({
 			});
 			token = response.data.Token;
 			code = response.status;
-			// this.setUserEmail(email);
 			success = true;
 		} catch (e: any) {
 			console.error('========= SignUp Error =========');
@@ -71,9 +70,10 @@ const UserStore = observable({
 		return success;
 	},
 
-	async postUserInfo(favor: 'ONLINE' | 'OFFLINE' | null, subscribe: boolean, lingual: string) {
+	async postUserInfo(favor: 'ONLINE' | 'OFFLINE', subscribe: boolean, lingual: string) {
 		let success = false;
 		try {
+			console.log(favor, subscribe, lingual);
 			const response = await PostRequest<UserType>('mypage/', {
 				favor,
 				subscribe,

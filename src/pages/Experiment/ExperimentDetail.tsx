@@ -24,7 +24,7 @@ const ExperimentDetail = observer(() => {
 	const getInit = async () => {
 		LoadingStore.setLoading(true);
 		let res = await ExperimentStore.getExperimentDetail(parseInt(id, 10));
-		if (res) LoadingStore.setLoading(false);
+		if (res && ExperimentStore.experimentDetail) LoadingStore.setLoading(false);
 	};
 
 	useEffect(() => {

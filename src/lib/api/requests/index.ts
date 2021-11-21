@@ -10,3 +10,5 @@ export const PutRequest = <T = any>(url: string, body?: object, params?: object)
 	axios.put<T>(`${API_BASE_URL}${url}`, body, TokenHeader.getHeader(params));
 export const DeleteRequest = <T = any>(url: string, params?: object) =>
 	axios.delete<T>(`${API_BASE_URL}${url}`, TokenHeader.getHeader(params));
+export const PatchRequest = <T = any>(url: string, body?: object, params?: object) =>
+	axios.patch<T>(`${API_BASE_URL}${url}`, body, TokenHeader.getHeader(params));

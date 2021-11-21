@@ -5,9 +5,7 @@ import { useHistory } from 'react-router';
 import { useTranslation } from 'react-i18next';
 import useStore from 'store/Index';
 import { Button } from '@mui/material';
-import MyPageAccount from 'components/mypage/MyPageAccount';
-import MyPageLingual from 'components/mypage/MyPageLingual';
-import MyPageEmail from 'components/mypage/MyPageEmail';
+import MyPageBody from 'components/mypage/MyPageBody';
 
 const MyPage = observer(() => {
 	const { UserStore, ToastStore, TokenStore } = useStore();
@@ -36,17 +34,16 @@ const MyPage = observer(() => {
 		}
 	};
 
+	if (UserStore.user === null) return null;
 	return (
-		<PageTemplate title="My Info">
+		<PageTemplate title="My Info" menu={[{ title: 'My Info', domain: '/mypage' }]}>
 			<Button variant="contained" onClick={onClickLogout}>
 				{t('logout')}
 			</Button>
 			<Button variant="text" onClick={onClickQuit}>
 				{t('quit')}
 			</Button>
-			<MyPageAccount />
-			<MyPageLingual />
-			<MyPageEmail />
+			<MyPageBody />
 		</PageTemplate>
 	);
 });

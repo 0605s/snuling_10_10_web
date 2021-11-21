@@ -1,4 +1,4 @@
-import { GetRequest, PutRequest } from 'lib/api/requests';
+import { GetRequest, PatchRequest, PutRequest } from 'lib/api/requests';
 import { observable } from 'mobx';
 import { ExperimentType, StatusType } from 'types/experiment';
 
@@ -69,13 +69,15 @@ const ExperimentStore = observable({
 		return success;
 	},
 
-	async putExperimentDetail(id: number) {
+	async patchExperimentDetail(id: number, action: 'join' | 'unjoin') {
 		let success = false;
 		try {
-			const response = await PutRequest(`experiments/${id}/`);
+			const response = await PatchRequest(`experiments/${id}/`, {
+				action,
+			});
 			if (response.data === 200) success = true;
 		} catch (e) {
-			console.error('========= putExperimentDetail Error =========');
+			console.error('========= patchExperimentDetail Error =========');
 			console.error(e);
 		}
 		return success;

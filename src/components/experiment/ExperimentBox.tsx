@@ -10,7 +10,7 @@ import { SNUGRAY } from 'lib/constant';
 
 const BoxContainer = styled.div`
 	width: 100%;
-	height: 350px;
+	height: 250px;
 	border-radius: 10px;
 	box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
 	display: flex;
@@ -39,7 +39,7 @@ const BottomBar = styled.div<{ isFull: boolean }>`
 	position: absolute;
 	bottom: 0px;
 	width: 100%;
-	height: 15%;
+	height: 50px;
 	display: flex;
 	justify-content: center;
 	align-items: center;

@@ -6,7 +6,6 @@ import { Stack } from '@mui/material';
 import useStore from 'store/Index';
 import { observer } from 'mobx-react';
 import { SubContent } from 'lib/constant/Components';
-import { SNULIGHTBLUE } from 'lib/constant';
 
 const HeaderContainer = styled.div`
 	width: 100vw;
@@ -17,7 +16,7 @@ const HeaderContainer = styled.div`
 	flex-direction: row;
 	align-items: center;
 	justify-content: space-between;
-	background-color: white;
+	/* background-color: SNU; */
 `;
 
 const SnulingLogo = styled.img`
@@ -31,6 +30,10 @@ const SnulingLogo = styled.img`
 `;
 
 const LoginButton = styled(Button)``;
+
+const EmailLabel = styled(SubContent)`
+	font-weight: 500;
+`;
 
 const Header = observer(() => {
 	const history = useHistory();
@@ -55,7 +58,7 @@ const Header = observer(() => {
 				</Button>
 				{UserStore.user !== null ? (
 					<>
-						<SubContent>{UserStore.user?.username}</SubContent>
+						<EmailLabel>{UserStore.user?.username}</EmailLabel>
 						<LoginButton variant="text" onClick={() => history.push('/mypage')}>
 							{t('My Page')}
 						</LoginButton>

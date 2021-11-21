@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Route, Switch, Redirect } from 'react-router';
 import './App.css';
 import Home from 'pages/Home';
 import Login from 'pages/Login';
 import ExperimentMain from 'pages/Experiment/ExperimentMain';
 import Header from 'components/Header';
-import { observer, useObserver } from 'mobx-react';
+import { observer } from 'mobx-react';
 import { Alert, Box, CssBaseline, Snackbar, ThemeProvider } from '@mui/material';
 import { createTheme } from '@mui/material/styles';
 import People from 'pages/People';
@@ -33,7 +33,7 @@ const theme = createTheme({
 			main: SNUYELLOW,
 		},
 		background: {
-			// default: white,
+			default: '#ffffff',
 		},
 	},
 	typography: {
@@ -42,13 +42,15 @@ const theme = createTheme({
 });
 
 const App = observer(() => {
+	const [loading, setLoading] = useState<boolean>(true);
 	const { ToastStore, TokenStore, UserStore } = useStore();
 
 	const checkUser = async () => {
 		const res = await TokenStore.getAccessToken();
 		if (res) {
 			TokenHeader.setAccessToken(TokenStore.accessToken);
-			UserStore.getUserInfo();
+			await UserStore.getUserInfo();
+			setLoading(false);
 		}
 	};
 
@@ -56,7 +58,8 @@ const App = observer(() => {
 		checkUser();
 	}, []);
 
-	return useObserver(() => (
+	if (loading) return null;
+	return (
 		<BrowserRouter basename={process.env.PUBLIC_URL}>
 			<ThemeProvider theme={theme}>
 				<CssBaseline />
@@ -77,7 +80,6 @@ const App = observer(() => {
 							<Redirect to="/research/themes" />
 						</Route>
 						<Route path="/research/:type" exact component={ResearchProjects} />
-
 						<Route path="/login" exact component={Login} />
 						<Route path="/signup" exact component={SignUp} />
 						<Route path="/mypage" exact component={MyPage} />
@@ -94,7 +96,7 @@ const App = observer(() => {
 				</Snackbar>
 			</ThemeProvider>
 		</BrowserRouter>
-	));
+	);
 });
 
 export default App;

@@ -1,4 +1,4 @@
-import { SNUBLUE } from 'lib/constant';
+import { SNUBLUE, SNUYELLOW } from 'lib/constant';
 import { RowContainer, SubContent } from 'lib/constant/Components';
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
@@ -9,10 +9,11 @@ const FooterContainer = styled(RowContainer)`
 	padding: 0px 10vw;
 	display: flex;
 	flex-direction: row;
+	border-top: 15px ${SNUYELLOW} solid;
 `;
 
 const ColumnContainer = styled.div<{ type: 'left' | 'right' }>`
-	flex: 1;
+	flex: ${(props) => (props.type === 'right' ? 1 : 2)};
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -40,6 +41,7 @@ const siteList: { name: string; url: string }[] = [
 	{ name: '언어학과 홈페이지', url: 'http://hosting01.snu.ac.kr/~linguist/' },
 	{ name: '서울대학교 인문대학', url: 'http://humanities.snu.ac.kr' },
 ];
+
 const Footer = () => {
 	const { t } = useTranslation();
 	return (

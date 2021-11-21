@@ -1,4 +1,4 @@
-import { SNUBLUE } from 'lib/constant';
+import { SNUBLUE, SNUGRAY } from 'lib/constant';
 import { SubTitle } from 'lib/constant/Components';
 import { ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
@@ -11,10 +11,9 @@ const PageTemplateContainer = styled.div`
 	display: flex;
 	flex-direction: row;
 	box-sizing: border-box;
+	background-color: '#B0B0B0';
 	padding: 50px max(calc((100vw - 1000px) / 2), 5vw);
 `;
-
-const InnerContainer = styled.div``;
 
 const ChildrenContainer = styled.div`
 	flex: 1;

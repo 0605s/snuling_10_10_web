@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { Tab, Tabs } from '@mui/material';
 import { useHistory, useLocation } from 'react-router';
 import { useTranslation } from 'react-i18next';
-import { SNULIGHTYELLOW } from 'lib/constant';
+import { SNUYELLOW } from 'lib/constant';
 
 const TabContainer = styled(Tabs)`
 	width: 100vw;
@@ -14,8 +14,8 @@ const TabContainer = styled(Tabs)`
 	justify-content: space-between;
 	box-shadow: rgba(33, 35, 38, 0.3) 0px 10px 10px -10px;
 	color: '#666666';
+	background-color: '#f9f9f9';
 	z-index: 10;
-	background-color: white;
 `;
 
 const MenuItem = styled(Tab)``;
@@ -47,6 +47,7 @@ const TabNavigation = () => {
 			variant="fullWidth"
 			textColor="inherit"
 			indicatorColor="secondary"
+			sx={{ backgroundColor: SNUYELLOW }}
 		>
 			{tabs.map((item) => {
 				return (

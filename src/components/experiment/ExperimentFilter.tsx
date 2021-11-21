@@ -10,13 +10,18 @@ import { SubContent } from 'lib/constant/Components';
 import ExperimentFilterButton from './ExperimentFilterButton';
 
 const FilterContainer = styled.div`
-	padding: 20px 0px;
+	width: 90%;
+	padding: 0px 10px;
+	margin-bottom: 30px;
+	border-radius: 10px;
+	/* border: 0.5px solid gray; */
 `;
 
 const FilterLabel = styled(SubContent)`
 	width: 100px;
 	text-align: center;
 `;
+
 const ButtonList = styled(Stack)`
 	margin: 20px 0px;
 `;

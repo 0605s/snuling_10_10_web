@@ -1,7 +1,7 @@
 import { observable } from 'mobx';
 
 const LoadingStore = observable({
-	loading: true as boolean,
+	loading: false as boolean,
 	setLoading(loading: boolean) {
 		this.loading = loading;
 	},
