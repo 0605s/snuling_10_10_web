@@ -21,7 +21,9 @@ const ExperimentOnlineModal = ({ experiment }: Props) => {
 			<BoldLabel onClick={() => window.open(experiment.link, '_blank')}>
 				{experiment.link}
 			</BoldLabel>
-			<SubContent>confirmation code 입력란에 아래 코드를 입력하세요.</SubContent>
+			<SubContent>
+				실험이 완료되면 confirmation code 입력란에 아래 코드를 입력하세요.
+			</SubContent>
 			<BoldLabel>6FI9GK</BoldLabel>
 		</>
 	);

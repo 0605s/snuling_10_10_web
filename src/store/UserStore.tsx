@@ -20,6 +20,10 @@ const UserStore = observable({
 				email,
 				pw,
 			});
+			// if (response.data.error === 'Duplicated Email') {
+			// 	code = 402;
+			// 	throw new Error();
+			// }
 			token = response.data.Token;
 			code = response.status;
 			success = true;

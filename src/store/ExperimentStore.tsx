@@ -75,7 +75,8 @@ const ExperimentStore = observable({
 			const response = await PatchRequest(`experiments/${id}/`, {
 				action,
 			});
-			if (response.data === 200) success = true;
+			if (response.status === 200) success = true;
+			return response.data.msg;
 		} catch (e) {
 			console.error('========= patchExperimentDetail Error =========');
 			console.error(e);
