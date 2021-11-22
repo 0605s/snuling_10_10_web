@@ -2,23 +2,35 @@ import styled from 'styled-components';
 import { Tab, Tabs } from '@mui/material';
 import { useHistory, useLocation } from 'react-router';
 import { useTranslation } from 'react-i18next';
-import { SNUYELLOW } from 'lib/constant';
 
-const TabContainer = styled(Tabs)`
+const MenuContainer = styled.div`
 	width: 100vw;
+	height: 80px;
 	box-sizing: border-box;
 	padding: 0px max(calc((100vw - 1000px) / 2), 5vw);
 	display: flex;
-	position: relative;
 	align-items: center;
 	justify-content: space-between;
 	box-shadow: rgba(33, 35, 38, 0.3) 0px 10px 10px -10px;
-	color: '#666666';
-	background-color: '#f9f9f9';
 	z-index: 10;
 `;
+const MenuTab = styled(Tabs)`
+	color: '#666666';
+`;
 
-const MenuItem = styled(Tab)``;
+const SnulingLogo = styled.img`
+	width: 200px;
+	height: auto;
+	/* opacity: 1; */
+	:hover {
+		opacity: 0.8;
+		cursor: pointer;
+	}
+`;
+
+const MenuItem = styled(Tab)`
+	height: 80px;
+`;
 
 const tabs: { title: string; url: string }[] = [
 	{ title: 'People', url: '/people' },
@@ -41,26 +53,26 @@ const TabNavigation = () => {
 	};
 
 	return (
-		<TabContainer
-			value={getLocation()}
-			centered
-			variant="fullWidth"
-			textColor="inherit"
-			indicatorColor="secondary"
-			sx={{ backgroundColor: SNUYELLOW }}
-		>
-			{tabs.map((item) => {
-				return (
-					<MenuItem
-						label={t(item.title)}
-						value={item.url}
-						key={item.title}
-						onClick={() => history.push(`${item.url}`)}
-						sx={{ fontSize: 16 }}
-					/>
-				);
-			})}
-		</TabContainer>
+		<MenuContainer>
+			<SnulingLogo
+				src={`${process.env.PUBLIC_URL}/img/snuling_logo.png`}
+				alt=""
+				onClick={() => history.push('/')}
+			/>
+			<MenuTab value={getLocation()} centered textColor="inherit" indicatorColor="primary">
+				{tabs.map((item) => {
+					return (
+						<MenuItem
+							label={t(item.title)}
+							value={item.url}
+							key={item.title}
+							onClick={() => history.push(`${item.url}`)}
+							sx={{ fontSize: 16 }}
+						/>
+					);
+				})}
+			</MenuTab>
+		</MenuContainer>
 	);
 };
 

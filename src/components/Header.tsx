@@ -6,32 +6,27 @@ import { Stack } from '@mui/material';
 import useStore from 'store/Index';
 import { observer } from 'mobx-react';
 import { SubContent } from 'lib/constant/Components';
+import { SNUBLUE } from 'lib/constant';
 
 const HeaderContainer = styled.div`
 	width: 100vw;
-	height: 100px;
+	height: 30px;
 	box-sizing: border-box;
 	padding: 10px max(calc((100vw - 1000px) / 2), 5vw);
 	display: flex;
 	flex-direction: row;
 	align-items: center;
-	justify-content: space-between;
-	/* background-color: SNU; */
+	justify-content: flex-end;
+	background-color: ${SNUBLUE};
+	color: white;
 `;
 
-const SnulingLogo = styled.img`
-	width: 200px;
-	height: auto;
-	opacity: 1;
-	:hover {
-		opacity: 0.8;
-		cursor: pointer;
-	}
+const LoginButton = styled(Button)`
+	color: white;
 `;
-
-const LoginButton = styled(Button)``;
 
 const EmailLabel = styled(SubContent)`
+	font-size: 0.8rem;
 	font-weight: 500;
 `;
 
@@ -47,28 +42,38 @@ const Header = observer(() => {
 
 	return (
 		<HeaderContainer>
-			<SnulingLogo
-				src={`${process.env.PUBLIC_URL}/img/snuling_logo.png`}
-				alt=""
-				onClick={() => history.push('/')}
-			/>
 			<Stack spacing={2} direction="row" alignItems="center">
-				<Button variant="text" onClick={onClickChangeLanguage}>
+				<Button variant="text" onClick={onClickChangeLanguage} size="small" color="inherit">
 					{i18n.language === 'ko' ? 'English' : '한국어'}
 				</Button>
 				{UserStore.user !== null ? (
 					<>
 						<EmailLabel>{UserStore.user?.username}</EmailLabel>
-						<LoginButton variant="text" onClick={() => history.push('/mypage')}>
+						<LoginButton
+							variant="text"
+							onClick={() => history.push('/mypage')}
+							size="small"
+							color="inherit"
+						>
 							{t('My Page')}
 						</LoginButton>
 					</>
 				) : (
 					<>
-						<LoginButton variant="outlined" onClick={() => history.push('/login')}>
+						<LoginButton
+							variant="outlined"
+							onClick={() => history.push('/login')}
+							size="small"
+							color="inherit"
+						>
 							{t('login')}
 						</LoginButton>
-						<LoginButton variant="text" onClick={() => history.push('/signup')}>
+						<LoginButton
+							variant="text"
+							onClick={() => history.push('/signup')}
+							size="small"
+							color="inherit"
+						>
 							{t('Sign Up')}
 						</LoginButton>
 					</>

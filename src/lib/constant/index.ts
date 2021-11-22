@@ -2,7 +2,7 @@ import { FilterType, StatusType } from 'types/experiment';
 
 export const API_BASE_URL = 'http://ec2-3-36-103-144.ap-northeast-2.compute.amazonaws.com/api/';
 
-export const SNUBLUE = '#0f0f70';
+export const SNUBLUE = '#0f4c81';
 export const SNULIGHTBLUE = '#8787b7';
 export const SNUYELLOW = '#dcdab2';
 export const SNULIGHTYELLOW = '#f8f7ef';
