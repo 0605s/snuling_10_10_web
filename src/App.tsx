@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Route, Switch, Redirect } from 'react-router';
 import './App.css';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 import Home from 'pages/Home';
 import Login from 'pages/Login';
 import ExperimentMain from 'pages/Experiment/ExperimentMain';
@@ -56,6 +58,9 @@ const App = observer(() => {
 
 	useEffect(() => {
 		checkUser();
+		AOS.init({
+			duration: 1000,
+		});
 	}, []);
 
 	if (loading) return null;

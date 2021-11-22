@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 
 const MenuContainer = styled.div`
 	width: 100vw;
-	height: 80px;
+	height: 90px;
 	box-sizing: border-box;
 	padding: 0px max(calc((100vw - 1000px) / 2), 5vw);
 	display: flex;
@@ -14,6 +14,7 @@ const MenuContainer = styled.div`
 	box-shadow: rgba(33, 35, 38, 0.3) 0px 10px 10px -10px;
 	z-index: 10;
 `;
+
 const MenuTab = styled(Tabs)`
 	color: '#666666';
 `;
@@ -29,7 +30,7 @@ const SnulingLogo = styled.img`
 `;
 
 const MenuItem = styled(Tab)`
-	height: 80px;
+	height: 90px;
 `;
 
 const tabs: { title: string; url: string }[] = [

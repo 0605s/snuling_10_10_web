@@ -11,6 +11,7 @@ import { SNUGRAY } from 'lib/constant';
 const BoxContainer = styled.div`
 	width: 100%;
 	height: 250px;
+	padding: 0px 20px;
 	border-radius: 10px;
 	box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
 	display: flex;
@@ -62,14 +63,14 @@ const ExperimentBox = ({ item }: Props) => {
 	}, []);
 
 	return (
-		<BoxContainer onClick={onClickBox}>
+		<BoxContainer onClick={onClickBox} data-aos="fade-up">
 			<SubTitle>{item.title}</SubTitle>
 			{item.exp_type === 'ON' ? (
 				<OnOffChip icon={<PublicIcon />} label="ONLINE" />
 			) : (
 				<OnOffChip icon={<CloudOffIcon />} label="OFFLINE" />
 			)}
-			<Stack direction="row" spacing={2} style={{ marginTop: 20 }}>
+			<Stack direction="row" spacing={1} style={{ marginTop: 20 }}>
 				{item.lingual &&
 					item.lingual.split(',').map((lang) => {
 						return (

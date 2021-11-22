@@ -3,7 +3,7 @@ import { observer } from 'mobx-react';
 import { useHistory, useParams } from 'react-router-dom';
 import { SubTitle, Content } from 'lib/constant/Components';
 import CreateIcon from '@mui/icons-material/Create';
-import { Button, Backdrop } from '@mui/material';
+import { Button } from '@mui/material';
 import useStore from 'store/Index';
 import ModalTemplate from 'components/template/ModalTemplate';
 import ExperimentCalender from './ExperimentCalender';
@@ -12,18 +12,20 @@ import ExperimentOnlineModal from './ExperimentOnlineModal';
 
 const ExperimentDetailBody = observer(() => {
 	const { id } = useParams<{ id: string }>();
-	const history = useHistory();
 	const { ExperimentStore, UserStore, ToastStore } = useStore();
 	const experiment = ExperimentStore.experimentDetail;
 	const [isCalenderVisible, setIsCalenderVisible] = useState<boolean>(false);
 
-	const onClickAssign = () => {
+	const onClickAssign = async () => {
 		if (UserStore.user === null)
 			ToastStore.setMessage('info', '실험에 참여하시려면 먼저 로그인을 해주세요');
 		else if (experiment?.exp_type === 'ON') {
-			// ExperimentStore.patchExperimentDetail(parseInt(id, 10), 'join');
-			ToastStore.setMessage('success', '실험에 참여되었습니다');
-			setIsCalenderVisible(true);
+			const res = await ExperimentStore.patchExperimentDetail(parseInt(id, 10), 'join');
+			console.log(res);
+			if (res.success) {
+				ToastStore.setMessage('success', '실험에 참여되었습니다.');
+				setIsCalenderVisible(true);
+			} else ToastStore.setMessage('error', '이미 참여한 실험입니다.');
 			// window.open(experiment.link, '_blank');
 		} else if (experiment?.exp_type === 'OFF') {
 			setIsCalenderVisible(true);

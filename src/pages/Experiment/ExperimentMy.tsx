@@ -11,11 +11,16 @@ const ExperimentMy = () => {
 	const { UserStore, ToastStore, ExperimentStore } = useStore();
 	const history = useHistory();
 
+	const getInit = async () => {
+		let res = await ExperimentStore.getMyExperimentList();
+	};
+
 	useEffect(() => {
 		if (UserStore.user === null) {
 			ToastStore.setMessage('warning', '로그인 후 이용 가능합니다.');
 			history.push('/experiment');
 		}
+		getInit();
 	}, []);
 
 	return (

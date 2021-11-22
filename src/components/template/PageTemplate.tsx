@@ -17,9 +17,11 @@ const PageTemplateContainer = styled.div`
 
 const ChildrenContainer = styled.div`
 	flex: 1;
+	padding: 0px 2vw;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	/* border-left: 0.5px solid black; */
 `;
 
 const TitleLabel = styled(SubTitle)`
@@ -41,7 +43,7 @@ const PageTemplate = ({ title, menu, children }: Props) => {
 	return (
 		<PageTemplateContainer>
 			{menu && <LeftMenuTemplate menu={menu} />}
-			<ChildrenContainer>
+			<ChildrenContainer data-aos="fade-up">
 				{title && <TitleLabel>{t(title)}</TitleLabel>}
 				{children && children}
 			</ChildrenContainer>

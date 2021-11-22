@@ -61,7 +61,7 @@ const Header = observer(() => {
 				) : (
 					<>
 						<LoginButton
-							variant="outlined"
+							variant="text"
 							onClick={() => history.push('/login')}
 							size="small"
 							color="inherit"
