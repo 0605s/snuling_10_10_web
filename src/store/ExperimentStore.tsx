@@ -71,13 +71,12 @@ const ExperimentStore = observable({
 
 	async patchExperimentDetail(id: number, action: 'join' | 'unjoin') {
 		let success = false;
-		let code = 200;
+		let code = '';
 		try {
 			const response = await PatchRequest(`experiments/${id}/`, {
 				action,
 			});
-			console.log(response.status);
-			code = response.status;
+			code = response.data.code;
 			success = true;
 		} catch (e: any) {
 			console.error('========= patchExperimentDetail Error =========');

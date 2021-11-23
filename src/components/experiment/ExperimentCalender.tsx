@@ -1,44 +1,32 @@
-import DatePicker from 'react-date-picker';
-import { Stack, Divider, FormControlLabel, Radio } from '@mui/material';
-import { useState } from 'react';
-import { ExperimentType } from 'types/experiment';
-import styled from 'styled-components';
-
-const InnerContainer = styled(Stack)`
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-`;
-
-const DatePickerContainer = styled.div``;
-const DateStack = styled(Stack)``;
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 
 interface Props {
-	experiment: ExperimentType;
+	dateList: string[];
+	selectedDate: Date | null;
+	setSelectedDate: (date: Date | null) => void;
 }
 
-const ExperimentCalender = ({ experiment }: Props) => {
-	const [value, setValue] = useState<Date>();
+const ExperimentCalender = ({ dateList, selectedDate, setSelectedDate }: Props) => {
+	const YYYYMMDDtoDate = (date: string) => {
+		let year = date.substring(0, 4);
+		let month = date.substring(4, 6);
+		let day = date.substring(6, 8);
+		return new Date(Number(year), Number(month) - 1, Number(day));
+	};
 
 	return (
-		<>
-			<div>참여 가능한 일정을 선택해주세요</div>
-			<InnerContainer
-				direction="row"
-				spacing={2}
-				divider={<Divider orientation="vertical" flexItem />}
-			>
-				<DatePickerContainer>
-					<DatePicker onChange={() => console.log('changed')} value={value} isOpen />
-				</DatePickerContainer>
-				<DateStack direction="column">
-					<FormControlLabel value="female" control={<Radio />} label="Female" />
-					<FormControlLabel value="female" control={<Radio />} label="Female" />
-					<FormControlLabel value="female" control={<Radio />} label="Female" />
-					<FormControlLabel value="female" control={<Radio />} label="Female" />
-				</DateStack>
-			</InnerContainer>
-		</>
+		<DatePicker
+			dateFormat="yyyy/MM/dd"
+			selectsStart
+			includeDates={dateList.map((e) => {
+				return YYYYMMDDtoDate(e);
+			})}
+			selected={selectedDate}
+			onSelect={(date) => setSelectedDate(date)}
+			onChange={() => console.log('')}
+			inline
+		/>
 	);
 };
 

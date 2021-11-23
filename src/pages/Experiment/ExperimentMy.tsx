@@ -8,7 +8,7 @@ import { Grid } from '@mui/material';
 import ExperimentBox from 'components/experiment/ExperimentBox';
 
 const ExperimentMy = () => {
-	const { UserStore, ToastStore, ExperimentStore } = useStore();
+	const { UserStore, ToastStore, ExperimentStore, TokenStore } = useStore();
 	const history = useHistory();
 
 	const getInit = async () => {
@@ -21,6 +21,7 @@ const ExperimentMy = () => {
 			history.push('/experiment');
 		}
 		getInit();
+		console.log(TokenStore.accessToken);
 	}, []);
 
 	return (

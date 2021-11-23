@@ -48,7 +48,7 @@ const Footer = () => {
 		<FooterContainer>
 			<ColumnContainer type="left">
 				<SnulingLogo
-					src={`${process.env.PUBLIC_URL}/img/snuling_logo.png`}
+					src={`${process.env.PUBLIC_URL}/img/snuling_logo_white.png`}
 					alt="snuling_logo"
 				/>
 				<FooterLabel>{t('address')}</FooterLabel>

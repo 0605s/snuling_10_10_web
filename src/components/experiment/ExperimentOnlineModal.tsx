@@ -1,10 +1,10 @@
 import { SubContent, Content } from 'lib/constant/Components';
-import useStore from 'store/Index';
 import styled from 'styled-components';
 import { ExperimentType } from 'types/experiment';
 
 interface Props {
 	experiment: ExperimentType;
+	code: string;
 }
 const BoldLabel = styled(Content)`
 	margin: 10px 0px;
@@ -14,7 +14,7 @@ const BoldLabel = styled(Content)`
 		cursor: pointer;
 	}
 `;
-const ExperimentOnlineModal = ({ experiment }: Props) => {
+const ExperimentOnlineModal = ({ experiment, code }: Props) => {
 	return (
 		<>
 			<SubContent>실험에 참여되었습니다. 아래 링크를 클릭해주세요.</SubContent>
@@ -24,7 +24,7 @@ const ExperimentOnlineModal = ({ experiment }: Props) => {
 			<SubContent>
 				실험이 완료되면 confirmation code 입력란에 아래 코드를 입력하세요.
 			</SubContent>
-			<BoldLabel>6FI9GK</BoldLabel>
+			<BoldLabel>{code}</BoldLabel>
 		</>
 	);
 };

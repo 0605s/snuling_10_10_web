@@ -25,6 +25,11 @@ const BoxContainer = styled.div`
 	}
 `;
 
+const TitleLabel = styled(Content)`
+	text-align: center;
+	height: 4rem;
+`;
+
 const OnOffChip = styled(Chip)`
 	font-size: 1rem;
 	font-weight: 400;
@@ -64,7 +69,7 @@ const ExperimentBox = ({ item }: Props) => {
 
 	return (
 		<BoxContainer onClick={onClickBox} data-aos="fade-up">
-			<SubTitle>{item.title}</SubTitle>
+			<TitleLabel>{item.title}</TitleLabel>
 			{item.exp_type === 'ON' ? (
 				<OnOffChip icon={<PublicIcon />} label="ONLINE" />
 			) : (

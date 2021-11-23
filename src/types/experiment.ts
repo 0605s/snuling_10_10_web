@@ -11,8 +11,9 @@ export type ExperimentType = {
 	reward: string;
 	location: string;
 	content?: string;
-	count_participants?: number;
-	max_participants?: number;
+	count_participants: number;
+	max_participants: number;
+	is_joined: boolean;
 };
 
 export type StatusType = 'U' | 'P' | 'C';
