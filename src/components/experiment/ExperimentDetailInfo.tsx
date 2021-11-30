@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { SubContent } from 'lib/constant/Components';
-import { ExperimentType } from 'types/experiment';
+import { ExperimentDetailType } from 'types/experiment';
 import { useTranslation } from 'react-i18next';
 
 const InfoContainer = styled.div`
@@ -21,7 +21,7 @@ const Title = styled(SubContent)`
 `;
 
 interface Props {
-	experiment: ExperimentType;
+	experiment: ExperimentDetailType;
 }
 
 const ExperimentDetailInfo = ({ experiment }: Props) => {
@@ -61,12 +61,16 @@ const ExperimentDetailInfo = ({ experiment }: Props) => {
 			</Row>
 			<Row>
 				<Title>현재 모집 인원</Title>
-				<Title>{experiment.count_participants}</Title>
+				<Title>
+					{experiment.count_participants}명 / {experiment.max_participants}명
+				</Title>
 			</Row>
-			<Row>
-				<Title>전체 모집 인원</Title>
-				<Title>{experiment.max_participants}</Title>
-			</Row>
+			{experiment.exp_type === 'OFF' && (
+				<Row>
+					<Title>실험 시간</Title>
+					<Title>{experiment.duration}분</Title>
+				</Row>
+			)}
 		</InfoContainer>
 	);
 };

@@ -1,18 +1,18 @@
-import { GetRequest, PatchRequest, PutRequest } from 'lib/api/requests';
+import { GetRequest, PatchRequest } from 'lib/api/requests';
 import { observable } from 'mobx';
-import { ExperimentType, StatusType } from 'types/experiment';
+import { ExperimentDetailType, ExperimentType, StatusType } from 'types/experiment';
 
 const ExperimentStore = observable({
 	experimentList: [] as ExperimentType[],
 	myExperimentList: [] as ExperimentType[],
-	experimentDetail: {} as ExperimentType | undefined,
+	experimentDetail: {} as ExperimentDetailType | undefined,
 	setExperimentList(experimentList: ExperimentType[]) {
 		this.experimentList = experimentList;
 	},
 	setMyExperimentList(experimentList: ExperimentType[]) {
 		this.myExperimentList = experimentList;
 	},
-	setExperimentDetail(experiment: ExperimentType | undefined) {
+	setExperimentDetail(experiment: ExperimentDetailType | undefined) {
 		this.experimentDetail = experiment;
 	},
 
@@ -45,7 +45,7 @@ const ExperimentStore = observable({
 		let success = false;
 		try {
 			this.setExperimentDetail(undefined);
-			const response = await GetRequest(`experiments/${id}/`);
+			const response = await GetRequest<ExperimentDetailType>(`experiments/${id}/`);
 			this.setExperimentDetail(response.data);
 			// console.error('========= getExperimentDetail Success =========');
 			success = true;
@@ -69,12 +69,13 @@ const ExperimentStore = observable({
 		return success;
 	},
 
-	async patchExperimentDetail(id: number, action: 'join' | 'unjoin') {
+	async patchExperimentDetail(id: number, action: 'join' | 'unjoin', schedule?: string) {
 		let success = false;
 		let code = '';
 		try {
 			const response = await PatchRequest(`experiments/${id}/`, {
 				action,
+				schedule,
 			});
 			code = response.data.code;
 			success = true;

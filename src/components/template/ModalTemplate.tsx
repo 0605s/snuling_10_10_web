@@ -1,6 +1,7 @@
 import { Modal } from '@mui/material';
 import { SNUYELLOW, SNULIGHTYELLOW } from 'lib/constant';
 import { Children, ReactNode } from 'react';
+import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 
 const ModalContainer = styled.div`
@@ -45,11 +46,13 @@ interface Props {
 }
 
 const ModalTemplate = ({ children, isOpen, onClickClose, onClickOK }: Props) => {
+	const { t } = useTranslation();
+
 	return (
 		<Modal open={isOpen} onClose={onClickClose}>
 			<ModalContainer>
 				<ChildrenContainer>{children}</ChildrenContainer>
-				<OKButton onClick={onClickOK}>Confirm</OKButton>
+				<OKButton onClick={onClickOK}>{t('Confirm')}</OKButton>
 			</ModalContainer>
 		</Modal>
 	);

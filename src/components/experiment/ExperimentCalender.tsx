@@ -1,30 +1,30 @@
+import { yyyymmddToDate, dateToYyyymmdd } from 'lib/api/Date';
 import DatePicker from 'react-datepicker';
+import { ko } from 'date-fns/esm/locale';
 import 'react-datepicker/dist/react-datepicker.css';
+import { useTranslation } from 'react-i18next';
 
 interface Props {
-	dateList: string[];
-	selectedDate: Date | null;
-	setSelectedDate: (date: Date | null) => void;
+	schedule: string[];
+	selectedDate: string;
+	setSelectedDate: (date: string) => void;
 }
 
-const ExperimentCalender = ({ dateList, selectedDate, setSelectedDate }: Props) => {
-	const YYYYMMDDtoDate = (date: string) => {
-		let year = date.substring(0, 4);
-		let month = date.substring(4, 6);
-		let day = date.substring(6, 8);
-		return new Date(Number(year), Number(month) - 1, Number(day));
-	};
+const ExperimentCalender = ({ schedule, selectedDate, setSelectedDate }: Props) => {
+	const { i18n } = useTranslation();
+	// registerLocale('ko', ko);
 
 	return (
 		<DatePicker
-			dateFormat="yyyy/MM/dd"
-			selectsStart
-			includeDates={dateList.map((e) => {
-				return YYYYMMDDtoDate(e);
+			includeDates={schedule.map((e) => {
+				return yyyymmddToDate(e);
 			})}
-			selected={selectedDate}
-			onSelect={(date) => setSelectedDate(date)}
+			selected={yyyymmddToDate(selectedDate)}
+			onSelect={(date) => {
+				setSelectedDate(dateToYyyymmdd(date));
+			}}
 			onChange={() => console.log('')}
+			locale={i18n.language === 'ko' ? ko : 'en'}
 			inline
 		/>
 	);

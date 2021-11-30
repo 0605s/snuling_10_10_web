@@ -1,7 +1,6 @@
-import { FilterType, StatusType } from 'types/experiment';
+import { StatusType } from 'types/experiment';
 
-// export const API_BASE_URL = 'http://ec2-3-36-103-144.ap-northeast-2.compute.amazonaws.com/api/';
-export const API_BASE_URL = 'http://jinh0park.pythonanywhere.com/api/';
+export const API_BASE_URL = 'http://ec2-3-36-103-144.ap-northeast-2.compute.amazonaws.com/api/';
 
 export const SNUBLUE = '#0f4c81';
 export const SNULIGHTBLUE = '#8787b7';

@@ -39,6 +39,7 @@ export const langEn = {
 
 	'My Page': 'My Page',
 
+	Confirm: 'Confirm',
 	address:
 		'Department of Linguistics, Seoul National University, Gwanak_1 Gwanak-ro, Seoul 151-745, Korea \n Tel:+82-2-880-6164, Fax:+82-2-882-2451.',
 };

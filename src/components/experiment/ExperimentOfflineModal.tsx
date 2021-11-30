@@ -1,8 +1,10 @@
-import { Stack, Divider, FormControlLabel, Radio } from '@mui/material';
-import { ExperimentType } from 'types/experiment';
+import { Divider, FormControlLabel, Radio, RadioGroup } from '@mui/material';
+import { ExperimentDetailType } from 'types/experiment';
 import styled from 'styled-components';
 import { SubContent } from 'lib/constant/Components';
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
+import ModalTemplate from 'components/template/ModalTemplate';
+import useStore from 'store/Index';
 import ExperimentCalender from './ExperimentCalender';
 
 const Container = styled.div`
@@ -22,55 +24,87 @@ const InnerContainer = styled.div`
 const Column = styled.div`
 	flex: 1;
 	display: flex;
+	flex-direction: column;
 	align-items: center;
-	justify-content: center;
+	justify-content: flex-start;
 `;
 
-const DateStack = styled(Stack)``;
-
 interface Props {
-	experiment: ExperimentType;
+	id: string;
+	isModalVisible: boolean;
+	experiment: ExperimentDetailType;
+	setIsModalVisible: (visible: boolean) => void;
 }
 
-const dateList = ['202111220930', '202111230930', '202111231000'];
+const ExperimentOfflineModal = ({ id, isModalVisible, experiment, setIsModalVisible }: Props) => {
+	const { ExperimentStore, ToastStore } = useStore();
+	const [selectedDate, setSelectedDate] = useState<string>(
+		experiment.schedule_available[0].slice(0, 10),
+	);
+	const [selectedTime, setSelectedTime] = useState<string | null>(null);
 
-const ExperimentOfflineModal = ({ experiment }: Props) => {
-	const [selectedDate, setSelectedDate] = useState<Date | null>(new Date());
+	const onClickOK = useCallback(async () => {
+		console.log(selectedTime);
+		if (!selectedTime) ToastStore.setMessage('error', '실험 참여 희망 시간을 선택해주세요.');
+		else {
+			const res = await ExperimentStore.patchExperimentDetail(
+				parseInt(id, 10),
+				'join',
+				selectedTime,
+			);
+			if (res.success) {
+				ToastStore.setMessage('success', '실험 예약이 완료되었습니다.');
+				setIsModalVisible(false);
+			} else {
+				ToastStore.setMessage('error', '서버에 오류가 있습니다. 관리자에게 문의하세요.');
+			}
+		}
+	}, []);
+
 	return (
-		<Container>
-			<SubContent>참여 가능한 일정을 선택해주세요</SubContent>
-			<InnerContainer>
-				<Column>
-					<ExperimentCalender
-						selectedDate={selectedDate}
-						dateList={dateList}
-						setSelectedDate={setSelectedDate}
-					/>
-				</Column>
-				<Divider orientation="vertical" flexItem />
-				<Column>
-					<DateStack direction="column">
-						{dateList
-							.filter(
-								(e) =>
-									e.slice(0, 8) ===
-									selectedDate?.toISOString().slice(0, 10).replace(/-/g, ''),
-							)
-							.map((e) => {
-								// return <div key={e}>e</div>;
-								return (
-									<FormControlLabel
-										key={e}
-										value={e}
-										control={<Radio />}
-										label={`${e.slice(8, 10)}시 ${e.slice(10, 12)}분`}
-									/>
-								);
-							})}
-					</DateStack>
-				</Column>
-			</InnerContainer>
-		</Container>
+		<ModalTemplate
+			isOpen={isModalVisible}
+			onClickClose={() => setIsModalVisible(false)}
+			onClickOK={onClickOK}
+		>
+			<Container>
+				<SubContent>참여 가능한 일정을 선택해주세요</SubContent>
+				<InnerContainer>
+					<Column>
+						<ExperimentCalender
+							selectedDate={selectedDate}
+							schedule={experiment?.schedule}
+							setSelectedDate={setSelectedDate}
+						/>
+					</Column>
+					<Divider orientation="vertical" flexItem />
+					<Column>
+						<SubContent>
+							{selectedDate?.slice(0, 4)}년 {selectedDate?.slice(5, 7)}월{' '}
+							{selectedDate?.slice(8, 10)}일
+						</SubContent>
+						<RadioGroup
+							value={selectedTime}
+							onChange={(e) => setSelectedTime(e.target.value)}
+						>
+							{experiment?.schedule
+								.filter((e) => e.slice(0, 10) === selectedDate)
+								.map((e) => {
+									return (
+										<FormControlLabel
+											key={e}
+											value={e}
+											control={<Radio />}
+											label={`${e.slice(11, 13)}시 ${e.slice(14, 16)}분 시작`}
+											disabled={experiment?.schedule_reserved.includes(e)}
+										/>
+									);
+								})}
+						</RadioGroup>
+					</Column>
+				</InnerContainer>
+			</Container>
+		</ModalTemplate>
 	);
 };
 

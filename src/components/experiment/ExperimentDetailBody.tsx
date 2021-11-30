@@ -5,7 +5,6 @@ import { SubTitle, Content } from 'lib/constant/Components';
 import CreateIcon from '@mui/icons-material/Create';
 import { Button } from '@mui/material';
 import useStore from 'store/Index';
-import ModalTemplate from 'components/template/ModalTemplate';
 import ExperimentOfflineModal from './ExperimentOfflineModal';
 import ExperimentDetailInfo from './ExperimentDetailInfo';
 import ExperimentOnlineModal from './ExperimentOnlineModal';
@@ -15,7 +14,8 @@ const ExperimentDetailBody = observer(() => {
 	const [code, setCode] = useState<string>('');
 	const { ExperimentStore, UserStore, ToastStore } = useStore();
 	const experiment = ExperimentStore.experimentDetail;
-	const [isCalenderVisible, setIsCalenderVisible] = useState<boolean>(false);
+	const [isOnlineModalVisible, setIsOnlineModalVisible] = useState<boolean>(false);
+	const [isOfflineModalVisible, setIsOfflineModalVisible] = useState<boolean>(false);
 
 	const onClickAssign = async () => {
 		if (UserStore.user === null)
@@ -26,14 +26,14 @@ const ExperimentDetailBody = observer(() => {
 				ToastStore.setMessage('success', '실험에 참여되었습니다.');
 				experiment.is_joined = true;
 				setCode(res.code);
-				setIsCalenderVisible(true);
+				setIsOnlineModalVisible(true);
 			} else
 				ToastStore.setMessage(
 					'error',
 					'서버에 오류가 있습니다. 잠시 뒤에 다시 시도해 주세요.',
 				);
 		} else if (experiment?.exp_type === 'OFF') {
-			setIsCalenderVisible(true);
+			setIsOfflineModalVisible(true);
 		}
 	};
 
@@ -47,17 +47,21 @@ const ExperimentDetailBody = observer(() => {
 					__html: `${experiment.content}`,
 				}}
 			/>
-			<ModalTemplate
-				isOpen={isCalenderVisible}
-				onClickClose={() => setIsCalenderVisible(false)}
-				onClickOK={() => setIsCalenderVisible(false)}
-			>
-				{experiment.exp_type === 'ON' ? (
-					<ExperimentOnlineModal experiment={experiment} code={code} />
-				) : (
-					<ExperimentOfflineModal experiment={experiment} />
-				)}
-			</ModalTemplate>
+			{experiment.exp_type === 'ON' ? (
+				<ExperimentOnlineModal
+					experiment={experiment}
+					code={code}
+					isModalVisible={isOnlineModalVisible}
+					setIsModalVisible={setIsOnlineModalVisible}
+				/>
+			) : (
+				<ExperimentOfflineModal
+					experiment={experiment}
+					id={id}
+					isModalVisible={isOfflineModalVisible}
+					setIsModalVisible={setIsOfflineModalVisible}
+				/>
+			)}
 			<Button
 				disabled={experiment.is_full || experiment.is_joined}
 				onClick={onClickAssign}
