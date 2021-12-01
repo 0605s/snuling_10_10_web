@@ -14,3 +14,25 @@ export const dateToYyyymmdd = (date: Date) => {
 	let sDate = date.getDate() > 9 ? date.getDate().toString() : `0${date.getDate().toString()}`;
 	return `${sYear}-${sMonth}-${sDate}`;
 };
+
+export const dateToString = (date: Date) => {
+	const monthNames = [
+		'January',
+		'February',
+		'March',
+		'April',
+		'May',
+		'June',
+		'July',
+		'August',
+		'September',
+		'October',
+		'November',
+		'December',
+	];
+	let sYear = date.getFullYear().toString();
+	let month = date.getMonth();
+	let sMonth = monthNames[month];
+	let sDate = date.getDate() > 9 ? date.getDate().toString() : `0${date.getDate().toString()}`;
+	return `${sDate} ${sMonth} ${sYear}`;
+};

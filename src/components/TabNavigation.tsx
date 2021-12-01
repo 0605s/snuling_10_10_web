@@ -35,7 +35,7 @@ const MenuItem = styled(Tab)`
 `;
 
 const tabs: { title: string; url: string }[] = [
-	{ title: 'schedule', url: '/schedule' },
+	{ title: 'news', url: '/news' },
 	{ title: 'colloquium', url: '/colloquium' },
 	{ title: 'seminar', url: '/seminar' },
 	{ title: 'Experiments', url: '/experiment' },
@@ -48,7 +48,7 @@ const TabNavigation = () => {
 
 	const getLocation = () => {
 		const firstPath = location.pathname.split('/')[1];
-		if (['schedule', 'colloquium', 'seminar', 'experiment'].includes(firstPath))
+		if (['news', 'colloquium', 'seminar', 'experiment'].includes(firstPath))
 			return `/${firstPath}`;
 		return false;
 	};

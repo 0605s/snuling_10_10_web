@@ -20,18 +20,18 @@ const PostStore = observable({
 		this.currentPost = currentPost;
 	},
 
-	async getPostList(type: 'NEWS' | 'SEMINAR' | 'COLLOQUIUM') {
+	async getPostList(type: 'seminar' | 'colloquium' | 'news') {
 		let success = false;
 		try {
-			const response = await GetRequest(`posts/`, { post_type: type });
+			const response = await GetRequest(`posts/`, { post_type: type.toUpperCase() });
 			switch (type) {
-				case 'NEWS':
+				case 'news':
 					this.setNewsList(response.data);
 					break;
-				case 'COLLOQUIUM':
+				case 'colloquium':
 					this.setColloquiumList(response.data);
 					break;
-				case 'SEMINAR':
+				case 'seminar':
 					this.setSeminarList(response.data);
 					break;
 				default:

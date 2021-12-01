@@ -1,59 +1,72 @@
 import { ExperimentType } from 'types/experiment';
 import styled from 'styled-components';
-import { Content, SubTitle, SubContent } from 'lib/constant/Components';
+import { Content, SubContent } from 'lib/constant/Components';
 import { useHistory } from 'react-router';
 import { useCallback } from 'react';
 import { Chip, Stack } from '@mui/material';
 import PublicIcon from '@mui/icons-material/Public';
 import CloudOffIcon from '@mui/icons-material/CloudOff';
-import { SNUGRAY } from 'lib/constant';
+import { SNUBLUE, SNUGRAY } from 'lib/constant';
+import PeopleIcon from '@mui/icons-material/People';
 
-const BoxContainer = styled.div`
+const BoxContainer = styled.div<{ available: boolean }>`
+	position: relative;
 	width: 100%;
-	height: 250px;
+	height: 350px;
 	padding: 0px 20px;
 	border-radius: 10px;
-	box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
 	display: flex;
 	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	position: relative;
+	box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+	transition: all 0.3s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+	cursor: pointer;
+	background-color: white;
 	:hover {
-		opacity: 0.7;
-		cursor: pointer;
+		color: ${(props) => (props.available ? 'green' : SNUGRAY)};
+		box-shadow: 0 6px 35px rgba(24, 25, 31, 0.15);
+		transform: translateY(-4px);
 	}
-`;
-
-const TitleLabel = styled(Content)`
-	text-align: center;
-	height: 4rem;
 `;
 
 const OnOffChip = styled(Chip)`
 	font-size: 1rem;
 	font-weight: 400;
 	position: absolute;
-	top: 5%;
-	right: 5%;
+	top: 20px;
+	left: 20px;
 	z-index: 2;
+`;
+
+const TitleLabel = styled(Content)`
+	margin-top: 120px;
+	height: 100px;
 `;
 
 const LanguageChip = styled(Chip)``;
 
-const BottomBar = styled.div<{ isFull: boolean }>`
+const ParticipantChip = styled(Chip)`
+	position: absolute;
+	bottom: 30px;
+	left: 20px;
+	width: 50%;
+`;
+
+const TopBar = styled.div<{ available: boolean }>`
 	position: absolute;
 	bottom: 0px;
+	left: 0px;
 	width: 100%;
-	height: 50px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+	height: 10px;
 	border-radius: 0px 0px 10px 10px;
-	background-color: ${(props) => (props.isFull ? SNUGRAY : 'green')};
-	color: white;
-	font-size: 1.3 rem;
-	font-weight: 500;
+	background-color: ${(props) => (props.available ? 'green' : SNUGRAY)};
+`;
+
+const BottomLabel = styled.div<{ available: boolean }>`
+	position: absolute;
+	bottom: 35px;
+	right: 20px;
+	color: ${(props) => (props.available ? 'green' : SNUGRAY)};
+	text-align: right;
 `;
 
 interface Props {
@@ -68,7 +81,12 @@ const ExperimentBox = ({ item }: Props) => {
 	}, []);
 
 	return (
-		<BoxContainer onClick={onClickBox} data-aos="fade-up">
+		<BoxContainer
+			onClick={onClickBox}
+			data-aos="fade-up"
+			available={!item.is_joined && !item.is_full}
+		>
+			<TopBar available={!item.is_joined && !item.is_full} />
 			<TitleLabel>{item.title}</TitleLabel>
 			{item.exp_type === 'ON' ? (
 				<OnOffChip icon={<PublicIcon />} label="ONLINE" />
@@ -78,23 +96,17 @@ const ExperimentBox = ({ item }: Props) => {
 			<Stack direction="row" spacing={1} style={{ marginTop: 20 }}>
 				{item.lingual &&
 					item.lingual.split(',').map((lang) => {
-						return (
-							<LanguageChip
-								label={`# ${lang}`}
-								key={lang}
-								variant="outlined"
-								size="small"
-							/>
-						);
+						return <LanguageChip label={`${lang}`} key={lang} variant="filled" />;
 					})}
 			</Stack>
-			<BottomBar isFull={item.is_full}>
-				{item.is_full
-					? '모집 완료'
-					: `모집중 ${item.count_participants}명 / ${item.max_participants}명
-`}
-			</BottomBar>
-			{/* <Content>{item.reward_price}</Content> */}
+			<ParticipantChip
+				icon={<PeopleIcon />}
+				label={`${item.count_participants}명 / ${item.max_participants}명`}
+				variant="outlined"
+			/>
+			<BottomLabel available={!item.is_joined && !item.is_full}>
+				{item.is_joined ? '참여 완료' : item.is_full ? '모집 마감' : `모집중 >`}
+			</BottomLabel>
 		</BoxContainer>
 	);
 };

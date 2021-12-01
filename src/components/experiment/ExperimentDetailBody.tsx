@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { observer } from 'mobx-react';
 import { useParams } from 'react-router-dom';
-import { SubTitle, Content } from 'lib/constant/Components';
+import { Title, Content } from 'lib/constant/Components';
 import CreateIcon from '@mui/icons-material/Create';
 import { Button } from '@mui/material';
 import useStore from 'store/Index';
@@ -45,7 +45,7 @@ const ExperimentDetailBody = observer(() => {
 	if (!experiment) return null;
 	return (
 		<>
-			<SubTitle>{experiment.title}</SubTitle>
+			<Title>{experiment.title}</Title>
 			<ExperimentDetailInfo experiment={experiment} />
 			<ContentContainer
 				dangerouslySetInnerHTML={{

@@ -78,19 +78,15 @@ const App = observer(() => {
 							exact
 							render={() => <PostList postType="seminar" />}
 						/>
-						{/* <Route path="/seminar/:postId" exact component={PostDetail} /> */}
+						<Route path="/seminar/:postId" exact component={PostDetail} />
 						<Route
 							path="/colloquium"
 							exact
 							render={() => <PostList postType="colloquium" />}
 						/>
-						{/* <Route path="/colloquium/:postId" exact component={PostDetail} /> */}
-						<Route
-							path="/schedule"
-							exact
-							render={() => <PostList postType="schedule" />}
-						/>
-						{/* <Route path="/schedule/:postId" exact component={PostDetail} /> */}
+						<Route path="/colloquium/:postId" exact component={PostDetail} />
+						<Route path="/news" exact render={() => <PostList postType="news" />} />
+						<Route path="/schedule/:postId" exact component={PostDetail} />
 						<Route path="/login" exact component={Login} />
 						<Route path="/signup" exact component={SignUp} />
 						<Route path="/mypage" exact component={MyPage} />

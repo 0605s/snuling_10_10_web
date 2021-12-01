@@ -1,6 +1,9 @@
 export type PostType = {
 	id: number;
 	title: string;
+	subTitle?: string;
+	thumbnail: string;
+	content: string;
 	pub_date: Date;
 	modified_date: Date;
 	tags: string;
