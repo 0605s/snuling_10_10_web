@@ -8,11 +8,12 @@ import LeftMenuTemplate from './LeftMenuTemplate';
 const PageTemplateContainer = styled.div`
 	flex: 1;
 	width: 100vw;
+	min-height: 100vh;
 	display: flex;
-	flex-direction: row;
+	flex-direction: column;
 	box-sizing: border-box;
-	background-color: '#B0B0B0';
-	padding: 50px max(calc((100vw - 1000px) / 2), 5vw);
+	background-color: #fafafa;
+	z-index: 10;
 `;
 
 const ChildrenContainer = styled.div`
@@ -21,15 +22,23 @@ const ChildrenContainer = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	padding: 50px max(calc((100vw - 1100px) / 2), 5vw);
 	/* border-left: 0.5px solid black; */
 `;
 
+const TitleContainer = styled.div`
+	display: flex;
+	justify-content: center;
+	height: 150px;
+	padding: 0px max(calc((100vw - 1100px) / 2), 5vw);
+`;
+
 const TitleLabel = styled(SubTitle)`
-	height: 70px;
-	margin-bottom: 30px;
-	border-bottom: 5px solid ${SNUBLUE};
-	border-radius: 2px;
+	width: fit-content;
 	text-align: center;
+	margin-top: 50px;
+	border-bottom: 5px solid ${SNUBLUE};
+	font-size: 2.5rem;
 `;
 
 interface Props {
@@ -42,11 +51,13 @@ const PageTemplate = ({ title, menu, children }: Props) => {
 	const { t } = useTranslation();
 	return (
 		<PageTemplateContainer>
-			{menu && <LeftMenuTemplate menu={menu} />}
-			<ChildrenContainer data-aos="fade-up">
-				{title && <TitleLabel>{t(title)}</TitleLabel>}
-				{children && children}
-			</ChildrenContainer>
+			{/* {menu && <LeftMenuTemplate menu={menu} />} */}
+			{title && (
+				<TitleContainer>
+					<TitleLabel>{t(title)}</TitleLabel>
+				</TitleContainer>
+			)}
+			<ChildrenContainer data-aos="fade-up">{children && children}</ChildrenContainer>
 		</PageTemplateContainer>
 	);
 };

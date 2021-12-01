@@ -10,10 +10,11 @@ import { SubContent } from 'lib/constant/Components';
 import ExperimentFilterButton from './ExperimentFilterButton';
 
 const FilterContainer = styled.div`
-	width: 90%;
-	padding: 0px 10px;
+	width: 100%;
+	padding: 20px;
 	margin-bottom: 30px;
 	border-radius: 10px;
+	background-color: #d5d5d5;
 	/* border: 0.5px solid gray; */
 `;
 

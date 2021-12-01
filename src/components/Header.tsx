@@ -12,7 +12,7 @@ const HeaderContainer = styled.div`
 	width: 100vw;
 	height: 30px;
 	box-sizing: border-box;
-	padding: 10px max(calc((100vw - 1000px) / 2), 5vw);
+	padding: 10px max(calc((100vw - 1100px) / 2), 5vw);
 	display: flex;
 	flex-direction: row;
 	align-items: center;
@@ -68,14 +68,14 @@ const Header = observer(() => {
 						>
 							{t('login')}
 						</LoginButton>
-						<LoginButton
+						{/* <LoginButton
 							variant="text"
 							onClick={() => history.push('/signup')}
 							size="small"
 							color="inherit"
 						>
 							{t('Sign Up')}
-						</LoginButton>
+						</LoginButton> */}
 					</>
 				)}
 			</Stack>

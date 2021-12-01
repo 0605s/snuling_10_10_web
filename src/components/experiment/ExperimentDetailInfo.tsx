@@ -71,6 +71,20 @@ const ExperimentDetailInfo = ({ experiment }: Props) => {
 					<Title>{experiment.duration}분</Title>
 				</Row>
 			)}
+			{experiment.exp_type === 'ON' && experiment.is_joined && (
+				<>
+					<Row>
+						<Title>실험 진행 링크</Title>
+						<Title onClick={() => window.open(experiment.link, '_blank')}>
+							{experiment.link}
+						</Title>
+					</Row>
+					<Row>
+						<Title>실험 확인 코드</Title>
+						<Title>{experiment.code}</Title>
+					</Row>
+				</>
+			)}
 		</InfoContainer>
 	);
 };

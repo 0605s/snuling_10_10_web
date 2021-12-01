@@ -4,11 +4,11 @@ import { Grid } from '@mui/material';
 import ExperimentBox from 'components/experiment/ExperimentBox';
 
 const ExperimentMyBody = () => {
-	const { ExperimentStore, LoadingStore } = useStore();
+	const { ExperimentStore } = useStore();
 
 	return (
 		<>
-			{!LoadingStore.loading && ExperimentStore.myExperimentList.length > 0 ? (
+			{ExperimentStore.myExperimentList.length > 0 ? (
 				<Grid container rowSpacing={2} columnSpacing={3} alignItems="center">
 					{ExperimentStore.myExperimentList.map((item) => {
 						return (

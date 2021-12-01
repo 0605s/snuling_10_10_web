@@ -1,4 +1,4 @@
-import { GetRequest, PatchRequest } from 'lib/api/requests';
+import { GetRequest, PatchRequest, PostRequest } from 'lib/api/requests';
 import { observable } from 'mobx';
 import { ExperimentDetailType, ExperimentType, StatusType } from 'types/experiment';
 
@@ -32,7 +32,6 @@ const ExperimentStore = observable({
 				exp_type: expType,
 			});
 			this.setExperimentList(response.data);
-			// console.error('========= getExperimentList Success =========');
 			success = true;
 		} catch (e) {
 			console.error('========= getExperimentList Error =========');
@@ -47,7 +46,6 @@ const ExperimentStore = observable({
 			this.setExperimentDetail(undefined);
 			const response = await GetRequest<ExperimentDetailType>(`experiments/${id}/`);
 			this.setExperimentDetail(response.data);
-			// console.error('========= getExperimentDetail Success =========');
 			success = true;
 		} catch (e) {
 			console.error('========= getExperimentDetail Error =========');
@@ -84,6 +82,18 @@ const ExperimentStore = observable({
 			console.error(e);
 		}
 		return { success, code };
+	},
+
+	async postExperimentSubmit(id: number) {
+		let success = false;
+		try {
+			const response = await PostRequest(`experiments/${id}/submit/`);
+			if (response) success = true;
+		} catch (e) {
+			console.log('========= postExperimentSubmit Error =========');
+			console.log(e);
+		}
+		return success;
 	},
 });
 

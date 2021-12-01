@@ -5,6 +5,7 @@ import { SubContent } from 'lib/constant/Components';
 import { useCallback, useState } from 'react';
 import ModalTemplate from 'components/template/ModalTemplate';
 import useStore from 'store/Index';
+import { useHistory } from 'react-router';
 import ExperimentCalender from './ExperimentCalender';
 
 const Container = styled.div`
@@ -37,14 +38,14 @@ interface Props {
 }
 
 const ExperimentOfflineModal = ({ id, isModalVisible, experiment, setIsModalVisible }: Props) => {
+	const history = useHistory();
 	const { ExperimentStore, ToastStore } = useStore();
 	const [selectedDate, setSelectedDate] = useState<string>(
 		experiment.schedule_available[0].slice(0, 10),
 	);
 	const [selectedTime, setSelectedTime] = useState<string | null>(null);
 
-	const onClickOK = useCallback(async () => {
-		console.log(selectedTime);
+	const onClickOK = async () => {
 		if (!selectedTime) ToastStore.setMessage('error', '실험 참여 희망 시간을 선택해주세요.');
 		else {
 			const res = await ExperimentStore.patchExperimentDetail(
@@ -55,11 +56,12 @@ const ExperimentOfflineModal = ({ id, isModalVisible, experiment, setIsModalVisi
 			if (res.success) {
 				ToastStore.setMessage('success', '실험 예약이 완료되었습니다.');
 				setIsModalVisible(false);
+				history.push('/mypage');
 			} else {
 				ToastStore.setMessage('error', '서버에 오류가 있습니다. 관리자에게 문의하세요.');
 			}
 		}
-	}, []);
+	};
 
 	return (
 		<ModalTemplate

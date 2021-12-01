@@ -7,9 +7,6 @@ const PostStore = observable({
 	colloquiumList: [] as PostType[],
 	seminarList: [] as PostType[],
 	currentPost: {} as PostType | undefined,
-	// currentNews: {} as PostType | undefined,
-	// currentColloquium: {} as PostType | undefined,
-	// currentSeminar: {} as PostType | undefined,
 	setNewsList(newsList: PostType[]) {
 		this.newsList = newsList;
 	},
@@ -22,15 +19,6 @@ const PostStore = observable({
 	setCurrentPost(currentPost: PostType | undefined) {
 		this.currentPost = currentPost;
 	},
-	// setCurrentNews(currentNews: PostType | undefined) {
-	// 	this.currentNews = currentNews;
-	// },
-	// setCurrentColloquium(currentColloquium: PostType | undefined) {
-	// 	this.currentColloquium = currentColloquium;
-	// },
-	// setCurrentSeminar(currentSeminar: PostType | undefined) {
-	// 	this.currentSeminar = currentSeminar;
-	// },
 
 	async getPostList(type: 'NEWS' | 'SEMINAR' | 'COLLOQUIUM') {
 		let success = false;

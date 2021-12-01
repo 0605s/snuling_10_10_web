@@ -10,19 +10,17 @@ import Header from 'components/Header';
 import { observer } from 'mobx-react';
 import { Alert, Box, CssBaseline, Snackbar, ThemeProvider } from '@mui/material';
 import { createTheme } from '@mui/material/styles';
-import People from 'pages/People';
-import ResearchProjects from 'pages/ResearchProjects';
 import Footer from 'components/Footer';
 import useStore from 'store/Index';
 import ExperimentDetail from 'pages/Experiment/ExperimentDetail';
 import TabNavigation from 'components/TabNavigation';
 import { BrowserRouter } from 'react-router-dom';
-import ExperimentMy from 'pages/Experiment/ExperimentMy';
 import SignUp from 'pages/SignUp';
-import EventsNews from 'pages/EventsNews';
 import TokenHeader from 'lib/api/TokenHeader';
-import MyPage from 'pages/MyPage';
+import MyPage from 'pages/MyPage/MyPage';
 import { SNUBLUE, SNULIGHTBLUE, SNULIGHTYELLOW, SNUYELLOW } from 'lib/constant';
+import PostList from 'pages/PostList';
+import PostDetail from 'pages/PostDetail';
 
 const theme = createTheme({
 	palette: {
@@ -70,21 +68,29 @@ const App = observer(() => {
 				<CssBaseline />
 				<Header />
 				<TabNavigation />
-				<Box sx={{ flex: 1, minHeight: '100vh' }}>
+				<Box sx={{ flex: 1, minHeight: '80vh' }}>
 					<Switch>
 						<Route path="/" exact component={Home} />
 						<Route path="/experiment" exact component={ExperimentMain} />
-						<Route path="/experiment/my" exact component={ExperimentMy} />
 						<Route path="/experiment/:id" exact component={ExperimentDetail} />
-						<Route path="/people" exact component={People} />
-						<Route path="/event" exact>
-							<Redirect to="/event/schedule" />
-						</Route>
-						<Route path="/event/:type" exact component={EventsNews} />
-						<Route path="/research" exact>
-							<Redirect to="/research/themes" />
-						</Route>
-						<Route path="/research/:type" exact component={ResearchProjects} />
+						<Route
+							path="/seminar"
+							exact
+							render={() => <PostList postType="seminar" />}
+						/>
+						{/* <Route path="/seminar/:postId" exact component={PostDetail} /> */}
+						<Route
+							path="/colloquium"
+							exact
+							render={() => <PostList postType="colloquium" />}
+						/>
+						{/* <Route path="/colloquium/:postId" exact component={PostDetail} /> */}
+						<Route
+							path="/schedule"
+							exact
+							render={() => <PostList postType="schedule" />}
+						/>
+						{/* <Route path="/schedule/:postId" exact component={PostDetail} /> */}
 						<Route path="/login" exact component={Login} />
 						<Route path="/signup" exact component={SignUp} />
 						<Route path="/mypage" exact component={MyPage} />

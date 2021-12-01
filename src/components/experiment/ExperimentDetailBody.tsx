@@ -5,9 +5,14 @@ import { SubTitle, Content } from 'lib/constant/Components';
 import CreateIcon from '@mui/icons-material/Create';
 import { Button } from '@mui/material';
 import useStore from 'store/Index';
+import styled from 'styled-components';
 import ExperimentOfflineModal from './ExperimentOfflineModal';
 import ExperimentDetailInfo from './ExperimentDetailInfo';
 import ExperimentOnlineModal from './ExperimentOnlineModal';
+
+const ContentContainer = styled.div`
+	width: 90%;
+`;
 
 const ExperimentDetailBody = observer(() => {
 	const { id } = useParams<{ id: string }>();
@@ -42,19 +47,18 @@ const ExperimentDetailBody = observer(() => {
 		<>
 			<SubTitle>{experiment.title}</SubTitle>
 			<ExperimentDetailInfo experiment={experiment} />
-			<Content
+			<ContentContainer
 				dangerouslySetInnerHTML={{
 					__html: `${experiment.content}`,
 				}}
 			/>
-			{experiment.exp_type === 'ON' ? (
-				<ExperimentOnlineModal
-					experiment={experiment}
-					code={code}
-					isModalVisible={isOnlineModalVisible}
-					setIsModalVisible={setIsOnlineModalVisible}
-				/>
-			) : (
+			<ExperimentOnlineModal
+				experiment={experiment}
+				code={code}
+				isModalVisible={isOnlineModalVisible}
+				setIsModalVisible={setIsOnlineModalVisible}
+			/>
+			{experiment.schedule && (
 				<ExperimentOfflineModal
 					experiment={experiment}
 					id={id}

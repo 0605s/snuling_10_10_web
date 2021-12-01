@@ -1,29 +1,16 @@
+import styled from 'styled-components';
 import React, { useState } from 'react';
 import { observer } from 'mobx-react';
 import { useHistory } from 'react-router';
 import useStore from 'store/Index';
 import { useTranslation } from 'react-i18next';
-import { Typography, Avatar, TextField, Button, FormGroup, useFormControl } from '@mui/material';
-import PersonIcon from '@mui/icons-material/Person';
-import styled from 'styled-components';
-import { RowContainer } from 'lib/constant/Components';
+import { TextField, Button } from '@mui/material';
 import { checkEmail } from 'lib/reg';
-
-const LoginContainer = styled(RowContainer)`
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-`;
-
-const FormContainer = styled.div`
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	width: 50%;
-`;
+import LoginTemplate from 'components/template/LoginTemplate';
+import { SubTitle } from 'lib/constant/Components';
 
 const Login = observer(() => {
-	const { UserStore, ToastStore, TokenStore } = useStore();
+	const { UserStore, ToastStore } = useStore();
 	const history = useHistory();
 	const { t } = useTranslation();
 	const [email, setEmail] = useState<string>('');
@@ -57,57 +44,44 @@ const Login = observer(() => {
 	};
 
 	return (
-		<LoginContainer>
-			<Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-				<PersonIcon />
-			</Avatar>
-			<Typography component="h1" variant="h5">
-				{t('login')}
-			</Typography>
-			<FormContainer>
-				<TextField
-					margin="normal"
-					required
-					id="email"
-					label={t('Email Address')}
-					name="email"
-					autoComplete="email"
-					fullWidth
-					autoFocus
-					onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
-						setEmail(event.target.value)
-					}
-					error={emailError}
-				/>
-				<TextField
-					margin="normal"
-					required
-					name="password"
-					label={t('Password')}
-					type="password"
-					id="password"
-					fullWidth
-					autoComplete="current-password"
-					onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
-						setPw(event.target.value)
-					}
-					error={pwError}
-					onKeyPress={(e) => {
-						if (e.key === 'Enter') onSubmit();
-					}}
-				/>
-			</FormContainer>
-			{/* <FormControlLabel
-					control={<Checkbox value="remember" color="primary" />}
-					label="Remember me"
-				/> */}
+		<LoginTemplate>
+			<SubTitle>{t('login')}</SubTitle>
+			<TextField
+				margin="normal"
+				required
+				id="email"
+				label={t('Email Address')}
+				name="email"
+				autoComplete="email"
+				fullWidth
+				autoFocus
+				onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
+					setEmail(event.target.value)
+				}
+				error={emailError}
+			/>
+			<TextField
+				margin="normal"
+				required
+				name="password"
+				label={t('Password')}
+				type="password"
+				id="password"
+				fullWidth
+				autoComplete="current-password"
+				onChange={(event: React.ChangeEvent<HTMLInputElement>) => setPw(event.target.value)}
+				error={pwError}
+				onKeyPress={(e) => {
+					if (e.key === 'Enter') onSubmit();
+				}}
+			/>
 			<Button variant="text" size="medium" onClick={() => history.push('/signup')}>
 				계정이 없으신가요?
 			</Button>
-			<Button type="submit" size="medium" variant="contained" onClick={onSubmit}>
+			<Button type="submit" size="medium" variant="contained" onClick={onSubmit} fullWidth>
 				{t('login')}
 			</Button>
-		</LoginContainer>
+		</LoginTemplate>
 	);
 });
 

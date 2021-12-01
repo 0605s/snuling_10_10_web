@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 
 const FooterContainer = styled(RowContainer)`
-	background-color: ${SNUBLUE};
+	background-color: #666666;
 	height: 200px;
 	padding: 0px 10vw;
 	display: flex;

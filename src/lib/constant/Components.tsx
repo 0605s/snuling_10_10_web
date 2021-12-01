@@ -7,7 +7,7 @@ export const RowContainer = styled.div<{ backgroundImg?: string }>`
 	align-items: center;
 	justify-content: center;
 	flex-direction: column;
-	padding: 10px max(calc((100vw - 1200px) / 2), 5vw);
+	padding: 10px max(calc((100vw - 1100px) / 2), 5vw);
 	/* ${window.screen.width > 1100 ? Math.floor((window.screen.width - 1100) / 2) : '5vw'}; */
 	background-image: url(${(props) => props.backgroundImg});
 `;

@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import Button from '@mui/material/Button';
 import PageTemplate from 'components/template/PageTemplate';
-import { ExperimentMenus } from 'lib/menus';
 import { observer } from 'mobx-react';
 import { useEffect } from 'react';
 import { useHistory } from 'react-router';
@@ -32,7 +31,7 @@ const ExperimentDetail = observer(() => {
 	}, []);
 
 	return (
-		<PageTemplate menu={ExperimentMenus}>
+		<PageTemplate>
 			<BackButton onClick={() => history.goBack()} startIcon={<ArrowBackIosIcon />}>
 				목록으로 가기
 			</BackButton>

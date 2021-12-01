@@ -7,12 +7,13 @@ const MenuContainer = styled.div`
 	width: 100vw;
 	height: 90px;
 	box-sizing: border-box;
-	padding: 0px max(calc((100vw - 1000px) / 2), 5vw);
+	position: relative;
+	padding: 0px max(calc((100vw - 1100px) / 2), 5vw);
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
 	box-shadow: rgba(33, 35, 38, 0.3) 0px 10px 10px -10px;
-	z-index: 10;
+	z-index: 20;
 `;
 
 const MenuTab = styled(Tabs)`
@@ -34,11 +35,10 @@ const MenuItem = styled(Tab)`
 `;
 
 const tabs: { title: string; url: string }[] = [
-	{ title: 'People', url: '/people' },
-	{ title: 'Events & News', url: '/event' },
-	{ title: 'Research & Projects', url: '/research' },
+	{ title: 'schedule', url: '/schedule' },
+	{ title: 'colloquium', url: '/colloquium' },
+	{ title: 'seminar', url: '/seminar' },
 	{ title: 'Experiments', url: '/experiment' },
-	// { title: 'Contact Us', url: '/contact' },
 ];
 
 const TabNavigation = () => {
@@ -48,7 +48,7 @@ const TabNavigation = () => {
 
 	const getLocation = () => {
 		const firstPath = location.pathname.split('/')[1];
-		if (['people', 'event', 'research', 'experiment'].includes(firstPath))
+		if (['schedule', 'colloquium', 'seminar', 'experiment'].includes(firstPath))
 			return `/${firstPath}`;
 		return false;
 	};
