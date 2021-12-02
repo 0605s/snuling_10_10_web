@@ -90,7 +90,7 @@ const HomeMenu = () => {
 								src={`${process.env.PUBLIC_URL}/img/default_${item.title}.jpg`}
 							/>
 							{getIcon(item.title)}
-							<TitleLabel>{t(item.title)}</TitleLabel>
+							<TitleLabel>{t(item.title).toUpperCase()}</TitleLabel>
 						</MenuItem>
 					</Grid>
 				);
