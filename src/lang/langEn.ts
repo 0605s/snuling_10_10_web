@@ -7,6 +7,7 @@ export const langEn = {
 	quit: 'withdrawal',
 
 	Experiments: 'Experiments',
+	experiments: 'experiments',
 	seeOnlyAvailable: 'Show available experiments only',
 	status: 'Status',
 	language: 'Language',
@@ -41,5 +42,6 @@ export const langEn = {
 
 	Confirm: 'Confirm',
 	address:
-		'Department of Linguistics, Seoul National University, Gwanak_1 Gwanak-ro, Seoul 151-745, Korea \n Tel:+82-2-880-6164, Fax:+82-2-882-2451.',
+		'Department of Linguistics, Seoul National University, Gwanak_1 Gwanak-ro, Seoul 151-745, Korea',
+	contacts: 'Email: linguist@snu.ac.kr Tel:+82-2-880-6164, Fax:+82-2-882-2451.',
 };

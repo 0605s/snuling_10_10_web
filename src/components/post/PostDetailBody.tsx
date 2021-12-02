@@ -29,7 +29,8 @@ const PostDetailBody = observer(() => {
 		<>
 			<BannerImage
 				src={
-					post.thumbnail || `${process.env.PUBLIC_URL}/img/default_${post.post_type}.jpg`
+					post.thumbnail ||
+					`${process.env.PUBLIC_URL}/img/default_${post.post_type.toLowerCase()}.jpg`
 				}
 			/>
 			<TitleBanner>{post.title}</TitleBanner>

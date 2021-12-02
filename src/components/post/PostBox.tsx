@@ -66,7 +66,8 @@ const PostBox = ({ post }: Props) => {
 		<Container onClick={() => history.push(`/${post.post_type.toLowerCase()}/${post.id}`)}>
 			<ImageContainer
 				src={
-					post.thumbnail || `${process.env.PUBLIC_URL}/img/default_${post.post_type}.jpg`
+					post.thumbnail ||
+					`${process.env.PUBLIC_URL}/img/default_${post.post_type.toLowerCase()}.jpg`
 				}
 			/>
 			<LabelContainer>

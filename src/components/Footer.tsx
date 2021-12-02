@@ -1,21 +1,21 @@
-import { SNUBLUE, SNUYELLOW } from 'lib/constant';
+import { SNUBLUE, SNUYELLOW, SNUGRAY } from 'lib/constant';
 import { RowContainer, SubContent } from 'lib/constant/Components';
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 
 const FooterContainer = styled(RowContainer)`
-	background-color: #666666;
 	height: 200px;
 	padding: 0px 10vw;
 	display: flex;
 	flex-direction: row;
-	border-top: 15px ${SNUYELLOW} solid;
+	border-top: 15px ${SNUBLUE} solid;
 `;
 
 const ColumnContainer = styled.div<{ type: 'left' | 'right' }>`
 	flex: ${(props) => (props.type === 'right' ? 1 : 2)};
 	display: flex;
 	flex-direction: column;
+	align-items: center;
 	justify-content: center;
 	align-items: ${(props) => props.type === 'right' && 'flex-end'};
 `;
@@ -30,11 +30,12 @@ const SnulingLogo = styled.img`
 	}
 `;
 
-const FooterLabel = styled(SubContent)`
-	color: white;
+const FooterLabel = styled.div`
+	font-size: 14px;
 	text-align: left;
 	line-height: 25px;
 	text-decoration: none;
+	color: ${SNUGRAY};
 `;
 
 const siteList: { name: string; url: string }[] = [
@@ -48,12 +49,14 @@ const Footer = () => {
 		<FooterContainer>
 			<ColumnContainer type="left">
 				<SnulingLogo
-					src={`${process.env.PUBLIC_URL}/img/snuling_logo_white.png`}
+					src={`${process.env.PUBLIC_URL}/img/snuling_logo.png`}
 					alt="snuling_logo"
 				/>
 				<FooterLabel>{t('address')}</FooterLabel>
+				<FooterLabel>{t('contacts')}</FooterLabel>
+				{/* <FooterLabel>{t('copyright')}</FooterLabel> */}
 			</ColumnContainer>
-			<ColumnContainer type="right">
+			{/* <ColumnContainer type="right">
 				<FooterLabel>관련 사이트</FooterLabel>
 				{siteList.map((item) => {
 					return (
@@ -62,7 +65,7 @@ const Footer = () => {
 						</a>
 					);
 				})}
-			</ColumnContainer>
+			</ColumnContainer> */}
 		</FooterContainer>
 	);
 };

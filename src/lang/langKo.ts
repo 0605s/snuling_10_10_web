@@ -7,6 +7,7 @@ export const langKo = {
 	quit: '회원 탈퇴',
 
 	Experiments: '실험 참여',
+	experiments: '실험 참여',
 	seeOnlyAvailable: '참여 가능한 실험만 보기',
 	status: '실험 상태',
 	language: '언어',
@@ -40,6 +41,6 @@ export const langKo = {
 	'My Page': '마이페이지',
 
 	Confirm: '확인',
-	address:
-		'서울대학교 언어학과, 서울특별시 관악구 관악로 1, 2동 108호 (151-745). linguist@snu.ac.kr \n 전화:(02)880-6164, 팩스:(02)882-2451.',
+	address: `서울대학교 언어학과, 서울특별시 관악구 관악로 1, 2동 108호 (151-745).`,
+	contacts: `Email: linguist@snu.ac.kr 전화:(02)880-6164, 팩스:(02)882-2451.`,
 };

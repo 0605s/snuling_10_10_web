@@ -12,7 +12,7 @@ const tabs: { title: string; url: string }[] = [
 	{ title: 'news', url: '/news' },
 	{ title: 'colloquium', url: '/colloquium' },
 	{ title: 'seminar', url: '/seminar' },
-	{ title: 'Experiments', url: '/experiment' },
+	{ title: 'experiments', url: '/experiment' },
 ];
 
 const MenuItem = styled.div`
@@ -51,6 +51,7 @@ const TitleLabel = styled.div`
 	opacity: 1;
 	z-index: 10;
 	transition: all 0.3s;
+	margin-top: 20px;
 `;
 
 const HomeMenu = () => {
@@ -59,12 +60,12 @@ const HomeMenu = () => {
 	const getIcon = (type: string) => {
 		switch (type) {
 			case 'news':
-				return <MenuBookIcon sx={{ fontSize: 'inherit', zIndex: 3 }} />;
+				return <MenuBookIcon sx={{ fontSize: 40, zIndex: 3 }} />;
 			case 'colloquium':
 				return <AccountBalanceIcon sx={{ fontSize: 40, zIndex: 3 }} />;
 			case 'seminar':
 				return <SchoolIcon sx={{ fontSize: 40, zIndex: 3 }} />;
-			case 'Experiments':
+			case 'experiments':
 				return <ScienceIcon sx={{ fontSize: 40, zIndex: 3 }} />;
 			default:
 				return null;
@@ -79,7 +80,10 @@ const HomeMenu = () => {
 						md={3}
 						xs={6}
 						key={item.title}
-						onClick={() => history.push(item.url)}
+						onClick={() => {
+							history.push(item.url);
+							window.scrollTo({ top: 0, behavior: 'smooth' });
+						}}
 					>
 						<MenuItem>
 							<MenuImage

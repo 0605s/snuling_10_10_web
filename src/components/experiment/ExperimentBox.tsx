@@ -113,7 +113,7 @@ const ExperimentBox = ({ item }: Props) => {
 				label={`${item.count_participants}명 / ${item.max_participants}명`}
 				variant="outlined"
 			/>
-			<BottomLabel type={type}>{type}</BottomLabel>
+			<BottomLabel type={type}>{type.toUpperCase()}</BottomLabel>
 		</BoxContainer>
 	);
 };
