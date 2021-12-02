@@ -84,13 +84,13 @@ const ExperimentStore = observable({
 		return { success, code };
 	},
 
-	async postExperimentSubmit(id: number) {
+	async postExperimentComplete(id: number) {
 		let success = false;
 		try {
-			const response = await PostRequest(`experiments/${id}/submit/`);
+			const response = await PostRequest(`experiments/${id}/complete/`);
 			if (response) success = true;
 		} catch (e) {
-			console.log('========= postExperimentSubmit Error =========');
+			console.log('========= postExperimentComplete Error =========');
 			console.log(e);
 		}
 		return success;

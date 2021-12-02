@@ -3,10 +3,10 @@ import { observer } from 'mobx-react';
 import { useParams } from 'react-router-dom';
 import { Title, Content } from 'lib/constant/Components';
 import CreateIcon from '@mui/icons-material/Create';
+import CheckIcon from '@mui/icons-material/Check';
 import { Button } from '@mui/material';
 import useStore from 'store/Index';
 import styled from 'styled-components';
-import ExperimentOfflineModal from './ExperimentOfflineModal';
 import ExperimentDetailInfo from './ExperimentDetailInfo';
 import ExperimentOnlineModal from './ExperimentOnlineModal';
 
@@ -14,22 +14,21 @@ const ContentContainer = styled.div`
 	width: 90%;
 `;
 
-const ExperimentDetailBody = observer(() => {
+const ExperimentOnlineDetailBody = observer(() => {
 	const { id } = useParams<{ id: string }>();
 	const [code, setCode] = useState<string>('');
 	const { ExperimentStore, UserStore, ToastStore } = useStore();
 	const experiment = ExperimentStore.experimentDetail;
 	const [isOnlineModalVisible, setIsOnlineModalVisible] = useState<boolean>(false);
-	const [isOfflineModalVisible, setIsOfflineModalVisible] = useState<boolean>(false);
 
 	const onClickAssign = async () => {
 		if (UserStore.user === null)
 			ToastStore.setMessage('info', '실험에 참여하시려면 먼저 로그인을 해주세요');
-		else if (experiment?.exp_type === 'ON') {
+		else {
 			const res = await ExperimentStore.patchExperimentDetail(parseInt(id, 10), 'join');
 			if (res.success) {
 				ToastStore.setMessage('success', '실험에 참여되었습니다.');
-				experiment.is_joined = true;
+				// experiment.is_joined = true;
 				setCode(res.code);
 				setIsOnlineModalVisible(true);
 			} else
@@ -37,9 +36,15 @@ const ExperimentDetailBody = observer(() => {
 					'error',
 					'서버에 오류가 있습니다. 잠시 뒤에 다시 시도해 주세요.',
 				);
-		} else if (experiment?.exp_type === 'OFF') {
-			setIsOfflineModalVisible(true);
 		}
+	};
+
+	const onClickComplete = async () => {
+		const res = await ExperimentStore.postExperimentComplete(parseInt(id, 10));
+		if (res) {
+			ToastStore.setMessage('success', '실험 참여가 확인되었습니다.');
+		} else
+			ToastStore.setMessage('error', '서버에 오류가 있습니다. 잠시 뒤에 다시 시도해 주세요.');
 	};
 
 	if (!experiment) return null;
@@ -58,14 +63,6 @@ const ExperimentDetailBody = observer(() => {
 				isModalVisible={isOnlineModalVisible}
 				setIsModalVisible={setIsOnlineModalVisible}
 			/>
-			{experiment.schedule && (
-				<ExperimentOfflineModal
-					experiment={experiment}
-					id={id}
-					isModalVisible={isOfflineModalVisible}
-					setIsModalVisible={setIsOfflineModalVisible}
-				/>
-			)}
 			<Button
 				disabled={experiment.is_full || experiment.is_joined}
 				onClick={onClickAssign}
@@ -78,8 +75,13 @@ const ExperimentDetailBody = observer(() => {
 					? '모집 마감'
 					: '실험 참여하기'}
 			</Button>
+			{experiment.is_joined && (
+				<Button onClick={onClickComplete} endIcon={<CheckIcon />} variant="contained">
+					실험를 완료했다면 여기를 눌러주세요
+				</Button>
+			)}
 		</>
 	);
 });
 
-export default ExperimentDetailBody;
+export default ExperimentOnlineDetailBody;

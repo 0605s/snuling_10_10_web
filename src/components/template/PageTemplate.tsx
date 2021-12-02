@@ -23,6 +23,7 @@ const ChildrenContainer = styled.div`
 	flex-direction: column;
 	align-items: center;
 	padding: 50px max(calc((100vw - 1100px) / 2), 5vw);
+	box-sizing: content-box;
 `;
 
 const TitleContainer = styled.div`
@@ -67,7 +68,7 @@ const PageTemplate = ({ title, subTitle, menu, children }: Props) => {
 					{/* {subTitle && <SubTitleLabel>{t(subTitle)}</SubTitleLabel>} */}
 				</TitleContainer>
 			)}
-			<ChildrenContainer data-aos="fade-up">{children && children}</ChildrenContainer>
+			<ChildrenContainer data-aos="fade-up">{children}</ChildrenContainer>
 		</PageTemplateContainer>
 	);
 };

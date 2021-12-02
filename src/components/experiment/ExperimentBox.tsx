@@ -9,7 +9,7 @@ import CloudOffIcon from '@mui/icons-material/CloudOff';
 import { SNUBLUE, SNUGRAY } from 'lib/constant';
 import PeopleIcon from '@mui/icons-material/People';
 
-const BoxContainer = styled.div<{ available: boolean }>`
+const BoxContainer = styled.div<{ type: string }>`
 	position: relative;
 	width: 100%;
 	height: 350px;
@@ -18,11 +18,12 @@ const BoxContainer = styled.div<{ available: boolean }>`
 	display: flex;
 	flex-direction: column;
 	box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
-	transition: all 0.3s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+	transition: all 0.3s;
 	cursor: pointer;
 	background-color: white;
 	:hover {
-		color: ${(props) => (props.available ? 'green' : SNUGRAY)};
+		color: ${(props) =>
+			props.type === 'joined' ? SNUBLUE : props.type === 'available' ? 'green' : SNUGRAY};
 		box-shadow: 0 6px 35px rgba(24, 25, 31, 0.15);
 		transform: translateY(-4px);
 	}
@@ -51,21 +52,23 @@ const ParticipantChip = styled(Chip)`
 	width: 50%;
 `;
 
-const TopBar = styled.div<{ available: boolean }>`
+const TopBar = styled.div<{ type: string }>`
 	position: absolute;
 	bottom: 0px;
 	left: 0px;
 	width: 100%;
 	height: 10px;
 	border-radius: 0px 0px 10px 10px;
-	background-color: ${(props) => (props.available ? 'green' : SNUGRAY)};
+	background-color: ${(props) =>
+		props.type === 'joined' ? SNUBLUE : props.type === 'available' ? 'green' : SNUGRAY}; ;
 `;
 
-const BottomLabel = styled.div<{ available: boolean }>`
+const BottomLabel = styled.div<{ type: string }>`
 	position: absolute;
 	bottom: 35px;
 	right: 20px;
-	color: ${(props) => (props.available ? 'green' : SNUGRAY)};
+	color: ${(props) =>
+		props.type === 'joined' ? SNUBLUE : props.type === 'available' ? 'green' : SNUGRAY};
 	text-align: right;
 `;
 
@@ -80,13 +83,19 @@ const ExperimentBox = ({ item }: Props) => {
 		window.scrollTo({ top: 0, behavior: 'smooth' });
 	}, []);
 
+	const type: string = item.is_joined
+		? 'joined'
+		: item.status === 'P' && !item.is_full
+		? 'available'
+		: item.status === 'C'
+		? 'closed'
+		: item.status === 'U'
+		? 'unpublised'
+		: 'unavailable';
+
 	return (
-		<BoxContainer
-			onClick={onClickBox}
-			data-aos="fade-up"
-			available={!item.is_joined && !item.is_full}
-		>
-			<TopBar available={!item.is_joined && !item.is_full} />
+		<BoxContainer onClick={onClickBox} data-aos="fade-up" type={type}>
+			<TopBar type={type} />
 			<TitleLabel>{item.title}</TitleLabel>
 			{item.exp_type === 'ON' ? (
 				<OnOffChip icon={<PublicIcon />} label="ONLINE" />
@@ -104,9 +113,7 @@ const ExperimentBox = ({ item }: Props) => {
 				label={`${item.count_participants}명 / ${item.max_participants}명`}
 				variant="outlined"
 			/>
-			<BottomLabel available={!item.is_joined && !item.is_full}>
-				{item.is_joined ? '참여 완료' : item.is_full ? '모집 마감' : `모집중 >`}
-			</BottomLabel>
+			<BottomLabel type={type}>{type}</BottomLabel>
 		</BoxContainer>
 	);
 };

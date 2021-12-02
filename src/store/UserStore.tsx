@@ -11,6 +11,37 @@ const UserStore = observable({
 		this.user = user;
 	},
 
+	async sendEmail(email: string) {
+		let success = false;
+		try {
+			const response = await PostRequest('signup/validate-send/', {
+				email,
+			});
+			if (response) success = true;
+		} catch (e: any) {
+			console.error('========= SendEmail Error =========');
+			console.error(e);
+		}
+		return success;
+	},
+
+	async validateEmail(email: string, code: string) {
+		let success = false;
+		let error = '';
+		try {
+			const response = await PostRequest('signup/validate/', {
+				email,
+				code,
+			});
+			error = response.data.error;
+			if (response) success = true;
+		} catch (e: any) {
+			console.error('========= ValidateEmail Error =========');
+			console.error(e);
+		}
+		return { success, error };
+	},
+
 	async signUp(email: string, pw: string) {
 		let success = false;
 		let code = 200;
@@ -20,10 +51,6 @@ const UserStore = observable({
 				email,
 				pw,
 			});
-			// if (response.data.error === 'Duplicated Email') {
-			// 	code = 402;
-			// 	throw new Error();
-			// }
 			token = response.data.Token;
 			code = response.status;
 			success = true;

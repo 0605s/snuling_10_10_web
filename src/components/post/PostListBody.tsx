@@ -1,6 +1,6 @@
 import useStore from 'store/Index';
 import { observer } from 'mobx-react';
-import { Grid } from '@mui/material';
+import { Grid, Skeleton } from '@mui/material';
 import PostBox from './PostBox';
 
 interface Props {
@@ -8,7 +8,7 @@ interface Props {
 }
 
 const PostListBody = observer(({ postType }: Props) => {
-	const { PostStore } = useStore();
+	const { PostStore, LoadingStore } = useStore();
 	const postList = PostStore[`${postType}List`];
 	if (!postList) return null;
 	return (
@@ -16,7 +16,11 @@ const PostListBody = observer(({ postType }: Props) => {
 			{postList.map((item) => {
 				return (
 					<Grid item key={item.title} xs={6} md={6}>
+						{/* {LoadingStore.loading ? (
+							<Skeleton variant="rectangular" height={400} />
+						) : ( */}
 						<PostBox post={item} key={item.title} />
+						{/* )} */}
 					</Grid>
 				);
 			})}

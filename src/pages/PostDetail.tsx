@@ -5,11 +5,7 @@ import { useEffect } from 'react';
 import { useParams } from 'react-router';
 import useStore from 'store/Index';
 
-interface Props {
-	postType: 'seminar' | 'colloquium' | 'schedule';
-}
-
-const PostDetail = ({ postType }: Props) => {
+const PostDetail = () => {
 	const { postId } = useParams<{ postId: string }>();
 	const { PostStore, LoadingStore } = useStore();
 
@@ -20,14 +16,20 @@ const PostDetail = ({ postType }: Props) => {
 	};
 
 	useEffect(() => {
+		LoadingStore.setLoading(true);
 		getInit();
 	}, []);
 
-	// if (!PostStore.currentPost) return null;
 	return (
-		<PageTemplate>
-			{LoadingStore.loading ? <CircularProgress /> : <PostDetailBody />}
-		</PageTemplate>
+		<>
+			{LoadingStore.loading ? (
+				<CircularProgress />
+			) : (
+				<PageTemplate>
+					<PostDetailBody />
+				</PageTemplate>
+			)}
+		</>
 	);
 };
 

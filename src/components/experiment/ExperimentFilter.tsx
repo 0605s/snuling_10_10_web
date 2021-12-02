@@ -25,6 +25,7 @@ const UpperContainer = styled.div<{ filterVisible: boolean }>`
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	cursor: pointer;
 `;
 
 const LowerContainer = styled.div`
@@ -32,6 +33,7 @@ const LowerContainer = styled.div`
 	padding: 20px;
 	border-radius: 10px;
 	background-color: #ffffff;
+	transition: height 0.25s linear;
 `;
 
 const FilterLabel = styled(SubContent)`

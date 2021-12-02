@@ -86,7 +86,7 @@ const App = observer(() => {
 						/>
 						<Route path="/colloquium/:postId" exact component={PostDetail} />
 						<Route path="/news" exact render={() => <PostList postType="news" />} />
-						<Route path="/schedule/:postId" exact component={PostDetail} />
+						<Route path="/news/:postId" exact component={PostDetail} />
 						<Route path="/login" exact component={Login} />
 						<Route path="/signup" exact component={SignUp} />
 						<Route path="/mypage" exact component={MyPage} />

@@ -32,15 +32,20 @@ const SignUp = observer(() => {
 		} else if (!checkEmail(email.trim())) {
 			ToastStore.setMessage('warning', '올바른 형식의 이메일을 입력해주세요');
 			setEmailError(true);
-		} else setEmailError(false);
-		setCodeInputVisible(true);
+		} else {
+			UserStore.sendEmail(email);
+			setEmailError(false);
+			setCodeInputVisible(true);
+		}
 	};
 
-	const onClickCheckCode = () => {
-		if (false) {
+	const onClickCheckCode = async () => {
+		const res = await UserStore.validateEmail(email, code);
+		if (res.error) {
 			ToastStore.setMessage('warning', '인증번호가 일치하지 않습니다. 다시 확인해주세요.');
 			setCodeError(true);
 		} else {
+			setCodeError(false);
 			setCodeCheck(true);
 		}
 	};
@@ -113,7 +118,7 @@ const SignUp = observer(() => {
 									onClick={onClickCheckCode}
 									disabled={codeCheck}
 								>
-									{codeCheck ? '인증 완료' : '인증하기'}
+									{codeCheck ? '인증 성공' : '인증하기'}
 								</Button>
 							</InputAdornment>
 						),

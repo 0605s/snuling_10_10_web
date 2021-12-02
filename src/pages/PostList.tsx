@@ -24,7 +24,8 @@ const PostList = observer(({ postType }: Props) => {
 
 	return (
 		<PageTemplate title={postType}>
-			{LoadingStore.loading ? <CircularProgress /> : <PostListBody postType={postType} />}
+			{/* {LoadingStore.loading ? <CircularProgress /> : <PostListBody postType={postType} />} */}
+			<PostListBody postType={postType} />
 		</PageTemplate>
 	);
 });
