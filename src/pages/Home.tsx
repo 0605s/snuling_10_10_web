@@ -5,7 +5,7 @@ import { SNUBLUE, SNUGRAY, SNULIGHTBLUE } from 'lib/constant';
 
 const Banner = styled.div`
 	width: 100vw;
-	height: 30vh;
+	height: 40vh;
 	/* background-size: cover;k */
 	/* background-image: linear-gradient(SNUBLUE, pink); */
 	color: white;
