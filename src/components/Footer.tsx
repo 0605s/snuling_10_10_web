@@ -9,6 +9,10 @@ const FooterContainer = styled(RowContainer)`
 	display: flex;
 	flex-direction: row;
 	border-top: 15px ${SNUBLUE} solid;
+	@media screen and (max-width: 800px) {
+		padding: 0px 5vw;
+		height: 150px;
+	}
 `;
 
 const ColumnContainer = styled.div<{ type: 'left' | 'right' }>`
@@ -28,20 +32,22 @@ const SnulingLogo = styled.img`
 	:hover {
 		cursor: pointer;
 	}
+	@media screen and (max-width: 800px) {
+		width: 150px;
+		margin-bottom: 10px;
+	}
 `;
 
 const FooterLabel = styled.div`
 	font-size: 14px;
-	text-align: left;
 	line-height: 25px;
-	text-decoration: none;
 	color: ${SNUGRAY};
+	text-align: center;
+	@media screen and (max-width: 800px) {
+		font-size: 10px;
+		line-height: 16px;
+	}
 `;
-
-const siteList: { name: string; url: string }[] = [
-	{ name: '언어학과 홈페이지', url: 'http://hosting01.snu.ac.kr/~linguist/' },
-	{ name: '서울대학교 인문대학', url: 'http://humanities.snu.ac.kr' },
-];
 
 const Footer = () => {
 	const { t } = useTranslation();
@@ -56,16 +62,6 @@ const Footer = () => {
 				<FooterLabel>{t('contacts')}</FooterLabel>
 				{/* <FooterLabel>{t('copyright')}</FooterLabel> */}
 			</ColumnContainer>
-			{/* <ColumnContainer type="right">
-				<FooterLabel>관련 사이트</FooterLabel>
-				{siteList.map((item) => {
-					return (
-						<a href={item.url} key={item.name} target="_blank" rel="noreferrer">
-							<FooterLabel>{item.name}</FooterLabel>
-						</a>
-					);
-				})}
-			</ColumnContainer> */}
 		</FooterContainer>
 	);
 };

@@ -16,12 +16,18 @@ const Container = styled.div`
 		box-shadow: 0 6px 35px rgba(24, 25, 31, 0.15);
 		transform: translateY(-4px);
 	}
+	@media screen and (max-width: 800px) {
+		height: 300px;
+	}
 `;
 
 const ImageContainer = styled.img`
 	width: 100%;
 	height: 200px;
 	object-fit: cover;
+	@media screen and (max-width: 800px) {
+		height: 100px;
+	}
 `;
 
 const LabelContainer = styled.div`

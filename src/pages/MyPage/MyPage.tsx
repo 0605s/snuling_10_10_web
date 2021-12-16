@@ -44,7 +44,7 @@ const MyPage = observer(() => {
 
 	if (UserStore.user === null) return null;
 	return (
-		<PageTemplate title="My Info" menu={[]}>
+		<PageTemplate title="My Info">
 			<Button variant="contained" onClick={onClickLogout}>
 				{t('logout')}
 			</Button>

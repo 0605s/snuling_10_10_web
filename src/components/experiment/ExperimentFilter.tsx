@@ -36,16 +36,34 @@ const LowerContainer = styled.div`
 	transition: height 0.25s linear;
 `;
 
+const RowContainer = styled.div`
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	@media screen and (max-width: 800px) {
+		flex-direction: column;
+		align-items: flex-start;
+	}
+`;
+
 const FilterLabel = styled(SubContent)`
 	width: 20%;
 	text-align: right;
 	font-weight: 500;
 	padding-right: 20px;
 	border-right: 0.5px solid black;
+	@media screen and (max-width: 800px) {
+		width: 100%;
+		text-align: left;
+		border-right: none;
+	}
 `;
 
 const ButtonList = styled(Stack)`
-	margin: 20px 0px;
+	margin: 20px 0px 20px 10px;
+	@media screen and (max-width: 800px) {
+		margin: 20px 0px;
+	}
 `;
 
 const ExperimentFilter = observer(() => {
@@ -122,45 +140,51 @@ const ExperimentFilter = observer(() => {
 			</UpperContainer>
 			{filterVisible && (
 				<LowerContainer>
-					<ButtonList spacing={2} direction="row" alignItems="center">
+					<RowContainer>
 						<FilterLabel>{t('status')}</FilterLabel>
-						{statusFilterList.map((item) => {
-							return (
-								<ExperimentFilterButton
-									name={item.name}
-									isSelected={statusFilter === item.value}
-									onClick={() => onClickStatusButton(item.value)}
-									key={item.name}
-								/>
-							);
-						})}
-					</ButtonList>
-					<ButtonList spacing={2} direction="row" alignItems="center">
+						<ButtonList spacing={2} direction="row" alignItems="center">
+							{statusFilterList.map((item) => {
+								return (
+									<ExperimentFilterButton
+										name={item.name}
+										isSelected={statusFilter === item.value}
+										onClick={() => onClickStatusButton(item.value)}
+										key={item.name}
+									/>
+								);
+							})}
+						</ButtonList>
+					</RowContainer>
+					<RowContainer>
 						<FilterLabel>{t('language')}</FilterLabel>
-						{lingualFilterList.map((item) => {
-							return (
-								<ExperimentFilterButton
-									name={item.name}
-									isSelected={lingualFilter.includes(item.value)}
-									onClick={() => onClickLingualButton(item.value)}
-									key={item.name}
-								/>
-							);
-						})}
-					</ButtonList>
-					<ButtonList spacing={2} direction="row" alignItems="center">
+						<ButtonList spacing={2} direction="row" alignItems="center">
+							{lingualFilterList.map((item) => {
+								return (
+									<ExperimentFilterButton
+										name={item.name}
+										isSelected={lingualFilter.includes(item.value)}
+										onClick={() => onClickLingualButton(item.value)}
+										key={item.name}
+									/>
+								);
+							})}
+						</ButtonList>
+					</RowContainer>
+					<RowContainer>
 						<FilterLabel>{t('experiment type')}</FilterLabel>
-						{expTypeFilterList.map((item) => {
-							return (
-								<ExperimentFilterButton
-									name={item.name}
-									isSelected={expTypeFilter === item.value}
-									onClick={() => onClickExpTypeButton(item.value)}
-									key={item.name}
-								/>
-							);
-						})}
-					</ButtonList>
+						<ButtonList spacing={2} direction="row" alignItems="center">
+							{expTypeFilterList.map((item) => {
+								return (
+									<ExperimentFilterButton
+										name={item.name}
+										isSelected={expTypeFilter === item.value}
+										onClick={() => onClickExpTypeButton(item.value)}
+										key={item.name}
+									/>
+								);
+							})}
+						</ButtonList>
+					</RowContainer>
 					<FormControlLabel
 						control={
 							<Checkbox

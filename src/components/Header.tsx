@@ -19,6 +19,9 @@ const HeaderContainer = styled.div`
 	justify-content: flex-end;
 	background-color: ${SNUBLUE};
 	color: white;
+	@media screen and (max-width: 800px) {
+		justify-content: center;
+	}
 `;
 
 const LoginButton = styled(Button)`
@@ -48,7 +51,9 @@ const Header = observer(() => {
 				</Button>
 				{UserStore.user !== null ? (
 					<>
-						<EmailLabel>{UserStore.user?.username}</EmailLabel>
+						{window.screen.width > 400 && (
+							<EmailLabel>{UserStore.user?.username}</EmailLabel>
+						)}
 						<LoginButton
 							variant="text"
 							onClick={() => history.push('/mypage')}
@@ -68,14 +73,6 @@ const Header = observer(() => {
 						>
 							{t('login')}
 						</LoginButton>
-						{/* <LoginButton
-							variant="text"
-							onClick={() => history.push('/signup')}
-							size="small"
-							color="inherit"
-						>
-							{t('Sign Up')}
-						</LoginButton> */}
 					</>
 				)}
 			</Stack>

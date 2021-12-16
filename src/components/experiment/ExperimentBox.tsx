@@ -27,6 +27,9 @@ const BoxContainer = styled.div<{ type: string }>`
 		box-shadow: 0 6px 35px rgba(24, 25, 31, 0.15);
 		transform: translateY(-4px);
 	}
+	@media screen and (max-width: 800px) {
+		height: 250px;
+	}
 `;
 
 const OnOffChip = styled(Chip)`
@@ -41,15 +44,27 @@ const OnOffChip = styled(Chip)`
 const TitleLabel = styled(Content)`
 	margin-top: 120px;
 	height: 100px;
+	@media screen and (max-width: 800px) {
+		margin-top: 80px;
+		height: 50px;
+	}
 `;
 
-const LanguageChip = styled(Chip)``;
+const LanguageList = styled(Stack)`
+	margin-top: 20px;
+	@media screen and (max-width: 800px) {
+		margin-top: 10px;
+	}
+`;
 
 const ParticipantChip = styled(Chip)`
 	position: absolute;
 	bottom: 30px;
 	left: 20px;
 	width: 50%;
+	@media screen and (max-width: 800px) {
+		width: fit-content;
+	}
 `;
 
 const TopBar = styled.div<{ type: string }>`
@@ -102,12 +117,12 @@ const ExperimentBox = ({ item }: Props) => {
 			) : (
 				<OnOffChip icon={<CloudOffIcon />} label="OFFLINE" />
 			)}
-			<Stack direction="row" spacing={1} style={{ marginTop: 20 }}>
+			<LanguageList direction="row" spacing={1}>
 				{item.lingual &&
 					item.lingual.split(',').map((lang) => {
-						return <LanguageChip label={`${lang}`} key={lang} variant="filled" />;
+						return <Chip label={`${lang}`} key={lang} variant="filled" />;
 					})}
-			</Stack>
+			</LanguageList>
 			<ParticipantChip
 				icon={<PeopleIcon />}
 				label={`${item.count_participants}명 / ${item.max_participants}명`}

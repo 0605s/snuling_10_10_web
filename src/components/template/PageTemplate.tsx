@@ -18,12 +18,14 @@ const PageTemplateContainer = styled.div`
 
 const ChildrenContainer = styled.div`
 	flex: 1;
-	padding: 0px 2vw;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	padding: 50px max(calc((100vw - 1100px) / 2), 5vw);
 	box-sizing: content-box;
+	@media screen and (max-width: 800px) {
+		padding: 30px 5vw;
+	}
 `;
 
 const TitleContainer = styled.div`
@@ -40,32 +42,25 @@ const TitleLabel = styled(SubTitle)`
 	padding: 20px;
 	border-bottom: 5px solid ${SNUBLUE};
 	font-size: 2.5rem;
+	@media screen and (max-width: 800px) {
+		font-size: 25px;
+		padding: 10px;
+		border-bottom: 3px solid ${SNUBLUE};
+	}
 `;
-
-// const SubTitleLabel = styled(Content)`
-// 	width: fit-content;
-// 	text-align: center;
-// 	margin-top: 30px;
-// 	color: ${SNUGRAY};
-// 	font-size: 1.3rem;
-// `;
 
 interface Props {
 	title?: string;
-	subTitle?: string;
-	menu?: { title: string; domain: string }[];
 	children?: ReactNode;
 }
 
-const PageTemplate = ({ title, subTitle, menu, children }: Props) => {
+const PageTemplate = ({ title, children }: Props) => {
 	const { t } = useTranslation();
 	return (
 		<PageTemplateContainer>
-			{/* {menu && <LeftMenuTemplate menu={menu} />} */}
 			{title && (
 				<TitleContainer>
 					<TitleLabel>{t(title)}</TitleLabel>
-					{/* {subTitle && <SubTitleLabel>{t(subTitle)}</SubTitleLabel>} */}
 				</TitleContainer>
 			)}
 			<ChildrenContainer data-aos="fade-up">{children}</ChildrenContainer>

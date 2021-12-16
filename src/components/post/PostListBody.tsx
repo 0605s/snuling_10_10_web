@@ -15,7 +15,7 @@ const PostListBody = observer(({ postType }: Props) => {
 		<Grid container rowSpacing={2} columnSpacing={3} alignItems="center">
 			{postList.map((item) => {
 				return (
-					<Grid item key={item.title} xs={6} md={6}>
+					<Grid item key={item.title} xs={12} md={6}>
 						{/* {LoadingStore.loading ? (
 							<Skeleton variant="rectangular" height={400} />
 						) : ( */}

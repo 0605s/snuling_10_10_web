@@ -11,6 +11,9 @@ const InfoContainer = styled.div`
 	background-color: white;
 	margin: 30px 0px;
 	padding: 10px 20px;
+	@media screen and (max-width: 800px) {
+		width: 80%;
+	}
 `;
 
 const Row = styled.div`
@@ -24,6 +27,9 @@ const Title = styled(SubContent)`
 	padding-right: 20px;
 	text-align: right;
 	color: grey;
+	@media screen and (max-width: 800px) {
+		width: 40%;
+	}
 `;
 
 const Item = styled(SubContent)`
