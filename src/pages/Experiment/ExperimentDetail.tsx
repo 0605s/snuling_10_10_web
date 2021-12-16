@@ -10,6 +10,7 @@ import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import { CircularProgress } from '@mui/material';
 import ExperimentDetailOnlineBody from 'components/experiment/ExperimentDetailOnlineBody';
 import ExperimentDetailOfflineBody from 'components/experiment/ExperimentDetailOfflineBody';
+import { useTranslation } from 'react-i18next';
 
 const BackButton = styled(Button)`
 	align-self: flex-start;
@@ -18,6 +19,7 @@ const BackButton = styled(Button)`
 const ExperimentDetail = observer(() => {
 	const { id } = useParams<{ id: string }>();
 	const history = useHistory();
+	const { t } = useTranslation();
 	const { ExperimentStore, LoadingStore } = useStore();
 
 	const getInit = async () => {
@@ -33,7 +35,7 @@ const ExperimentDetail = observer(() => {
 	return (
 		<PageTemplate>
 			<BackButton onClick={() => history.goBack()} startIcon={<ArrowBackIosIcon />}>
-				목록으로 가기
+				{t('go back')}
 			</BackButton>
 			{LoadingStore.loading ? (
 				<CircularProgress />

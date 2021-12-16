@@ -136,7 +136,7 @@ const ExperimentFilter = observer(() => {
 				onClick={() => setFilterVisible(!filterVisible)}
 				filterVisible={filterVisible}
 			>
-				{filterVisible ? '필터 숨기기' : '필터 보기'}
+				{t(filterVisible ? 'hide filter' : 'show filter')}
 				<TuneIcon sx={{ marginLeft: '10px' }} />
 			</UpperContainer>
 			{filterVisible && (

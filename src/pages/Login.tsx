@@ -64,7 +64,7 @@ const Login = observer(() => {
 				margin="normal"
 				required
 				name="password"
-				label={t('Password')}
+				label={t('password')}
 				type="password"
 				id="password"
 				fullWidth
@@ -76,7 +76,7 @@ const Login = observer(() => {
 				}}
 			/>
 			<Button variant="text" size="medium" onClick={() => history.push('/signup')}>
-				계정이 없으신가요?
+				{t('no account')}
 			</Button>
 			<Button type="submit" size="medium" variant="contained" onClick={onSubmit} fullWidth>
 				{t('login')}

@@ -17,6 +17,9 @@ const LeftContainer = styled.div`
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	@media screen and (max-width: 800px) {
+		display: none;
+	}
 `;
 
 const SnulingLogo = styled.img`
@@ -31,6 +34,9 @@ const RightContainer = styled.div`
 	justify-content: center;
 	align-items: center;
 	padding-left: 40px;
+	@media screen and (max-width: 800px) {
+		padding-left: 0px;
+	}
 `;
 /* border: 1px solid ${SNUBLUE}; */
 

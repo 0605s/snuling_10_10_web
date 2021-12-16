@@ -93,7 +93,7 @@ const SignUp = observer(() => {
 								onClick={onClickEmail}
 								disabled={codeInputVisible}
 							>
-								{codeInputVisible ? '메일 발송 완료' : '인증 메일 발송'}
+								{t(codeInputVisible ? 'email sent' : 'send email')}
 							</Button>
 						</InputAdornment>
 					),
@@ -128,7 +128,7 @@ const SignUp = observer(() => {
 			<TextField
 				margin="normal"
 				required
-				label={t('Password')}
+				label={t('password')}
 				type="password"
 				fullWidth
 				onChange={(event: React.ChangeEvent<HTMLInputElement>) => setPw(event.target.value)}
@@ -138,7 +138,7 @@ const SignUp = observer(() => {
 				margin="normal"
 				required
 				name="password"
-				label={t('Password')}
+				label={t('confirm password')}
 				type="password"
 				id="password"
 				fullWidth

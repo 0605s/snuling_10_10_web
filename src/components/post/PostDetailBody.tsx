@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import { Button } from '@mui/material';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import { useHistory } from 'react-router';
+import { useTranslation } from 'react-i18next';
 
 const BackButton = styled(Button)`
 	align-self: flex-start;
@@ -33,6 +34,7 @@ const TitleBanner = styled(Title)`
 
 const PostDetailBody = observer(() => {
 	const history = useHistory();
+	const { t } = useTranslation();
 	const { PostStore } = useStore();
 	const post = PostStore.currentPost;
 
@@ -40,7 +42,7 @@ const PostDetailBody = observer(() => {
 	return (
 		<>
 			<BackButton onClick={() => history.goBack()} startIcon={<ArrowBackIosIcon />}>
-				목록으로 가기
+				{t('go back')}
 			</BackButton>
 			<BannerImage
 				src={

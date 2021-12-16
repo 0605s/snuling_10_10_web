@@ -1,13 +1,21 @@
 export const langEn = {
+	'SNU Linguistics 10-10 project': 'SNU Linguistics\n10-10 project',
+
 	login: 'login',
 	'Sign Up': 'Sign Up',
 	'Email Address': 'Email Address',
-	Password: 'Password',
+	password: 'Password',
+	'confirm password': 'Confirm Password',
 	logout: 'logout',
 	quit: 'withdrawal',
+	'no account': 'No Account?',
+	'send email': 'Send Email',
+	'email sent': 'Email Sent',
 
 	Experiments: 'Experiments',
 	experiments: 'experiments',
+	'show filter': 'Show Filter',
+	'close filter': 'Hide Filter',
 	seeOnlyAvailable: 'Show available experiments only',
 	status: 'Status',
 	language: 'Language',
@@ -18,6 +26,7 @@ export const langEn = {
 	Unpublished: 'Unpublished',
 	Closed: 'Closed',
 
+	'go back': 'Go Back',
 	korean: 'Korean',
 	english: 'English',
 	japanese: 'Japanese',
@@ -30,13 +39,10 @@ export const langEn = {
 
 	People: 'People',
 
-	'Events & News': 'Events & News',
 	schedule: 'Schedule',
 	colloquium: 'Colloquium',
 	seminar: 'Seminar',
 	news: 'News',
-
-	'Research & Projects': 'Research & Projects',
 
 	'My Page': 'My Page',
 

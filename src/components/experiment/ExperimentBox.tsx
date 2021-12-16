@@ -8,6 +8,7 @@ import PublicIcon from '@mui/icons-material/Public';
 import CloudOffIcon from '@mui/icons-material/CloudOff';
 import { SNUBLUE, SNUGRAY } from 'lib/constant';
 import PeopleIcon from '@mui/icons-material/People';
+import { useTranslation } from 'react-i18next';
 
 const BoxContainer = styled.div<{ type: string }>`
 	position: relative;
@@ -93,6 +94,7 @@ interface Props {
 
 const ExperimentBox = ({ item }: Props) => {
 	const history = useHistory();
+	const { t } = useTranslation();
 	const onClickBox = useCallback(() => {
 		history.push(`/experiment/${item.id}`);
 		window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -120,7 +122,7 @@ const ExperimentBox = ({ item }: Props) => {
 			<LanguageList direction="row" spacing={1}>
 				{item.lingual &&
 					item.lingual.split(',').map((lang) => {
-						return <Chip label={`${lang}`} key={lang} variant="filled" />;
+						return <Chip label={t(lang).toUpperCase()} key={lang} variant="filled" />;
 					})}
 			</LanguageList>
 			<ParticipantChip

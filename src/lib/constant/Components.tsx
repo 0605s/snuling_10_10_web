@@ -25,6 +25,9 @@ export const SubTitle = styled.div`
 	font-family: 'YoonGothic';
 	font-weight: 400;
 	font-size: 2rem;
+	@media screen and (max-width: 800px) {
+		font-size: 26px;
+	}
 `;
 
 export const Content = styled.div`

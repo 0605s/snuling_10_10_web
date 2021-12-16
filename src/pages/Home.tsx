@@ -1,16 +1,15 @@
 import styled from 'styled-components';
-import { RowContainer, Title } from 'lib/constant/Components';
+import { Title } from 'lib/constant/Components';
 import HomeMenu from 'components/home/HomeMenu';
-import { SNUBLUE, SNUGRAY, SNULIGHTBLUE } from 'lib/constant';
+import { useTranslation } from 'react-i18next';
 
 const Banner = styled.div`
 	width: 100vw;
 	height: 50vh;
-	/* color: white; */
 	background: url('${process.env.PUBLIC_URL}/img/snuling.jpg');
 	background-size: cover;
 	background-position: center center;
-	filter: brightness(0.3);
+	filter: brightness(0.5);
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -29,10 +28,11 @@ const BannerLabel = styled(Title)`
 `;
 
 const Home = () => {
+	const { t } = useTranslation();
 	return (
 		<div data-aos="fade">
 			<Banner />
-			<BannerLabel>{`서울대학교 언어학과\nSNU 10-10 프로젝트`}</BannerLabel>
+			<BannerLabel>{t('SNU Linguistics 10-10 project')}</BannerLabel>
 			<HomeMenu />
 		</div>
 	);

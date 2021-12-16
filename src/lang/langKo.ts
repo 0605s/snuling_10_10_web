@@ -1,13 +1,21 @@
 export const langKo = {
+	'SNU Linguistics 10-10 project': '서울대학교 언어학과\nSNU 10-10 프로젝트',
+
 	login: '로그인',
 	'Sign Up': '회원가입',
 	'Email Address': '이메일',
-	Password: '패스워드',
+	password: '패스워드',
+	'confirm password': '패스워드 확인',
 	logout: '로그아웃',
 	quit: '회원 탈퇴',
+	'no account': '계정이 없으신가요?',
+	'send email': '인증 메일 발송',
+	'email sent': '메일 발송 완료',
 
 	Experiments: '실험 참여',
 	experiments: '실험 참여',
+	'show filter': '필터 보기',
+	'hide filter': '필터 숨기기',
 	seeOnlyAvailable: '참여 가능한 실험만 보기',
 	status: '실험 상태',
 	language: '언어',
@@ -18,6 +26,7 @@ export const langKo = {
 	Unpublished: '시작 전',
 	Closed: '종료됨',
 
+	'go back': '목록으로 가기',
 	korean: '한국어',
 	english: '영어',
 	japanese: '일본어',

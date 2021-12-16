@@ -7,7 +7,7 @@ import { useTranslation } from 'react-i18next';
 
 const MenuItem = styled.div`
 	width: 100%;
-	height: 300px;
+	height: 40vh;
 	position: relative;
 	display: flex;
 	flex-direction: column;
@@ -21,7 +21,7 @@ const MenuItem = styled.div`
 		border: 1px solid rgb(0, 0, 0, 0.1);
 	}
 	@media screen and (max-width: 800px) {
-		height: 150px;
+		height: 20vh;
 	}
 `;
 
