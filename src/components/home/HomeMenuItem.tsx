@@ -15,14 +15,19 @@ const MenuItem = styled.div`
 	justify-content: center;
 	color: white;
 	cursor: pointer;
+	border: 1px solid rgb(0, 0, 0, 0.8);
 	:hover {
 		font-size: 2rem;
+		border: 1px solid rgb(0, 0, 0, 0.1);
+	}
+	@media screen and (max-width: 800px) {
+		height: 150px;
 	}
 `;
 
 const MenuImage = styled.img`
 	width: 100%;
-	height: 300px;
+	height: 100%;
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -83,7 +88,6 @@ const HomeMenuItem = ({ item }: Props) => {
 			<MenuImage src={`${process.env.PUBLIC_URL}/img/default_${item.title}.jpg`} />
 			{getIcon(item.title)}
 			<TitleLabel>{t(item.title).toUpperCase()}</TitleLabel>
-			{/* <ContentBox /> */}
 		</MenuItem>
 	);
 };

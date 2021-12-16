@@ -1,6 +1,6 @@
 import { StatusType } from 'types/experiment';
 
-export const API_BASE_URL = 'http://api.snuling.com/api/';
+export const API_BASE_URL = 'https://api.snuling.com/api/';
 
 export const SNUBLUE = '#0f4c81';
 export const SNULIGHTBLUE = '#8787b7';

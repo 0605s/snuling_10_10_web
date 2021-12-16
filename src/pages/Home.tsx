@@ -18,9 +18,9 @@ const Banner = styled.div`
 
 const BannerLabel = styled(Title)`
 	position: absolute;
-	top: 12.5vh;
+	top: 9vh;
 	width: 100%;
-	padding: 12.5vh 0px;
+	padding: 12vh 5vw;
 	text-align: center;
 	filter: brightness(1);
 	backdrop-filter: blur(5px); /* apply the blur */
@@ -30,9 +30,9 @@ const BannerLabel = styled(Title)`
 
 const Home = () => {
 	return (
-		<div>
+		<div data-aos="fade">
 			<Banner />
-			<BannerLabel>{`서울대학교 언어학과 \n 10-10 프로젝트`}</BannerLabel>
+			<BannerLabel>{`서울대학교 언어학과\nSNU 10-10 프로젝트`}</BannerLabel>
 			<HomeMenu />
 		</div>
 	);

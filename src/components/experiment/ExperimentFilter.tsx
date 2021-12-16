@@ -31,6 +31,7 @@ const UpperContainer = styled.div<{ filterVisible: boolean }>`
 const LowerContainer = styled.div`
 	width: 100%;
 	padding: 20px;
+	box-sizing: border-box;
 	border-radius: 10px;
 	background-color: #ffffff;
 	transition: height 0.25s linear;
@@ -43,17 +44,17 @@ const RowContainer = styled.div`
 	@media screen and (max-width: 800px) {
 		flex-direction: column;
 		align-items: flex-start;
+		overflow: scroll;
 	}
 `;
 
 const FilterLabel = styled(SubContent)`
-	width: 20%;
 	text-align: right;
 	font-weight: 500;
 	padding-right: 20px;
 	border-right: 0.5px solid black;
 	@media screen and (max-width: 800px) {
-		width: 100%;
+		width: content-fit;
 		text-align: left;
 		border-right: none;
 	}
