@@ -28,6 +28,7 @@ const ExperimentDetailOfflineBody = observer(() => {
 	};
 
 	if (!experiment) return null;
+	if (experiment.exp_type === 'ON') return null;
 	return (
 		<>
 			<Title>{experiment.title}</Title>
@@ -37,7 +38,7 @@ const ExperimentDetailOfflineBody = observer(() => {
 					__html: `${experiment.content}`,
 				}}
 			/>
-			{experiment.schedule && (
+			{experiment.schedule_available && (
 				<ExperimentOfflineModal
 					experiment={experiment}
 					id={id}

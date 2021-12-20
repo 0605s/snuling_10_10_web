@@ -60,7 +60,7 @@ const PageTemplate = ({ title, children }: Props) => {
 		<PageTemplateContainer>
 			{title && (
 				<TitleContainer>
-					<TitleLabel>{t(title)}</TitleLabel>
+					<TitleLabel>{t(title).toUpperCase()}</TitleLabel>
 				</TitleContainer>
 			)}
 			<ChildrenContainer data-aos="fade-up">{children}</ChildrenContainer>

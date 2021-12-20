@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const FooterContainer = styled.div`
 	height: 200px;
-	padding: 5px 5vw;
+	padding: 5px 10vw;
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
@@ -16,7 +16,7 @@ const FooterContainer = styled.div`
 `;
 
 const CopyrightContainer = styled.div`
-	padding: 5px 5vw;
+	padding: 5px 10vw;
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
@@ -45,7 +45,7 @@ const FooterLabel = styled.div`
 	color: white;
 	text-align: left;
 	@media screen and (max-width: 800px) {
-		font-size: 7px;
+		font-size: 10px;
 		line-height: 16px;
 	}
 `;

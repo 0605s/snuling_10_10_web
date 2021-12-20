@@ -50,7 +50,7 @@ const ExperimentOnlineDetailBody = observer(() => {
 	if (!experiment) return null;
 	return (
 		<>
-			<Title>{experiment.title}</Title>
+			<Title style={{ backgroundColor: '#999999' }}>{experiment.title}</Title>
 			<ExperimentDetailInfo experiment={experiment} />
 			<ContentContainer
 				dangerouslySetInnerHTML={{

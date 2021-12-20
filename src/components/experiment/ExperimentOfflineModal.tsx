@@ -44,7 +44,9 @@ const ExperimentOfflineModal = ({ id, isModalVisible, experiment, setIsModalVisi
 	const history = useHistory();
 	const { ExperimentStore, ToastStore } = useStore();
 	const [selectedDate, setSelectedDate] = useState<string>(
-		experiment.schedule_available[0].slice(0, 10),
+		experiment.schedule_available.length > 0
+			? experiment.schedule_available[0].slice(0, 10)
+			: '',
 	);
 	const [selectedTime, setSelectedTime] = useState<string | null>(null);
 
