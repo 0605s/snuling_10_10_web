@@ -9,13 +9,15 @@ export const langEn = {
 	logout: 'logout',
 	quit: 'withdrawal',
 	'no account': 'No Account?',
-	'send email': 'Send Email',
-	'email sent': 'Email Sent',
+	'send email': 'Send e-mail',
+	'email sent': 'e-mail Sent',
+	'check email': 'Check your e-mail and input the code',
+	'certificaton success': 'Certified',
 
 	Experiments: 'Experiments',
 	experiments: 'experiments',
 	'show filter': 'Show Filter',
-	'close filter': 'Hide Filter',
+	'hide filter': 'Hide Filter',
 	seeOnlyAvailable: 'Show available experiments only',
 	status: 'Status',
 	language: 'Language',
@@ -25,6 +27,19 @@ export const langEn = {
 	'In Progress': 'In Progress',
 	Unpublished: 'Unpublished',
 	Closed: 'Closed',
+	joined: 'Joined',
+	available: 'Available',
+	unavailable: 'Unavailable',
+
+	'target language': 'Target Language',
+	reward: 'Reward',
+	participants: 'Participants',
+	link: 'Website Link',
+	code: 'Confirmation Code',
+	location: 'Location',
+	duration: 'Duration',
+	min: 'min',
+	none: 'none',
 
 	'go back': 'Go Back',
 	korean: 'Korean',
@@ -36,8 +51,6 @@ export const langEn = {
 
 	Online: 'Web',
 	Offline: 'Lab',
-
-	People: 'People',
 
 	schedule: 'Schedule',
 	colloquium: 'Colloquium',

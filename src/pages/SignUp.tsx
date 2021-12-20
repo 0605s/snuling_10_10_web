@@ -4,7 +4,6 @@ import { useHistory } from 'react-router';
 import useStore from 'store/Index';
 import { useTranslation } from 'react-i18next';
 import { TextField, Button, InputAdornment } from '@mui/material';
-import styled from 'styled-components';
 import { checkEmail } from 'lib/reg';
 import LoginTemplate from 'components/template/LoginTemplate';
 import { SubTitle } from 'lib/constant/Components';
@@ -103,7 +102,7 @@ const SignUp = observer(() => {
 				<TextField
 					margin="normal"
 					required
-					label="메일에서 인증번호를 확인하고 입력해주세요"
+					label={t('check email')}
 					fullWidth
 					onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
 						setCode(event.target.value)
@@ -118,7 +117,7 @@ const SignUp = observer(() => {
 									onClick={onClickCheckCode}
 									disabled={codeCheck}
 								>
-									{codeCheck ? '인증 성공' : '인증하기'}
+									{t(codeCheck ? 'certification success' : 'Confirm')}
 								</Button>
 							</InputAdornment>
 						),

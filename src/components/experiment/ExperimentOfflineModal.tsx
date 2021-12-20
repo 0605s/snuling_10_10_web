@@ -2,7 +2,7 @@ import { Divider, FormControlLabel, Radio, RadioGroup } from '@mui/material';
 import { ExperimentDetailType } from 'types/experiment';
 import styled from 'styled-components';
 import { SubContent } from 'lib/constant/Components';
-import { useCallback, useState } from 'react';
+import { useState } from 'react';
 import ModalTemplate from 'components/template/ModalTemplate';
 import useStore from 'store/Index';
 import { useHistory } from 'react-router';

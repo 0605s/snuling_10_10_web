@@ -11,6 +11,8 @@ export const langKo = {
 	'no account': '계정이 없으신가요?',
 	'send email': '인증 메일 발송',
 	'email sent': '메일 발송 완료',
+	'check email': '메일에서 인증번호를 확인하고 입력해주세요',
+	'certificaton success': '인증 성공',
 
 	Experiments: '실험 참여',
 	experiments: '실험 참여',
@@ -25,6 +27,19 @@ export const langKo = {
 	'In Progress': '진행중',
 	Unpublished: '시작 전',
 	Closed: '종료됨',
+	joined: '참여 완료',
+	available: '참여 가능',
+	unavailable: '모집 마감',
+
+	'target language': '대상 모국어',
+	reward: '참여 보상',
+	participants: '현재 모집 인원',
+	link: '실험 진행 링크',
+	code: '확인 코드',
+	location: '진행 장소',
+	duration: '실험 시간',
+	min: '분',
+	none: '없음',
 
 	'go back': '목록으로 가기',
 	korean: '한국어',
@@ -37,15 +52,10 @@ export const langKo = {
 	Online: '온라인',
 	Offline: '오프라인',
 
-	People: '사람들',
-
-	'Events & News': '이벤트 & 뉴스',
 	schedule: '스케줄',
 	colloquium: '콜로퀴엄',
 	seminar: '세미나',
 	news: '뉴스',
-
-	'Research & Projects': '연구 & 프로젝트',
 
 	'My Page': '마이페이지',
 

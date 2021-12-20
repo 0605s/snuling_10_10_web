@@ -36,6 +36,7 @@ export type ExperimentDetailType = {
 	schedule_reserved: string[];
 	duration?: number;
 	code?: string;
+	reservation: string;
 };
 
 export type StatusType = 'U' | 'P' | 'C';

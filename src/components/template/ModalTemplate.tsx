@@ -1,6 +1,6 @@
 import { Modal } from '@mui/material';
 import { SNUBLUE } from 'lib/constant';
-import { Children, ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 

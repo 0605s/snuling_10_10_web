@@ -90,9 +90,10 @@ const BottomLabel = styled.div<{ type: string }>`
 
 interface Props {
 	item: ExperimentType;
+	mypage?: boolean;
 }
 
-const ExperimentBox = ({ item }: Props) => {
+const ExperimentBox = ({ mypage, item }: Props) => {
 	const history = useHistory();
 	const { t } = useTranslation();
 	const onClickBox = useCallback(() => {
@@ -100,15 +101,16 @@ const ExperimentBox = ({ item }: Props) => {
 		window.scrollTo({ top: 0, behavior: 'smooth' });
 	}, []);
 
-	const type: string = item.is_joined
-		? 'joined'
-		: item.status === 'P' && !item.is_full
-		? 'available'
-		: item.status === 'C'
-		? 'closed'
-		: item.status === 'U'
-		? 'unpublised'
-		: 'unavailable';
+	const type: string =
+		item.is_joined || mypage
+			? 'joined'
+			: item.status === 'P' && !item.is_full
+			? 'available'
+			: item.status === 'C'
+			? 'Closed'
+			: item.status === 'U'
+			? 'Unpublished'
+			: 'unavailable';
 
 	return (
 		<BoxContainer onClick={onClickBox} data-aos="fade-up" type={type}>
@@ -130,7 +132,7 @@ const ExperimentBox = ({ item }: Props) => {
 				label={`${item.count_participants}명 / ${item.max_participants}명`}
 				variant="outlined"
 			/>
-			<BottomLabel type={type}>{type.toUpperCase()}</BottomLabel>
+			<BottomLabel type={type}>{t(type).toUpperCase()}</BottomLabel>
 		</BoxContainer>
 	);
 };

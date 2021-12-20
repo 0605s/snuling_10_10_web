@@ -1,4 +1,3 @@
-import { CircularProgress } from '@mui/material';
 import PostListBody from 'components/post/PostListBody';
 import PageTemplate from 'components/template/PageTemplate';
 import { observer } from 'mobx-react';
@@ -24,7 +23,6 @@ const PostList = observer(({ postType }: Props) => {
 
 	return (
 		<PageTemplate title={postType}>
-			{/* {LoadingStore.loading ? <CircularProgress /> : <PostListBody postType={postType} />} */}
 			<PostListBody postType={postType} />
 		</PageTemplate>
 	);

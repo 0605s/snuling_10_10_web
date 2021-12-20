@@ -1,4 +1,4 @@
-import { Content, SubContent } from 'lib/constant/Components';
+import { SubContent } from 'lib/constant/Components';
 import { useState } from 'react';
 import useStore from 'store/Index';
 import styled from 'styled-components';
@@ -34,7 +34,7 @@ const BoldLabel = styled(SubContent)`
 	font-weight: 500;
 `;
 
-const MyPageBody = observer(() => {
+const MyPageOption = observer(() => {
 	const { UserStore, ToastStore } = useStore();
 	const [editMode, setEditMode] = useState<boolean>(false);
 	const [langList, setLangList] = useState<string[]>(
@@ -114,4 +114,4 @@ const MyPageBody = observer(() => {
 	);
 });
 
-export default MyPageBody;
+export default MyPageOption;

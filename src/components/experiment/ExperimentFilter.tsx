@@ -73,7 +73,7 @@ const ExperimentFilter = observer(() => {
 	const { t } = useTranslation();
 	const [filterVisible, setFilterVisible] = useState<boolean>(false);
 	const [statusFilter, setStatusFilter] = useState<StatusType | undefined>(undefined);
-	const [availableFilter, setavailableFilter] = useState<boolean>(false);
+	const [availableFilter, setAvailableFilter] = useState<boolean>(false);
 	const [expTypeFilter, setExpTypeFilter] = useState<'ON' | 'OFF' | undefined>(undefined);
 	const [lingualFilter, setLingualFilter] = useState<string[]>([]);
 
@@ -91,10 +91,10 @@ const ExperimentFilter = observer(() => {
 
 	const onClickAvailableButton = async (value: boolean) => {
 		LoadingStore.setLoading(true);
-		setavailableFilter(value);
+		setAvailableFilter(value);
 		let res = await ExperimentStore.getExperimentList(
 			lingualFilter.join(','),
-			statusFilter,
+			'P',
 			value,
 			expTypeFilter,
 		);

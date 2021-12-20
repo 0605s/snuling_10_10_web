@@ -5,8 +5,8 @@ import { useHistory } from 'react-router';
 import { useTranslation } from 'react-i18next';
 import useStore from 'store/Index';
 import { Button } from '@mui/material';
-import MyPageBody from 'components/mypage/MyPageBody';
-import ExperimentMyBody from 'components/experiment/ExperimentMyBody';
+import MyPageOption from 'components/mypage/MyPageOption';
+import MyPageExperiment from 'components/mypage/MyPageExperiment';
 
 const MyPage = observer(() => {
 	const { UserStore, ToastStore, TokenStore, ExperimentStore, LoadingStore } = useStore();
@@ -51,8 +51,8 @@ const MyPage = observer(() => {
 			<Button variant="text" onClick={onClickQuit}>
 				{t('quit')}
 			</Button>
-			<MyPageBody />
-			{!LoadingStore.loading && <ExperimentMyBody />}
+			<MyPageOption />
+			{!LoadingStore.loading && <MyPageExperiment />}
 		</PageTemplate>
 	);
 });

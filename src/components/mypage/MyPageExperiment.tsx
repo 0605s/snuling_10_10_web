@@ -1,9 +1,9 @@
 import useStore from 'store/Index';
-import { SubTitle } from 'lib/constant/Components';
+import { Content } from 'lib/constant/Components';
 import { Grid } from '@mui/material';
 import ExperimentBox from 'components/experiment/ExperimentBox';
 
-const ExperimentMyBody = () => {
+const MyPageExperiment = () => {
 	const { ExperimentStore } = useStore();
 
 	return (
@@ -13,16 +13,16 @@ const ExperimentMyBody = () => {
 					{ExperimentStore.myExperimentList.map((item) => {
 						return (
 							<Grid item key={item.title} xs={12} md={6}>
-								<ExperimentBox item={item} key={item.title} />
+								<ExperimentBox item={item} key={item.title} mypage />
 							</Grid>
 						);
 					})}
 				</Grid>
 			) : (
-				<SubTitle>아직 참여한 실험이 없군요 ! 지금 참여해보세요</SubTitle>
+				<Content>아직 참여한 실험이 없군요 ! 지금 참여해보세요</Content>
 			)}
 		</>
 	);
 };
 
-export default ExperimentMyBody;
+export default MyPageExperiment;

@@ -1,9 +1,8 @@
-import { SNUBLUE, SNUGRAY } from 'lib/constant';
-import { Content, SubTitle } from 'lib/constant/Components';
+import { SNUBLUE } from 'lib/constant';
+import { SubTitle } from 'lib/constant/Components';
 import { ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
-import LeftMenuTemplate from './LeftMenuTemplate';
 
 const PageTemplateContainer = styled.div`
 	flex: 1;

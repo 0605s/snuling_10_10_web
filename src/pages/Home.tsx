@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { Title } from 'lib/constant/Components';
 import HomeMenu from 'components/home/HomeMenu';
 import { useTranslation } from 'react-i18next';
 import { SNUBLUE } from 'lib/constant';

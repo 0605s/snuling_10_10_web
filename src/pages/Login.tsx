@@ -1,4 +1,3 @@
-import styled from 'styled-components';
 import React, { useState } from 'react';
 import { observer } from 'mobx-react';
 import { useHistory } from 'react-router';

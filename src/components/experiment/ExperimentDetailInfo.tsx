@@ -49,56 +49,59 @@ const ExperimentDetailInfo = ({ experiment }: Props) => {
 	return (
 		<InfoContainer>
 			<Row>
-				<Title>참여 대상 모국어</Title>
+				<Title>{t('target language')}</Title>
 				<Item>
 					{experiment.lingual
 						? experiment.lingual
 								.split(',')
 								.map((item) => t(item))
 								.join(', ')
-						: '없음'}
+						: t('none')}
 				</Item>
 			</Row>
 			<Row>
-				<Title>실험 진행 방식</Title>
-				<Item>{experiment.exp_type === 'ON' ? 'Online' : 'Offline'}</Item>
+				<Title>{t('experiment type')}</Title>
+				<Item>{t(experiment.exp_type === 'ON' ? 'Online' : 'Offline')}</Item>
 			</Row>
 			{experiment.exp_type === 'OFF' && (
 				<Row>
-					<Title>실험 장소</Title>
+					<Title>{t('location')}</Title>
 					<Item>{experiment.location}</Item>
 				</Row>
 			)}
 			<Row>
-				<Title>실험 참여 보상</Title>
+				<Title>{t('reward')}</Title>
 				<Item>
 					{experiment.reward_type === 'CASH'
-						? `${experiment.reward_price}원`
+						? `₩${experiment.reward_price}`
 						: experiment.reward}
 				</Item>
 			</Row>
 			<Row>
-				<Title>현재 모집 인원</Title>
+				<Title>{t('participants')}</Title>
 				<Item>
 					{experiment.count_participants}명 / {experiment.max_participants}명
 				</Item>
 			</Row>
 			{experiment.exp_type === 'OFF' && (
 				<Row>
-					<Title>실험 시간</Title>
-					<Item>{experiment.duration}분</Item>
+					<Title>{t('duration')}</Title>
+					<Item>
+						{experiment.duration}
+						{t('min')}
+					</Item>
 				</Row>
 			)}
 			{experiment.exp_type === 'ON' && experiment.is_joined && (
 				<>
 					<Row>
-						<Title>실험 진행 링크</Title>
+						<Title>{t('link')}</Title>
 						<Item onClick={() => window.open(experiment.link, '_blank')}>
 							{experiment.link}
 						</Item>
 					</Row>
 					<Row>
-						<Title>실험 확인 코드</Title>
+						<Title>{t('code')}</Title>
 						<Item>{experiment.code}</Item>
 					</Row>
 				</>

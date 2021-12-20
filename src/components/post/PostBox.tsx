@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import { dateToString } from 'lib/api/Date';
 import { useHistory } from 'react-router';
 import { SNUBLUE } from 'lib/constant';
-import useStore from 'store/Index';
 
 const Container = styled.div`
 	width: 100%;
