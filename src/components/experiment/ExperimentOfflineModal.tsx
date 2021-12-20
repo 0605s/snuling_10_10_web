@@ -20,6 +20,9 @@ const InnerContainer = styled.div`
 	margin-top: 20px;
 	display: flex;
 	flex-direction: row;
+	@media screen and (max-width: 800px) {
+		flex-direction: column;
+	}
 `;
 
 const Column = styled.div`

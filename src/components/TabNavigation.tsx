@@ -68,7 +68,7 @@ const TabNavigation = () => {
 			return `/${firstPath}`;
 		return false;
 	};
-	if (location.pathname === '/') return null;
+	// if (location.pathname === '/') return null;
 	return (
 		<MenuContainer>
 			<SnulingLogo

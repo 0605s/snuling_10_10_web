@@ -15,7 +15,7 @@ const MenuItem = styled.div`
 	justify-content: center;
 	color: white;
 	cursor: pointer;
-	border: 1px solid rgb(0, 0, 0, 0.8);
+	/* border: 1px solid rgb(0, 0, 0, 0.8); */
 	:hover {
 		font-size: 2rem;
 		border: 1px solid rgb(0, 0, 0, 0.1);
@@ -45,20 +45,15 @@ const MenuImage = styled.img`
 	}
 `;
 
-const ContentBox = styled.div`
-	position: absolute;
-	bottom: 100%;
-	height: 50%;
-	width: 100%;
-	background-color: white;
-	/*  */
-`;
-
 const TitleLabel = styled.div`
 	opacity: 1;
 	z-index: 10;
 	transition: all 0.3s;
 	margin-top: 20px;
+	font-size: 20px;
+	@media screen and (max-width: 800px) {
+		font-size: 15px;
+	}
 `;
 
 interface Props {
@@ -71,13 +66,13 @@ const HomeMenuItem = ({ item }: Props) => {
 	const getIcon = (type: string) => {
 		switch (type) {
 			case 'news':
-				return <MenuBookIcon sx={{ fontSize: 40, zIndex: 3 }} />;
+				return <MenuBookIcon sx={{ fontSize: 30, zIndex: 3 }} />;
 			case 'colloquium':
-				return <AccountBalanceIcon sx={{ fontSize: 40, zIndex: 3 }} />;
+				return <AccountBalanceIcon sx={{ fontSize: 30, zIndex: 3 }} />;
 			case 'seminar':
-				return <SchoolIcon sx={{ fontSize: 40, zIndex: 3 }} />;
+				return <SchoolIcon sx={{ fontSize: 30, zIndex: 3 }} />;
 			case 'experiments':
-				return <ScienceIcon sx={{ fontSize: 40, zIndex: 3 }} />;
+				return <ScienceIcon sx={{ fontSize: 30, zIndex: 3 }} />;
 			default:
 				return null;
 		}

@@ -1,5 +1,5 @@
 export const langEn = {
-	'SNU Linguistics 10-10 project': 'SNU Linguistics\n10-10 project',
+	'SNU Linguistics 10-10 project': 'SNU LINGUISTICS\n10-10 PROJECT',
 
 	login: 'login',
 	'Sign Up': 'Sign Up',
@@ -34,8 +34,8 @@ export const langEn = {
 	french: 'French',
 	spanish: 'Spanish',
 
-	Online: 'Online',
-	Offline: 'Offline',
+	Online: 'Web',
+	Offline: 'Lab',
 
 	People: 'People',
 

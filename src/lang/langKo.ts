@@ -50,6 +50,6 @@ export const langKo = {
 	'My Page': '마이페이지',
 
 	Confirm: '확인',
-	address: `서울대학교 언어학과, 서울특별시 관악구 관악로 1, 2동 108호 (151-745).`,
+	address: `08826 서울특별시 관악구 관악로 1, 2동 108호`,
 	contacts: `Email: linguist@snu.ac.kr 전화:(02)880-6164, 팩스:(02)882-2451.`,
 };

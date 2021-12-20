@@ -49,12 +49,13 @@ const RowContainer = styled.div`
 `;
 
 const FilterLabel = styled(SubContent)`
+	width: 30%;
 	text-align: right;
 	font-weight: 500;
 	padding-right: 20px;
 	border-right: 0.5px solid black;
 	@media screen and (max-width: 800px) {
-		width: content-fit;
+		width: 100%;
 		text-align: left;
 		border-right: none;
 	}

@@ -1,6 +1,6 @@
 import { ExperimentType } from 'types/experiment';
 import styled from 'styled-components';
-import { Content, SubContent } from 'lib/constant/Components';
+import { Content } from 'lib/constant/Components';
 import { useHistory } from 'react-router';
 import { useCallback } from 'react';
 import { Chip, Stack } from '@mui/material';
@@ -115,9 +115,9 @@ const ExperimentBox = ({ item }: Props) => {
 			<TopBar type={type} />
 			<TitleLabel>{item.title}</TitleLabel>
 			{item.exp_type === 'ON' ? (
-				<OnOffChip icon={<PublicIcon />} label="ONLINE" />
+				<OnOffChip icon={<PublicIcon />} label={t('Online')} />
 			) : (
-				<OnOffChip icon={<CloudOffIcon />} label="OFFLINE" />
+				<OnOffChip icon={<CloudOffIcon />} label={t('Offline')} />
 			)}
 			<LanguageList direction="row" spacing={1}>
 				{item.lingual &&

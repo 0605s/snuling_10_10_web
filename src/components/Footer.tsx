@@ -1,27 +1,28 @@
-import { SNUBLUE, SNUYELLOW, SNUGRAY } from 'lib/constant';
-import { RowContainer, SubContent } from 'lib/constant/Components';
 import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 
-const FooterContainer = styled(RowContainer)`
+const FooterContainer = styled.div`
 	height: 200px;
-	padding: 0px 10vw;
+	padding: 5px 5vw;
 	display: flex;
-	flex-direction: row;
-	border-top: 15px ${SNUBLUE} solid;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: center;
+	border-top: 15px white solid;
+	background-color: #333333;
 	@media screen and (max-width: 800px) {
-		padding: 0px 5vw;
 		height: 150px;
 	}
 `;
 
-const ColumnContainer = styled.div<{ type: 'left' | 'right' }>`
-	flex: ${(props) => (props.type === 'right' ? 1 : 2)};
+const CopyrightContainer = styled.div`
+	padding: 5px 5vw;
 	display: flex;
 	flex-direction: column;
-	align-items: center;
+	align-items: flex-start;
 	justify-content: center;
-	align-items: ${(props) => props.type === 'right' && 'flex-end'};
+	background-color: #111111;
+	text-align: left;
 `;
 
 const SnulingLogo = styled.img`
@@ -41,10 +42,10 @@ const SnulingLogo = styled.img`
 const FooterLabel = styled.div`
 	font-size: 14px;
 	line-height: 25px;
-	color: ${SNUGRAY};
-	text-align: center;
+	color: white;
+	text-align: left;
 	@media screen and (max-width: 800px) {
-		font-size: 10px;
+		font-size: 7px;
 		line-height: 16px;
 	}
 `;
@@ -52,17 +53,23 @@ const FooterLabel = styled.div`
 const Footer = () => {
 	const { t } = useTranslation();
 	return (
-		<FooterContainer>
-			<ColumnContainer type="left">
+		<>
+			<FooterContainer>
 				<SnulingLogo
-					src={`${process.env.PUBLIC_URL}/img/snuling_logo.png`}
+					src={`${process.env.PUBLIC_URL}/img/snuling_logo_white.png`}
 					alt="snuling_logo"
 				/>
 				<FooterLabel>{t('address')}</FooterLabel>
 				<FooterLabel>{t('contacts')}</FooterLabel>
 				{/* <FooterLabel>{t('copyright')}</FooterLabel> */}
-			</ColumnContainer>
-		</FooterContainer>
+			</FooterContainer>
+			<CopyrightContainer>
+				<FooterLabel>
+					COPYRIGHT (C)2020 Department of Linguistics,, SEOUL NATIONAL UNIVERSITY.ALL
+					RIGHTS RESERVED.
+				</FooterLabel>
+			</CopyrightContainer>
+		</>
 	);
 };
 
