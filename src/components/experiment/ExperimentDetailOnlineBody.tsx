@@ -64,7 +64,7 @@ const ExperimentOnlineDetailBody = observer(() => {
 				setIsModalVisible={setIsOnlineModalVisible}
 			/>
 			<Button
-				disabled={experiment.is_full || experiment.is_joined}
+				disabled={experiment.is_full || experiment.is_joined || experiment.status !== 'P'}
 				onClick={onClickAssign}
 				endIcon={<CreateIcon />}
 				variant="contained"
@@ -73,6 +73,10 @@ const ExperimentOnlineDetailBody = observer(() => {
 					? '참여 완료'
 					: experiment.is_full
 					? '모집 마감'
+					: experiment.status === 'U'
+					? 'Unpublished'
+					: experiment.status === 'C'
+					? 'Closed'
 					: '실험 참여하기'}
 			</Button>
 			{experiment.is_joined && (
